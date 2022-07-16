@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikgonzal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 20:13:25 by ikgonzal          #+#    #+#             */
-/*   Updated: 2021/09/13 19:56:10 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/16 12:50:43 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*get_next_line(int fd)
 {
-	char		buff[BUFFER_SIZE + 1];
+	char		buff[11];
 	int			bytes_read;
 	static char	*rest;
 	char		*line;
@@ -24,7 +24,7 @@ char	*get_next_line(int fd)
 	bytes_read = 1;
 	while (!check_line_break(rest) && bytes_read != 0)
 	{
-		bytes_read = read(fd, buff, BUFFER_SIZE);
+		bytes_read = read(fd, buff, 10);
 		if (bytes_read == -1)
 			return (NULL);
 		buff[bytes_read] = '\0';
