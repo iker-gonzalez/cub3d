@@ -50,3 +50,13 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Propias
+*.swp
+*.swo
+a.out
+.DS_Store
+*.a
+*.o
+*.replace
+
