@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/16 12:47:20 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/19 21:25:16 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define CUB3D_H
 
 #include "libft/libft.h"
+#include "gnl/get_next_line.h"
 #include <unistd.h>
 #include <stdio.h>
 
