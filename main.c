@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/04 16:32:42 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/20 18:14:20 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 int main(int argc, char **argv)
 {
-	if (argc != 2)
-	{
-		printf("Error: incorrect number of arguments\n");
-		return (1);
-	}
-	if (ft_check_extension(argv[1]))
-		return (1);
+	t_map map;
+	t_player player;
+	
+	set_values(&map, &player);
+	
+	
 	return (0);
 }

@@ -6,18 +6,20 @@
 #    By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 16:17:30 by ikgonzal          #+#    #+#              #
-#    Updated: 2022/07/16 12:49:12 by ikgonzal         ###   ########.fr        #
+#    Updated: 2022/07/20 18:28:15 by ikgonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =	cub3d
 
-FLAGS =	-Wall -Wextra -Werror
+CC = gcc
+
+FLAGS =	-Wall -Wextra -Werror -fsanitize=address -g3
 
 SRC  =	main.c \
-		error.c \
 		gnl/get_next_line.c \
 		gnl/get_next_line_utils.c \
+		raycasting/config.c \
 
 LIB = Libft/libft.a
 
