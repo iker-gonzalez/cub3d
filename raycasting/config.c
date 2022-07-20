@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 18:05:30 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/20 18:33:27 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/20 18:53:52 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 
 void	set_values(t_map *map, t_player *player)
 {
-	player->x = 4;
-	player->y = 3;
+	player->posX = 4;
+	player->posY = 3;
 
 	map->columns = 6;
 	map->rows = 4;
