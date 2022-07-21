@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 18:05:30 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/20 18:53:52 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/21 18:39:25 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,12 @@
 111111
 */
 
-void	set_values(t_map *map, t_player *player)
+void	set_map_values(t_map *map)
 {
-	player->posX = 4;
-	player->posY = 3;
-
 	map->columns = 6;
 	map->rows = 4;
+	map->time = 0;
+	map->oldTime = 0;
 
 	map->map_content = (char **)malloc(sizeof(char *) * (map->rows + 1));
 
@@ -60,4 +59,14 @@ void	set_values(t_map *map, t_player *player)
 	map->map_content[3][3] = 1;
 	map->map_content[3][4] = 1;
 	map->map_content[3][5] = 1;
+}
+
+void	set_player_values(t_player *player)
+{
+	player->posX = 4;
+	player->posY = 3;
+	player->dirX = -1;
+	player->dirY = 0;
+	player->planeX = 0;
+	player->planeY = 0.66;
 }
