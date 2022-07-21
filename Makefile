@@ -6,7 +6,7 @@
 #    By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 16:17:30 by ikgonzal          #+#    #+#              #
-#    Updated: 2022/07/18 20:10:31 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/07/21 19:26:11 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME =	cub3d
 
 CC = gcc
 FLAGS =	-Wall -Wextra -Werror
+S = -fsanitize=address -g
 
 SRC  =	main.c \
 		error.c \
@@ -40,6 +41,15 @@ $(NAME) : $(OBJ)
 	@ echo "minilibx compiled 📇"
 	$(CC) $(FLAGS) $(LIB) $(OBJ) -o $(NAME)
 	@ echo "cub3d compiled 🧊"
+
+san : $(OBJ)
+	@$(MAKE) -C ./libft
+	@$(MAKE) -C ./libft bonus
+	@ echo "libft compiled 🔋"
+	@$(MAKE) -Wno -C ./minilibx
+	@ echo "minilibx compiled 📇"
+	$(CC) $(FLAGS) $(LIB) $(S) $(OBJ) -o $(NAME)
+	@ echo "cub3d sanitized 🧊"
 
 clean:
 	@ rm -rf cub3d

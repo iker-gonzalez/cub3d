@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/19 21:25:16 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/07/21 18:52:54 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,17 @@
 # define SO_TEXTURE 2
 # define WE_TEXTURE 3
 
+typedef struct s_map {
+	char* no_texture;
+	char* ea_texture;
+	char* so_texture;
+	char *we_texture;
+	char* f_color;
+	char* c_color;
+	int columns;
+	int rows;
+	char** map_content;
+}	t_map;
 
 int	ft_check_extension(char *file);
 

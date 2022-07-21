@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/19 21:39:51 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/07/21 21:15:18 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,35 @@
 #include <fcntl.h>
 #include <stdio.h>
 
+int ft_get_y(char *map)
+{
+	int 	y;
+	int  	fd;
+	char	*line;
+
+	y = 0;
+	fd = open(map, O_RDONLY);
+	if (!fd || fd != -1)
+	{
+		line = " ";
+		while (line != NULL)
+		{
+			printf("%s\n", line);
+			line = get_next_line(fd);
+			if (line == NULL)
+				break;
+			y++;
+		}
+	}
+	else 
+		printf("Error: File\n");
+	close(fd);
+	printf(">>>>>>>>>>%d\n", y);
+	return (y);
+}
+
 int main(int argc, char **argv)
 {
-	int  fd;
-
 	if (argc != 2)
 	{
 		printf("Error: incorrect number of arguments\n");
@@ -27,14 +52,7 @@ int main(int argc, char **argv)
 		return (1);
 	else
 	{
-		fd = open(argv[1], O_RDONLY);
-		if (fd != -1)
-		{
-				get_next_line(fd);
-		}
-		else 
-			printf("Error: File\n");
+		ft_get_y(argv[1]);
 	}
-	close(fd);
 	return (0);
 }
