@@ -1,5 +1,5 @@
 <h1 align="center">
-	🧊 Cub3D
+	🧊 Cub3D 🧊
 </h1>
 
 <p align="center">
