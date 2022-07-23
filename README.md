@@ -31,7 +31,7 @@
 
 **screenshots from our actual game coming soon**
 
-For detailed information, refer to the [**subject of this project**](https://github.com/iker-gonzalez/42_cursus/blob/main/_PDFs/en.subject_so_long.pdf)
+For detailed information, refer to the [**subject of this project**](https://github.com/iker-gonzalez/42_cursus/blob/main/_PDFs/en.subject_cub3d.pdf)
 
 
  ## 🛠️ Usage
