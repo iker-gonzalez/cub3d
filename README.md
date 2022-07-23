@@ -37,7 +37,7 @@ For detailed information, refer to the [**subject of this project**](https://git
  ## 🛠️ Usage
 Clone the repository in your computer using the following command:
 
-`git clone xxx`
+`git clone https://github.com/iker-gonzalez/cub3d.git`
  
 Then, you need to run the command `make` on the root directory.
 
