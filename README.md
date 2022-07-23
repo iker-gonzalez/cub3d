@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-	<b><i>Development repo for 42cursus' so_long project</i></b><br>
+	<b><i>Development repo for 42cursus' cub3D project</i></b><br>
 	For further information about 42cursus and its projects, please refer to <a href="https://github.com/iker-gonzalez/42_cursus"><b>42cursus repo</b></a>.
 </p>
 
@@ -66,3 +66,8 @@ To play this game you can use any map of your choice as long follow the followin
 You can use `AWSD` to move `UP`, `DOWN`, `LEFT`, `RIGHT` respectively.
 Use right and left arrows to look right and left in the maze.
 For restart the game press `ESC` or click on the red cross of window.
+
+
+### Credit
+
+This two-person project was done with my colleague and friend Iñigo [@Z3n42](https://github.com/z3n42).
