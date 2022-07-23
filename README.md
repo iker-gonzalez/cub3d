@@ -27,7 +27,7 @@
 
 ## 🗣️ About
 
-> Small simulated 3D game inspired by the famous [Wolfenstein 3D game](https://www.youtube.com/watch?v=561sPCk6ByE) . We need to create a "realistic" 3D graphical representation of the inside of a maze from a first person perspective, using ray casting principles.
+> Small simulated 3D game inspired by the famous [Wolfenstein 3D game](https://www.youtube.com/watch?v=561sPCk6ByE). We need to create a "realistic" 3D graphical representation of the inside of a maze from a first person perspective, using ray casting principles.
 
 **screenshots from our actual game coming soon**
 
@@ -41,16 +41,16 @@ Clone the repository in your computer using the following command:
  
 Then, you need to run the command `make` on the root directory.
 
-This will compile the executable file `cub3d`.
+This will compile the executable file `cub3d`
 
-Last, run `./cub3d maps/map_of_your_choice`.
+Last, run `./cub3d maps/map_of_your_choice`
 
 
 ## Game
 To play this game you can use any map of your choice as long follow the following rules:
 
-* The extension need be `.cub`
-* Its must be surrounded by walls `1`
+* The extension needs to be `.cub`
+* It must be surrounded by walls `1`
 * Characters allowed:
 
 |  Character  |          Object                         |
