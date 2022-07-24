@@ -6,7 +6,7 @@
 #    By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 16:17:30 by ikgonzal          #+#    #+#              #
-#    Updated: 2022/07/23 13:03:01 by ikgonzal         ###   ########.fr        #
+#    Updated: 2022/07/24 10:55:17 by ikgonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,8 @@ CC = gcc
 FLAGS =	-Wall -Wextra -Werror
 
 MLX_FLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
+
+SANITIZER = -fsanitize=address -g3
 
 SRC  =	main.c \
 		gnl/get_next_line.c \
@@ -36,7 +38,7 @@ $(NAME) : $(OBJ)
 	@ echo "libft compiled 🔋"
 	@$(MAKE) -s -C ./mlx
 	@ echo "mlx compiled 📇"
-	$(CC) $(FLAGS) $(LIB) $(OBJ) $(MLX_FLAGS) -o $(NAME)
+	$(CC) $(FLAGS) $(LIB) $(OBJ) $(MLX_FLAGS) $(SANITIZER) -o $(NAME)
 	@ echo "cub3d compiled 🧊"
 
 clean:

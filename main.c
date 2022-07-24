@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/23 12:48:11 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/24 11:55:05 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@ int main(int argc, char **argv)
 	t_player player;
 	t_ray	ray;
 	t_game	game;
+	t_mlx	mlx;
 	int i;
 	
 	set_map_values(&map);
 	set_player_values(&player);
 	i = -1;
 	game.on = 0;
-	mlx_config();
+	mlx_config(&mlx);
 	/*while (!game.on)
 	{
 		//raycasting loop

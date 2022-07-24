@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/23 12:58:50 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/24 11:56:53 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,25 @@
 #define GAME_TITLE "🤬 WOLPAPASTEIN 🤬"
 
 # define FOV 66
-# define WIN_WIDTH 320
-# define WIN_HEIGHT 200
+# define WIN_WIDTH 960
+# define WIN_HEIGHT 600
+
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*mlx_win;
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_mlx;
 
 typedef struct s_draw
 {
-	int	lineHeight;
-	int	drawStart;
-	int	drawEnd;
+	int		lineHeight;
+	int		drawStart;
+	int		drawEnd;
 }				t_draw;
 
 typedef struct s_game 
@@ -107,6 +118,6 @@ void	ft_calculate_perpDistance(t_ray *ray);
 void	ft_calculate_drawValues(t_ray *ray, t_draw *draw);
 
 //mlx functions
-void	mlx_config(void);
+void	mlx_config(t_mlx *mlx);
 
 #endif
