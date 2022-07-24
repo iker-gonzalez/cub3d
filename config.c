@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 18:05:30 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/21 18:39:25 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/24 13:38:15 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,19 @@ void	set_player_values(t_player *player)
 	player->dirY = 0;
 	player->planeX = 0;
 	player->planeY = 0.66;
+}
+
+void	set_texture_paths(t_map	*map)
+{
+	map->no_texture = "textures/wall_1.xpm";
+	map->ea_texture = "textures/wall_2.xpm";
+	map->so_texture = "textures/wall_3.xpm";
+	map->we_texture = "textures/wall_4.xpm";
+}
+
+void	file_config(t_map *map, t_player *player)
+{
+	set_map_values(map);
+	set_player_values(player);
+	set_texture_paths(map);
 }

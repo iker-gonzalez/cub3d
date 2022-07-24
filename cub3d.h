@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/24 11:56:53 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/24 13:39:41 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,16 @@
 # define WIN_WIDTH 960
 # define WIN_HEIGHT 600
 
-typedef struct s_mlx
+typedef	struct s_text
 {
+	void	*img;
+	char	*path;;
+	int		img_width;
+	int		img_height;
+}				t_text;
+
+typedef struct s_mlx
+{	
 	void	*mlx;
 	void	*mlx_win;
 	void	*img;
@@ -105,6 +113,7 @@ typedef struct s_map {
 //initial config
 void	set_map_values(t_map *map); //fictional values
 void	set_player_values(t_player *player);
+void	file_config(t_map *map, t_player *player);
 
 //raycasting functions
 void	ft_ray_position_direction(t_map *map, t_player *player, t_ray *ray);
@@ -119,5 +128,8 @@ void	ft_calculate_drawValues(t_ray *ray, t_draw *draw);
 
 //mlx functions
 void	mlx_config(t_mlx *mlx);
+
+//textures
+void	ft_validate_xpm(t_map *map, t_mlx *mlx, t_text *text);
 
 #endif
