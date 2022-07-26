@@ -6,7 +6,7 @@
 #    By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 16:17:30 by ikgonzal          #+#    #+#              #
-#    Updated: 2022/07/24 13:35:35 by ikgonzal         ###   ########.fr        #
+#    Updated: 2022/07/26 18:23:37 by ikgonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,10 @@ SANITIZER = -fsanitize=address -g3
 SRC  =	main.c \
 		gnl/get_next_line.c \
 		gnl/get_next_line_utils.c \
-		config.c \
+		validation/config.c \
 		mlx_functions.c \
+		textures/parsing/ft_validate_xpm.c \
+		textures/parsing/fill_text_matrix.c \
 
 LIB = Libft/libft.a
 

@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/24 13:39:41 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/26 18:25:55 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,28 @@
 #include <unistd.h>
 #include <math.h>
 #include "mlx/mlx.h"
+#include <stdio.h>
 
 #define GAME_TITLE "🤬 WOLPAPASTEIN 🤬"
+
+#define NO_TEXTURE 0
+#define EA_TEXTURE 1
+#define SO_TEXTURE 2
+#define WE_TEXTURE 3
 
 # define FOV 66
 # define WIN_WIDTH 960
 # define WIN_HEIGHT 600
 
+//info for each texture xpm
 typedef	struct s_text
 {
-	void	*img;
-	char	*path;;
 	int		img_width;
 	int		img_height;
+	int		***content;
 }				t_text;
 
+//struct for mlx
 typedef struct s_mlx
 {	
 	void	*mlx;
@@ -43,17 +50,13 @@ typedef struct s_mlx
 	int		endian;
 }				t_mlx;
 
+//struct for drawing pixels
 typedef struct s_draw
 {
 	int		lineHeight;
 	int		drawStart;
 	int		drawEnd;
 }				t_draw;
-
-typedef struct s_game 
-{
-	int	on;
-}				t_game;
 
 typedef struct s_ray {
 	//cameraX is the x-coordinate on the camera plane that the current x-coordinate of the screen represents (-1 left, 0 front, 1 right).
@@ -130,6 +133,8 @@ void	ft_calculate_drawValues(t_ray *ray, t_draw *draw);
 void	mlx_config(t_mlx *mlx);
 
 //textures
-void	ft_validate_xpm(t_map *map, t_mlx *mlx, t_text *text);
+int	ft_validate_xpm(t_map *map, t_mlx *mlx, t_text *text);
+void	init_text_struct (t_text *text);
+
 
 #endif

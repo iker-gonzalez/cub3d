@@ -6,20 +6,35 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 13:22:09 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/24 13:41:44 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/26 18:17:27 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../cub3d.h"
+#include <stdio.h>
 
-void	ft_validate_xpm(t_map *map, t_mlx *mlx, t_text *text)
+int	ft_mlx_validation(char *path, void *mlx)
 {
-	text->img = mlx_xpm_file_to_image(mlx, map->ea_texture, &text->img_width, &text->img_height);
-	if (text->img == NULL)
-	{
-		printf("Invalid xpm\n");
-		return ;
-	}
-	printf("Valid xpm\n");
-	return ;
+	void	*img;
+
+	int size; //provisional
+	int size2; //provisional
+	
+	img = mlx_xpm_file_to_image(mlx, path, &size, &size2);
+	if (img == NULL)
+		return (1);
+	return (0);
+}
+
+int	ft_validate_xpm(t_map *map, t_mlx *mlx, t_text *text)
+{
+	if (ft_mlx_validation(map->ea_texture, mlx))
+		return (1);
+	else if (ft_mlx_validation(map->no_texture, mlx))
+		return (1);
+	else if (ft_mlx_validation(map->so_texture, mlx))
+		return (1);
+	else if (ft_mlx_validation(map->we_texture, mlx))
+		return (1);
+	return (0);
 }
