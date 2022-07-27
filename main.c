@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
@@ -6,13 +6,31 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/26 20:34:30 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/07/27 21:07:22 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <fcntl.h>
 #include <stdio.h>
+
+void ft_print_map(char **map)
+{
+	int j;
+	int i;
+
+	j = 0;
+	while (map[j] != NULL)
+	{
+		i = 0;
+		while (map[j][i] != '\0')
+		{
+			printf("%c", map[j][i]);
+			i++;
+		}
+		j++;
+	}
+}
 
 void	ft_get_axis(t_data *data)
 {
@@ -30,7 +48,7 @@ void	ft_get_axis(t_data *data)
 			if (line == NULL)
 				break ;
 			if (data->x < ft_strlen(line))
-				data->x = ft_strlen(line);
+				data->x = ft_strlen(line) - 1;
 			data->y++;
 		}
 	}
@@ -39,36 +57,38 @@ void	ft_get_axis(t_data *data)
 	close(data->fd);
 }
 
-char	**ft_matrix(char *map, t_data *data)
+char	**ft_premap(char *map, t_data *data)
 {
 	char	*tbl;
-	char	**mat;
-	size_t		i;
+	char	**premap;
+	size_t	i;
 	int		j;
+	size_t		size;
 
 	data->fd = open(map, O_RDONLY);
-	mat = (char **)malloc(data->y * sizeof(char *));
+	premap = (char **)malloc((data->y) * sizeof(char *));
 	j = 0;;
 	tbl = NULL;
-	while (j < data->y)
+	while (j < (data->y))
 	{
 		tbl = get_next_line(data->fd);
-		/* printf("%s\n", tbl); */
-		mat[j] = (char *)malloc(data->x * sizeof(char));
+		if (tbl != NULL)
+			size = ft_strlen(tbl);
+		premap[j] = (char *)malloc(size * sizeof(char));
 		i = 0;
-		while (i < (data->x - 2))
+		while (i <= size)
 		{
-			mat[j][i] = tbl[i];
-			printf("%c", mat[j][i]);
-			/* free(tbl[i]); */
+			premap[j][i] = tbl[i];
 			i++;
 		}
-		/* free(tbl); */
 		j++;
 	}
+	premap[j + 1] = NULL;
+	/* ft_print_map(premap); */
 	close(data->fd);
-	return (mat);
+	return (premap);
 }
+
 
 
 int	main(int argc, char **argv)
@@ -87,6 +107,6 @@ int	main(int argc, char **argv)
 		ft_get_axis(&data);
 	printf("X_axis >>>>>>>>> %zu\n", data.x);
 	printf("Y_axis >>>>>>>>> %d\n", data.y);
-	ft_matrix(argv[1], &data);
+	ft_premap(argv[1], &data);
 	return (0);
 }
