@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/26 18:22:44 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/27 17:57:24 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int main(int argc, char **argv)
 		return (1);
 	}
 	init_text_struct (&text);
+	ft_hex_to_trgb();
 
 	/*i = -1;
 	mlx_config(&mlx);

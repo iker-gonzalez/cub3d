@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/26 18:25:55 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/27 17:56:46 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,8 @@ void	mlx_config(t_mlx *mlx);
 //textures
 int	ft_validate_xpm(t_map *map, t_mlx *mlx, t_text *text);
 void	init_text_struct (t_text *text);
+void	ft_hex_to_trgb(void);
+
 
 
 #endif
