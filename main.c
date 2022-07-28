@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/27 17:57:24 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/28 18:59:09 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ int main(int argc, char **argv)
 		return (1);
 	}
 	init_text_struct (&text);
-	ft_hex_to_trgb();
+	//ft_hex_to_trgb();
 
-	/*i = -1;
+	//i = -1;
 	mlx_config(&mlx);
-	while (1)
+	/*while (1)
 	{
 		//raycasting loop
 		while (++i < map.columns)
@@ -44,7 +44,7 @@ int main(int argc, char **argv)
 			ft_calculate_side_distance(&ray, &player);
 			ft_calculate_perpDistance(&ray);
 		}
-	}
-	mlx_loop(mlx.mlx);*/
+	}*/
+	mlx_loop(mlx.mlx);
 	return (0);
 }

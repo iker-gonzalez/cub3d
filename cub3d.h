@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/27 17:56:46 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/28 19:13:21 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # define FOV 66
 # define WIN_WIDTH 960
 # define WIN_HEIGHT 600
+
+# define NO_TRANSPATENCY 0x00
 
 //info for each texture xpm
 typedef	struct s_text
@@ -133,10 +135,8 @@ void	ft_calculate_drawValues(t_ray *ray, t_draw *draw);
 void	mlx_config(t_mlx *mlx);
 
 //textures
-int	ft_validate_xpm(t_map *map, t_mlx *mlx, t_text *text);
+int		ft_validate_xpm(t_map *map, t_mlx *mlx, t_text *text);
 void	init_text_struct (t_text *text);
-void	ft_hex_to_trgb(void);
-
-
+int		create_trgb(int t, int r, int g, int b);
 
 #endif
