@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/27 21:07:22 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/07/28 21:54:58 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,15 @@ void ft_print_map(char **map)
 	while (map[j] != NULL)
 	{
 		i = 0;
+		printf("*");
 		while (map[j][i] != '\0')
 		{
-			printf("%c", map[j][i]);
+			/* printf("%c", map[j][i]); */
+			printf("[%d][%d]||", j, i);
 			i++;
 		}
 		j++;
+		printf("\n");
 	}
 }
 
@@ -44,7 +47,6 @@ void	ft_get_axis(t_data *data)
 		while (line != NULL)
 		{
 			line = get_next_line(data->fd);
-			/* printf("%s\n", tbl); */
 			if (line == NULL)
 				break ;
 			if (data->x < ft_strlen(line))
@@ -74,17 +76,19 @@ char	**ft_premap(char *map, t_data *data)
 		tbl = get_next_line(data->fd);
 		if (tbl != NULL)
 			size = ft_strlen(tbl);
-		premap[j] = (char *)malloc(size * sizeof(char));
+		/* printf("%zu>>>>>>>", size); */
+		premap[j] = (char *)malloc((size -1) * sizeof(char));
 		i = 0;
 		while (i <= size)
 		{
 			premap[j][i] = tbl[i];
+			/* printf("%c", tbl[i]); */
 			i++;
 		}
 		j++;
 	}
-	premap[j + 1] = NULL;
-	/* ft_print_map(premap); */
+	premap[j] = NULL;
+	ft_print_map(premap);
 	close(data->fd);
 	return (premap);
 }
