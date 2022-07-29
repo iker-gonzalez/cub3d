@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/28 21:54:58 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/07/29 19:43:03 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,12 @@ void ft_print_map(char **map)
 	while (map[j] != NULL)
 	{
 		i = 0;
-		printf("*");
 		while (map[j][i] != '\0')
 		{
-			/* printf("%c", map[j][i]); */
-			printf("[%d][%d]||", j, i);
+			printf("%c", map[j][i]);
 			i++;
 		}
 		j++;
-		printf("\n");
 	}
 }
 
@@ -49,8 +46,6 @@ void	ft_get_axis(t_data *data)
 			line = get_next_line(data->fd);
 			if (line == NULL)
 				break ;
-			if (data->x < ft_strlen(line))
-				data->x = ft_strlen(line) - 1;
 			data->y++;
 		}
 	}
@@ -68,7 +63,7 @@ char	**ft_premap(char *map, t_data *data)
 	size_t		size;
 
 	data->fd = open(map, O_RDONLY);
-	premap = (char **)malloc((data->y) * sizeof(char *));
+	premap = (char **)malloc((data->y  + 1) * sizeof(char *));
 	j = 0;;
 	tbl = NULL;
 	while (j < (data->y))
@@ -76,15 +71,15 @@ char	**ft_premap(char *map, t_data *data)
 		tbl = get_next_line(data->fd);
 		if (tbl != NULL)
 			size = ft_strlen(tbl);
-		/* printf("%zu>>>>>>>", size); */
-		premap[j] = (char *)malloc((size -1) * sizeof(char));
+		/* printf("Line -> %d X_axis >>>>>>>>> %zu\n", j, size); */
+		premap[j] = (char *)malloc((size + 1) * sizeof(char));
 		i = 0;
-		while (i <= size)
+		while (i < size)
 		{
 			premap[j][i] = tbl[i];
-			/* printf("%c", tbl[i]); */
 			i++;
 		}
+		premap[j][i] = '\0';
 		j++;
 	}
 	premap[j] = NULL;
@@ -109,8 +104,7 @@ int	main(int argc, char **argv)
 		return (1);
 	else
 		ft_get_axis(&data);
-	printf("X_axis >>>>>>>>> %zu\n", data.x);
-	printf("Y_axis >>>>>>>>> %d\n", data.y);
+	/* printf("Y_axis >>>>>>>>> %d\n", data.y); */
 	ft_premap(argv[1], &data);
 	return (0);
 }
