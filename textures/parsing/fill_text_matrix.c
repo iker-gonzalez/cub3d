@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 18:18:41 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/30 12:09:50 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/30 12:27:18 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,36 @@ void	ft_extract_text_data(char *line, t_text *text)
 	ft_extract_text_colors(line, text, end);
 }
 
+void	ft_parse_pixel_row(char *line, t_text *text)
+{
+	int i;
+	int x;
+
+	i = 1;
+	x = 0;
+	printf("line[i]: %c\n", line[i]);
+	printf("text->colors[x][1]: %c\n", text->colors[x][1]);
+	while(line[i] != text->colors[x][1])
+		x++;
+	printf("color discovered: %s\n", text->colors[x]);
+	
+}
+
 void	ft_fill_pixels(t_map *map, t_text *text, int text_nb, int fd)
 {
 	char	*line;
+	int		row;
 
 	text->pixels[text_nb] = (int **)malloc(sizeof(int *) * (text->rows + 1));
 	line = get_next_line(fd);
+	row = 0;
 	while (line != NULL)
 	{
-		printf("%s\n", line);
+		text->pixels[text_nb][row] = malloc(sizeof(int *) * (text->columns + 1));
+		ft_parse_pixel_row(line, text);
 		free(line);
 		line = get_next_line(fd);
+		row++;
 	}
 	
 }
