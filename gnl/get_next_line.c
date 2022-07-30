@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 20:13:25 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/16 12:50:43 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/30 10:03:29 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ char	*get_next_line(int fd)
 		if (bytes_read == -1)
 			return (NULL);
 		buff[bytes_read] = '\0';
-		rest = ft_strjoin(rest, buff);
+		rest = ft_strjoin_gnl(rest, buff);
 	}
-	line = ft_substr(rest, 0, ft_strlen(rest, '\n') + 1);
-	rest = ft_substr2(rest, ft_strlen(line, '\0'),
-			ft_strlen(rest, '\0') - ft_strlen(line, '\0'));
-	if (bytes_read == 0 && ft_strlen(line, '\0') == 0)
+	line = ft_substr_gnl(rest, 0, ft_strlen_gnl(rest, '\n') + 1);
+	rest = ft_substr2_gnl(rest, ft_strlen_gnl(line, '\0'),
+			ft_strlen_gnl(rest, '\0') - ft_strlen_gnl(line, '\0'));
+	if (bytes_read == 0 && ft_strlen_gnl(line, '\0') == 0)
 	{
 		free(line);
 		return (NULL);

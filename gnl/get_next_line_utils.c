@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikgonzal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 20:13:29 by ikgonzal          #+#    #+#             */
-/*   Updated: 2021/09/13 20:09:38 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/30 10:04:12 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(char *str, int c)
+size_t	ft_strlen_gnl(char *str, int c)
 {
 	size_t	i;
 
@@ -44,7 +44,7 @@ int	check_line_break(char *buff)
 	return (0);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin_gnl(char *s1, char *s2)
 {
 	int		i;
 	int		k;
@@ -56,7 +56,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		s1 = malloc(1);
 		s1[0] = '\0';
 	}
-	join_len = ft_strlen(s1, '\0') + ft_strlen(s2, '\0') + 1;
+	join_len = ft_strlen_gnl(s1, '\0') + ft_strlen_gnl(s2, '\0') + 1;
 	join = malloc(sizeof(char) * join_len);
 	if (!join)
 		return (NULL);
@@ -72,7 +72,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (join);
 }
 
-char	*ft_substr(char const *buff, unsigned int start, size_t end)
+char	*ft_substr_gnl(char const *buff, unsigned int start, size_t end)
 {
 	char	*line;
 	size_t	i;
@@ -96,7 +96,7 @@ char	*ft_substr(char const *buff, unsigned int start, size_t end)
 	return (line);
 }
 
-char	*ft_substr2(char *buff, unsigned int start, size_t end)
+char	*ft_substr2_gnl(char *buff, unsigned int start, size_t end)
 {
 	char	*line;
 	size_t	i;

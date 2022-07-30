@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/28 18:59:09 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/30 10:09:14 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,23 @@ int main(int argc, char **argv)
 	t_map map;
 	t_player player;
 	t_ray	ray;
-	t_mlx	mlx;
+	//t_mlx	mlx;
 	t_text	text;
 	int i;
 	
 	file_config(&map, &player);
-	mlx.mlx = mlx_init();
+	/*mlx.mlx = mlx_init();
 	if (ft_validate_xpm(&map, &mlx, &text))
 	{
 		printf("Error: invalid xpm\n");
 		return (1);
 	}
+	mlx_config(&mlx);*/
 	init_text_struct (&text);
-	//ft_hex_to_trgb();
-
+	//ft_validate_xpm(&map, &mlx, &text);
+	xpm_parser(&map, &text);
+	
 	//i = -1;
-	mlx_config(&mlx);
 	/*while (1)
 	{
 		//raycasting loop
@@ -45,6 +46,6 @@ int main(int argc, char **argv)
 			ft_calculate_perpDistance(&ray);
 		}
 	}*/
-	mlx_loop(mlx.mlx);
+	//mlx_loop(mlx.mlx);
 	return (0);
 }

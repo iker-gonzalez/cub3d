@@ -6,11 +6,11 @@
 #    By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 16:17:30 by ikgonzal          #+#    #+#              #
-#    Updated: 2022/07/28 17:30:22 by ikgonzal         ###   ########.fr        #
+#    Updated: 2022/07/30 08:36:12 by ikgonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =	cub3d
+NAME =	cub3D
 
 CC = gcc
 

@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/28 19:13:21 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/30 10:41:50 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 #define CUB3D_H
 
 #include "libft/libft.h"
+#include "gnl/get_next_line.h"
 #include <unistd.h>
 #include <math.h>
 #include "mlx/mlx.h"
 #include <stdio.h>
+#include <fcntl.h>
 
 #define GAME_TITLE "🤬 WOLPAPASTEIN 🤬"
 
@@ -35,8 +37,8 @@
 //info for each texture xpm
 typedef	struct s_text
 {
-	int		img_width;
-	int		img_height;
+	int		columns;
+	int		rows;
 	int		***content;
 }				t_text;
 
@@ -138,5 +140,7 @@ void	mlx_config(t_mlx *mlx);
 int		ft_validate_xpm(t_map *map, t_mlx *mlx, t_text *text);
 void	init_text_struct (t_text *text);
 int		create_trgb(int t, int r, int g, int b);
+void	xpm_parser(t_map *map, t_text *text);
+
 
 #endif
