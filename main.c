@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/30 20:22:58 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/07/30 21:40:44 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_print_premap(t_data *data)
 	}
 }
 
-int	ft_check_fchars(char *line)
+int	ft_check_fchars(t_data *data)
 {
 	int		i;
 	int		j;
@@ -40,18 +40,21 @@ int	ft_check_fchars(char *line)
 
 	i = 0;
 	set = "NSEWFC10";
-	while (line[i] == ' ')
+	while (data->line[i] == ' ')
 		i++;
 	j = 0;
+	data->order = 0;
 	while (set[j])
 	{
-		if (set[j] == line[i] || line[i] == '\n')
+		if (data->line[i] == '0' || data->line[i] == '1')
+			data->order++;
+		if (set[j] == data->line[i] || data->line[i] == '\n')
 			break ;
 		j++;
 	}
-	if (j > 7)
+	if (j > 7 || (data->y < 6 && data->order > 0))
 	{
-		printf("Error:\nNot Allowed Line First Char\n");
+		printf("Error:\nNot Allowed Line First Char or Position\n");
 		return (0);
 	}
 	return (1);
@@ -59,18 +62,17 @@ int	ft_check_fchars(char *line)
 
 void	ft_get_y(t_data *data)
 {
-	char	*line;
-
 	data->y = 0;
 	if (!data->fd || data->fd != -1)
 	{
-		line = " ";
-		while (line != NULL)
+		data->line = " ";
+		while (data->line != NULL)
 		{
-			line = get_next_line(data->fd);
-			if (line == NULL || !ft_check_fchars(line))
+			data->line = get_next_line(data->fd);
+			if (data->line == NULL || !ft_check_fchars(data))
 				break ;
-			data->y++;
+			if (data->line[0] != '\n')
+				data->y++;
 		}
 	}
 	else
@@ -81,9 +83,9 @@ void	ft_get_y(t_data *data)
 void	ft_premap(char *map, t_data *data)
 {
 	char	*tbl;
+	size_t	size;
 	size_t	i;
 	int		j;
-	size_t	size;
 
 	data->fd = open(map, O_RDONLY);
 	data->premap = (char **)malloc((data->y + 1) * sizeof(char *));
@@ -92,6 +94,8 @@ void	ft_premap(char *map, t_data *data)
 	while (j < (data->y))
 	{
 		tbl = get_next_line(data->fd);
+		if (tbl[0] == '\n')
+			continue ;
 		if (tbl != NULL)
 			size = ft_strlen(tbl);
 		data->premap[j] = (char *)malloc((size + 1) * sizeof(char));
@@ -102,9 +106,10 @@ void	ft_premap(char *map, t_data *data)
 		j++;
 	}
 	data->premap[j] = NULL;
-	ft_print_premap(data);
 	close(data->fd);
 }
+
+	/* ft_print_premap(data); */
 
 int	main(int argc, char **argv)
 {
