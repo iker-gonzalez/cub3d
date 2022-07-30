@@ -47,7 +47,7 @@ Last, run `./cub3d maps/map_of_your_choice`
 
 
 ## Game
-To play this game you can use any map of your choice as long follow the following rules:
+To play this game you can use any map of your choice as long as follows the following rules:
 
 * The extension needs to be `.cub`
 * It must be surrounded by walls `1`
@@ -65,7 +65,7 @@ To play this game you can use any map of your choice as long follow the followin
 ### Controls
 You can use `AWSD` to move `UP`, `DOWN`, `LEFT`, `RIGHT` respectively.
 Use right and left arrows to look right and left in the maze.
-For restart the game press `ESC` or click on the red cross of window.
+For restarting the game press `ESC` or click on the red cross on the upper-left corner of the window.
 
 
 ### Credit
