@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/30 10:41:50 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/30 11:41:35 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,17 @@
 # define WIN_HEIGHT 600
 
 # define NO_TRANSPATENCY 0x00
+# define NB_TEXTURES 4
+# define TEXTURE_SIZE 64
 
 //info for each texture xpm
 typedef	struct s_text
 {
 	int		columns;
 	int		rows;
-	int		***content;
+	int		file_rows;
+	int		nb_colors;
+	int		***pixels;
 }				t_text;
 
 //struct for mlx
@@ -138,9 +142,8 @@ void	mlx_config(t_mlx *mlx);
 
 //textures
 int		ft_validate_xpm(t_map *map, t_mlx *mlx, t_text *text);
-void	init_text_struct (t_text *text);
 int		create_trgb(int t, int r, int g, int b);
-void	xpm_parser(t_map *map, t_text *text);
+void	xpm_parser(char *texture_path, t_map *map, t_text *text, int text_nb);
 
 
 #endif
