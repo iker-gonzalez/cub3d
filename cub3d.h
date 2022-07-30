@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/26 18:33:22 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/07/30 18:47:42 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 
 typedef struct s_data{
 	int y;
-	size_t x;
 	int fd;
+	char **premap;
 }	t_data;
 
 typedef struct s_map {
