@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/30 11:56:30 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/30 18:05:53 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define WIN_WIDTH 960
 # define WIN_HEIGHT 600
 
-# define NO_TRANSPATENCY 0x00
+# define NO_TRANSPARENCY 0x00
 # define NB_TEXTURES 4
 # define TEXTURE_SIZE 64
 
@@ -43,6 +43,7 @@ typedef	struct s_text
 	int		rows;
 	int		file_rows;
 	int		nb_colors;
+	char	**pixels_map;
 	char	**colors;
 	int		***pixels;
 }				t_text;

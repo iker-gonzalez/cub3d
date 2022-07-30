@@ -6,16 +6,12 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 18:18:41 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/30 12:27:18 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/30 19:20:33 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-int	create_trgb(int t, int r, int g, int b)
-{
-	return (t << 24 | r << 16 | g << 8 | b);
-}
 
 void	ft_extract_text_colors(char *line, t_text *text, int end)
 {
@@ -60,38 +56,94 @@ void	ft_extract_text_data(char *line, t_text *text)
 	ft_extract_text_colors(line, text, end);
 }
 
-void	ft_parse_pixel_row(char *line, t_text *text)
+int	create_trgb(int t, int r, int g, int b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
+}
+
+int	ft_give_colors(char *color)
 {
 	int i;
-	int x;
+	char *hex;
+	char *red;
+	char *green;
+	char *blue;
+	char *red_2;
 
-	i = 1;
-	x = 0;
-	printf("line[i]: %c\n", line[i]);
-	printf("text->colors[x][1]: %c\n", text->colors[x][1]);
-	while(line[i] != text->colors[x][1])
-		x++;
-	printf("color discovered: %s\n", text->colors[x]);
-	
+	i = 0;
+	while (color[i] != '#')
+		i++;
+	i++;
+	hex = "0x";
+	red = malloc(sizeof(char) * 2);
+	red[0] = color[i];
+	red[1] = color[i + 1];
+	red_2 = ft_strjoin(hex, red);
+	printf("red: %s\n", red_2);
+	green = malloc(sizeof(char) * 2);
+	green[0] = color[i + 2];
+	green[1] = color[i + 3];
+	blue = malloc(sizeof(char) * 2);
+	blue[0] = color[i + 4];
+	blue[1] = color[i + 5];
+	//return (create_trgb(NO_TRANSPARENCY, ft_atoi(red), ft_atoi(green), ft_atoi(blue)));
+	return 0;
+}
+
+void	ft_parse_pixel_column(t_text *text, int col, int text_nb)
+{
+	int row;
+	int k;
+	int color;
+
+	row = 0;
+	while (row < text->rows)
+	{
+		k = 0;
+		//printf("text->pixels_map[row][col]: %c\n", text->pixels_map[row][col]);
+		//printf("text->colors[k][1]: %c\n", text->colors[k][1]);
+		while(text->pixels_map[row][col] != text->colors[k][1])
+			k++;
+		color = ft_give_colors(text->colors[k]);
+		//printf("color: %d\n", color);
+		text->pixels[text_nb][col][row] = color;
+		//printf("%d\n", text->pixels[text_nb][col][row]);
+		row++;
+	}
 }
 
 void	ft_fill_pixels(t_map *map, t_text *text, int text_nb, int fd)
 {
+	int		col;
+
+	text->pixels[text_nb] = (int **)malloc(sizeof(int *) * (text->columns + 1));
+	col = 1;
+	while (col - 1 != text->columns)
+	{
+		text->pixels[text_nb][col] = malloc(sizeof(int *) * (text->rows + 1));
+		ft_parse_pixel_column(text, col, text_nb);
+		col++;
+	}
+	
+}
+
+void	ft_create_pixels_array(t_map *map, t_text *text, int text_nb, int fd)
+{
 	char	*line;
+	int		col;
 	int		row;
 
-	text->pixels[text_nb] = (int **)malloc(sizeof(int *) * (text->rows + 1));
+	text->pixels_map = (char **)malloc(sizeof(char *) * (text->rows + 1));
 	line = get_next_line(fd);
 	row = 0;
-	while (line != NULL)
+	while (line != NULL && row != text->rows)
 	{
-		text->pixels[text_nb][row] = malloc(sizeof(int *) * (text->columns + 1));
-		ft_parse_pixel_row(line, text);
+		text->pixels_map[row] = ft_strdup(line);
+		//printf("%s\n", text->pixels_map[row]);
 		free(line);
 		line = get_next_line(fd);
 		row++;
 	}
-	
 }
 
 void	ft_fill_colors(t_map *map, t_text *text, int text_nb, int fd)
@@ -114,6 +166,7 @@ void	ft_fill_colors(t_map *map, t_text *text, int text_nb, int fd)
 		i++;
 		row++;
 	}
+	ft_create_pixels_array(map, text, text_nb, fd);
 	ft_fill_pixels(map, text, text_nb, fd);
 }
 

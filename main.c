@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/30 12:26:36 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/30 18:36:30 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int main(int argc, char **argv)
 	}
 	//mlx_config(&mlx);
 	text.pixels = (int ***)malloc(sizeof(int **) * (NB_TEXTURES + 1));
+
+	//3552822
 	//ft_validate_xpm(&map, &mlx, &text);
 	xpm_parser(map.no_texture, &map, &text, NO_TEXTURE);
 	//xpm_parser(map.ea_texture, &map, &text, EA_TEXTURE);
