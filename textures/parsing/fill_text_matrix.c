@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 18:18:41 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/30 11:49:06 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/30 12:09:50 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,22 +62,40 @@ void	ft_extract_text_data(char *line, t_text *text)
 
 void	ft_fill_pixels(t_map *map, t_text *text, int text_nb, int fd)
 {
-	int start_row;
+	char	*line;
+
+	text->pixels[text_nb] = (int **)malloc(sizeof(int *) * (text->rows + 1));
+	line = get_next_line(fd);
+	while (line != NULL)
+	{
+		printf("%s\n", line);
+		free(line);
+		line = get_next_line(fd);
+	}
+	
+}
+
+void	ft_fill_colors(t_map *map, t_text *text, int text_nb, int fd)
+{
+	int end_row;
 	int i;
 	char *line;
+	int row;
 	
-	text->pixels[text_nb] = (int **)malloc(sizeof(int *) * (text->rows + 1));
-	start_row = text->nb_colors + 5;
+	text->colors = (char **)malloc(sizeof(char *) * (text->nb_colors + 1));
+	end_row = text->nb_colors + 5;
 	i = 3;
-		line = get_next_line(fd);
-	while (i < start_row - 1)
+	line = get_next_line(fd);
+	row = 0;
+	while (i < end_row - 2)
 	{
+		text->colors[row] = ft_strdup(line);
 		free(line);
 		line = get_next_line(fd);
 		i++;
+		row++;
 	}
-	printf("START LINE: %s\n", line);
-	
+	ft_fill_pixels(map, text, text_nb, fd);
 }
 
 void	parse_xpm(char *texture_path, t_map *map, t_text *text, int text_nb)
@@ -95,9 +113,8 @@ void	parse_xpm(char *texture_path, t_map *map, t_text *text, int text_nb)
 		line = get_next_line(fd);
 		i++;
 	}
-	printf("line: %s\n", line);
 	ft_extract_text_data(line, text);
-	ft_fill_pixels(map, text, text_nb, fd);
+	ft_fill_colors(map, text, text_nb, fd);
 	//text->pixels[NO_TEXTURE][32] = malloc(sizeof(int) * (text->columns + 1));
 }
 

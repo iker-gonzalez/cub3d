@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/30 11:41:35 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/30 11:56:30 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef	struct s_text
 	int		rows;
 	int		file_rows;
 	int		nb_colors;
+	char	**colors;
 	int		***pixels;
 }				t_text;
 
