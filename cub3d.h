@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/31 11:34:57 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/31 13:05:01 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,22 @@ typedef	struct s_text
 	int		***pixels;
 }				t_text;
 
-//struct for mlx
-typedef struct s_mlx
-{	
-	void	*mlx;
-	void	*mlx_win;
+//struct for img
+typedef struct s_img
+{
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+}				t_img;
+
+
+//struct for mlx
+typedef struct s_mlx
+{	
+	void	*mlx;
+	void	*mlx_win;
 }				t_mlx;
 
 //struct for drawing pixels
@@ -129,7 +135,7 @@ void	set_player_values(t_player *player);
 void	file_config(t_map *map, t_player *player);
 
 //raycasting functions
-void	ft_ray_position_direction(t_map *map, t_player *player, t_ray *ray);
+void	ft_ray_position_direction(t_map *map, t_player *player, t_ray *ray, int i);
 void	ray_map_coordinates(t_ray *ray, t_player *player);
 void	ft_calculate_delta_distance(t_ray *ray);
 void	ft_calculate_side_distance(t_ray *ray, t_player *player);
@@ -138,9 +144,13 @@ void	ft_calculate_perpDistance(t_ray *ray);
 
 //drawing functions
 void	ft_calculate_drawValues(t_ray *ray, t_draw *draw);
+void	init_new_img(t_img *img, t_mlx *mlx);
+void	ft_paint_pixel(t_img *img, t_mlx *mlx, int x, int y, int color);
+
 
 //mlx functions
 void	mlx_config(t_mlx *mlx);
+
 
 //textures
 int		ft_validate_xpm(char *path, void *mlx, t_text *text);

@@ -6,11 +6,11 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 12:17:38 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/23 12:46:41 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/31 12:23:52 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 void	ft_calculate_drawValues(t_ray *ray, t_draw *draw)
 {

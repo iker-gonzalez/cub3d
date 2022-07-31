@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 18:18:41 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/31 12:01:44 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/31 12:03:22 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,5 +227,3 @@ int	xpm_parser(t_mlx *mlx, t_map *map, t_text *text)
 		parse_xpm(map->we_texture, map, text, WE_TEXTURE);
 	return (0);
 }
-
-

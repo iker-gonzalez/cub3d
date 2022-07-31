@@ -6,16 +6,16 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 17:23:26 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/23 12:06:25 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/31 12:23:31 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
 //calculate ray position and direction
-void	ft_ray_position_direction(t_map *map, t_player *player, t_ray *ray)
+void	ft_ray_position_direction(t_map *map, t_player *player, t_ray *ray, int i)
 {
-	ray->cameraX = 2 * i / double(map->columns) - 1; //x-coordinate in camera space
+	ray->cameraX = 2 * i / map->columns - 1; //x-coordinate in camera space
 	ray->rayDirX = ray->rayDirX + player->planeX * ray->cameraX;
 	ray->rayDirY = ray->rayDirY + player->planeY * ray->cameraX;
 }
@@ -23,8 +23,8 @@ void	ft_ray_position_direction(t_map *map, t_player *player, t_ray *ray)
 //mapX and mapY represent the current square of the map the ray is in.
 void	ray_map_coordinates(t_ray *ray, t_player *player)
 {
-	ray->mapX = int(player->posX);
-	ray->mapY = int(player->posY);
+	ray->mapX = player->posX;
+	ray->mapY = player->posY;
 }
 
 //formula to calculate delta distance

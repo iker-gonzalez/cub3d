@@ -6,7 +6,7 @@
 #    By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 16:17:30 by ikgonzal          #+#    #+#              #
-#    Updated: 2022/07/31 10:55:28 by ikgonzal         ###   ########.fr        #
+#    Updated: 2022/07/31 12:20:50 by ikgonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,9 @@ SRC  =	main.c \
 		validation/config.c \
 		mlx_functions.c \
 		textures/parsing/fill_text_matrix.c \
+		raycasting/ray.c \
+		raycasting/ray_2.c \
+		raycasting/draw.c \
 
 LIB = Libft/libft.a
 
