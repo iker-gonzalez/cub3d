@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 18:18:41 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/31 11:51:19 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/31 12:01:44 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	ft_extract_colors_nb(char *line, t_text *text, int end)
 		end++;
 	nb = ft_substr(line, start, end);
 	text->nb_colors = ft_atoi(nb);
-	printf("color_nb: %d\n", text->nb_colors);
 	free(nb);
 }
 
@@ -139,7 +138,6 @@ void	ft_create_pixels_array(t_map *map, t_text *text, int text_nb, int fd)
 	while (row < text->rows)
 	{
 		text->pixels_map[row] = ft_substr(line, 1, 64);
-		printf("%s\n", text->pixels_map[row]);
 		free(line);
 		line = get_next_line(fd);
 		row++;
@@ -177,7 +175,6 @@ void	parse_xpm(char *texture_path, t_map *map, t_text *text, int text_nb)
 	char *line;
 	int	i;
 
-	printf("texture path: %s\n", texture_path);
 	fd = open(texture_path, O_RDONLY);
 	if (fd == -1)
 	{
@@ -190,10 +187,8 @@ void	parse_xpm(char *texture_path, t_map *map, t_text *text, int text_nb)
 	{
 		free(line);
 		line = get_next_line(fd);
-		printf("line: %s\n", line);
 		i++;
 	}
-	printf("line: %s\n", line);
 	ft_skip_to_color_nb(line, text);
 	ft_fill_colors(map, text, text_nb, fd);
 }
@@ -203,9 +198,6 @@ int	ft_validate_xpm(char *path, void *mlx, t_text *text)
 	void	*img;
 	
 	img = mlx_xpm_file_to_image(mlx, path, &text->columns, &text->rows);
-	printf("cols: %d\n", text->columns);
-	printf("rows: %d\n", text->rows);
-	printf("PATH: %s\n", path);
 	if (img == NULL)
 	{
 		printf("Error: invalid xpm\n");
@@ -216,7 +208,6 @@ int	ft_validate_xpm(char *path, void *mlx, t_text *text)
 
 int	xpm_parser(t_mlx *mlx, t_map *map, t_text *text)
 {
-	printf("SO_TEXT: %s\n", map->so_texture);
 	if (ft_validate_xpm(map->no_texture, mlx->mlx, text))
 		return (1);
 	else
@@ -225,21 +216,15 @@ int	xpm_parser(t_mlx *mlx, t_map *map, t_text *text)
 	if (ft_validate_xpm(map->ea_texture, mlx->mlx, text))
 		return (1);
 	else
-		parse_xpm(map->ea_texture, map, text, EA_TEXTURE);
-	
-	printf("SO_TEXT: %s\n", map->so_texture);
-	if (ft_validate_xpm(map->so_texture, map, text))
+		parse_xpm(map->ea_texture, map, text, EA_TEXTURE);	
+	if (ft_validate_xpm(map->so_texture, mlx->mlx, text))
 		return (1);
 	else
 		parse_xpm(map->so_texture, map, text, SO_TEXTURE);
-
-	if (ft_validate_xpm(map->we_texture, map, text))
+	if (ft_validate_xpm(map->we_texture, mlx->mlx, text))
 		return (1);
 	else
 		parse_xpm(map->we_texture, map, text, WE_TEXTURE);
-		
-
-
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 18:05:30 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/31 11:32:57 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/31 12:01:09 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void	set_texture_paths(t_map	*map)
 	map->no_texture = "textures/wall_1.xpm";
 	map->ea_texture = "textures/wall_2.xpm";
 	map->so_texture = "textures/wall_3.xpm";
-	printf("MAP SO: %s\n", map->so_texture);
 	map->we_texture = "textures/wall_4.xpm";
 }
 
