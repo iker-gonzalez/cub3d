@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 12:44:17 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/30 18:23:05 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/31 08:53:27 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_paint_pixel(t_mlx *mlx)
 {
 	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bits_per_pixel, &mlx->line_length,
 								&mlx->endian);
-	my_mlx_pixel_put(mlx, 5, 5, 3552822);
+	my_mlx_pixel_put(mlx, 5, 5, 16711680);
 	mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, mlx->img, 0, 0);
 }
 
@@ -36,6 +36,6 @@ void	mlx_config(t_mlx *mlx)
 	mlx->img = mlx_new_image(mlx->mlx, WIN_WIDTH, WIN_HEIGHT);
 	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bits_per_pixel, &mlx->line_length,
 								&mlx->endian);
-	my_mlx_pixel_put(mlx, 5, 5, 3552822);
+	my_mlx_pixel_put(mlx, 5, 5, 16711680);
 	mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, mlx->img, 0, 0);
 }

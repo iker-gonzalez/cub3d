@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 18:18:41 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/30 19:20:33 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/31 08:51:17 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,33 +61,56 @@ int	create_trgb(int t, int r, int g, int b)
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-int	ft_give_colors(char *color)
+uint32_t hex2int(char *hex) {
+    uint32_t val = 0;
+	int i;
+
+	i = 0;
+    while (hex[i] != '\0') 
+	{
+        // transform hex character to the 4bit equivalent number, using the ascii table indexes
+        if (hex[i] >= '0' && hex[i] <= '9') hex[i] = hex[i] - '0';
+        else if (hex[i] >= 'a' && hex[i] <='f') hex[i] = hex[i] - 'a' + 10;
+        else if (hex[i] >= 'A' && hex[i] <='F') hex[i] = hex[i] - 'A' + 10;    
+        // shift 4 to make space for new digit, and add the 4 bits of the new digit 
+        val = (val << 4) | (hex[i] & 0xF);
+		i++;
+    }
+    return val;
+}
+
+int	ft_hex_to_int(char *color)
 {
 	int i;
 	char *hex;
-	char *red;
-	char *green;
-	char *blue;
-	char *red_2;
+	int	value;
+	int result;
 
 	i = 0;
-	while (color[i] != '#')
+	while (color[i] != '#' || i < 2)
 		i++;
 	i++;
-	hex = "0x";
-	red = malloc(sizeof(char) * 2);
-	red[0] = color[i];
-	red[1] = color[i + 1];
-	red_2 = ft_strjoin(hex, red);
-	printf("red: %s\n", red_2);
-	green = malloc(sizeof(char) * 2);
-	green[0] = color[i + 2];
-	green[1] = color[i + 3];
-	blue = malloc(sizeof(char) * 2);
-	blue[0] = color[i + 4];
-	blue[1] = color[i + 5];
-	//return (create_trgb(NO_TRANSPARENCY, ft_atoi(red), ft_atoi(green), ft_atoi(blue)));
-	return 0;
+	hex = ft_substr(color, i, 6);
+	printf("%s\n", hex);
+	return (hex2int(hex));
+	/*i = 0;
+	while (hex[i] != '\0')
+	{
+		if ((hex[i] >= 'A' && hex[i] <= 'F'))
+			value = hex[i] - UPPERCASE_DIGIT_DIFF;
+		else if ((hex[i] >= 'a' && hex[i] <= 'f'))
+			value = hex[i] - LOWERCASE_DIGIT_DIFF;
+		else if (hex[i] >= '0' && hex[i] <= '9')
+			value = hex[i] - '0';
+		else
+			value = 0;
+		result += value * (int)pow((float)16, (float)value);
+		i++;
+		printf("hola\n");
+	}
+	printf("\n\n\n\n");
+	
+	return (0);*/
 }
 
 void	ft_parse_pixel_column(t_text *text, int col, int text_nb)
@@ -104,10 +127,10 @@ void	ft_parse_pixel_column(t_text *text, int col, int text_nb)
 		//printf("text->colors[k][1]: %c\n", text->colors[k][1]);
 		while(text->pixels_map[row][col] != text->colors[k][1])
 			k++;
-		color = ft_give_colors(text->colors[k]);
+		color = ft_hex_to_int(text->colors[k]);
 		//printf("color: %d\n", color);
 		text->pixels[text_nb][col][row] = color;
-		//printf("%d\n", text->pixels[text_nb][col][row]);
+		printf("%d\n\n", text->pixels[text_nb][col][row]);
 		row++;
 	}
 }

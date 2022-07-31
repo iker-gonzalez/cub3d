@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/30 18:36:30 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/31 08:53:20 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,11 @@ int main(int argc, char **argv)
 		printf("Error: invalid xpm\n");
 		return (1);
 	}
-	//mlx_config(&mlx);
+	mlx_config(&mlx);
 	text.pixels = (int ***)malloc(sizeof(int **) * (NB_TEXTURES + 1));
 
-	//3552822
 	//ft_validate_xpm(&map, &mlx, &text);
-	xpm_parser(map.no_texture, &map, &text, NO_TEXTURE);
+	//xpm_parser(map.no_texture, &map, &text, NO_TEXTURE);
 	//xpm_parser(map.ea_texture, &map, &text, EA_TEXTURE);
 	//xpm_parser(map.so_texture, &map, &text, SO_TEXTURE);
 	//xpm_parser(map.we_texture, &map, &text, WE_TEXTURE);
@@ -51,6 +50,6 @@ int main(int argc, char **argv)
 			ft_calculate_perpDistance(&ray);
 		}
 	}*/
-	//mlx_loop(mlx.mlx);
+	mlx_loop(mlx.mlx);
 	return (0);
 }
