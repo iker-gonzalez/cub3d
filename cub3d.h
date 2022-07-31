@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/31 08:32:55 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/31 08:55:12 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@
 # define NO_TRANSPARENCY 0x00
 # define NB_TEXTURES 4
 # define TEXTURE_SIZE 64
-# define UPPERCASE_DIGIT_DIFF 55
-# define LOWERCASE_DIGIT_DIFF 55
 
 //info for each texture xpm
 typedef	struct s_text

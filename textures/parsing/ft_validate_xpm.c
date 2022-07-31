@@ -6,14 +6,14 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 13:22:09 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/26 18:17:27 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/31 10:01:40 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 #include <stdio.h>
 
-int	ft_mlx_validation(char *path, void *mlx)
+int	ft_mlx_validation(char *path, void *mlx, t_text *text)
 {
 	void	*img;
 
@@ -28,13 +28,13 @@ int	ft_mlx_validation(char *path, void *mlx)
 
 int	ft_validate_xpm(t_map *map, t_mlx *mlx, t_text *text)
 {
-	if (ft_mlx_validation(map->ea_texture, mlx))
+	if (ft_mlx_validation(map->ea_texture, mlx, text))
 		return (1);
-	else if (ft_mlx_validation(map->no_texture, mlx))
+	else if (ft_mlx_validation(map->no_texture, mlx, text))
 		return (1);
-	else if (ft_mlx_validation(map->so_texture, mlx))
+	else if (ft_mlx_validation(map->so_texture, mlx, text))
 		return (1);
-	else if (ft_mlx_validation(map->we_texture, mlx))
+	else if (ft_mlx_validation(map->we_texture, mlx, text))
 		return (1);
 	return (0);
 }

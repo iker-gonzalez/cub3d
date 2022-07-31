@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/31 08:53:20 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/31 10:33:39 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,13 @@ int main(int argc, char **argv)
 	
 	file_config(&map, &player);
 	mlx.mlx = mlx_init();
-	if (ft_validate_xpm(&map, &mlx, &text))
-	{
-		printf("Error: invalid xpm\n");
-		return (1);
-	}
 	mlx_config(&mlx);
 	text.pixels = (int ***)malloc(sizeof(int **) * (NB_TEXTURES + 1));
-
-	//ft_validate_xpm(&map, &mlx, &text);
-	//xpm_parser(map.no_texture, &map, &text, NO_TEXTURE);
-	//xpm_parser(map.ea_texture, &map, &text, EA_TEXTURE);
-	//xpm_parser(map.so_texture, &map, &text, SO_TEXTURE);
-	//xpm_parser(map.we_texture, &map, &text, WE_TEXTURE);
-	
+	xpm_parser(map.no_texture, &map, &text, NO_TEXTURE);
+	xpm_parser(map.ea_texture, &map, &text, EA_TEXTURE);
+	xpm_parser(map.so_texture, &map, &text, SO_TEXTURE);
+	xpm_parser(map.we_texture, &map, &text, WE_TEXTURE);
+	printf("%d\n", text.pixels[SO_TEXTURE][59][61]);
 	//i = -1;
 	/*while (1)
 	{
