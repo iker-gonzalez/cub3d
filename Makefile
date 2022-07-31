@@ -6,7 +6,7 @@
 #    By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 16:17:30 by ikgonzal          #+#    #+#              #
-#    Updated: 2022/07/31 10:27:04 by ikgonzal         ###   ########.fr        #
+#    Updated: 2022/07/31 10:55:28 by ikgonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,6 @@ SRC  =	main.c \
 		gnl/get_next_line_utils.c \
 		validation/config.c \
 		mlx_functions.c \
-		textures/parsing/ft_validate_xpm.c \
 		textures/parsing/fill_text_matrix.c \
 
 LIB = Libft/libft.a

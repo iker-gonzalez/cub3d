@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/31 10:33:39 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/31 11:38:29 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,10 @@ int main(int argc, char **argv)
 	
 	file_config(&map, &player);
 	mlx.mlx = mlx_init();
-	mlx_config(&mlx);
 	text.pixels = (int ***)malloc(sizeof(int **) * (NB_TEXTURES + 1));
-	xpm_parser(map.no_texture, &map, &text, NO_TEXTURE);
-	xpm_parser(map.ea_texture, &map, &text, EA_TEXTURE);
-	xpm_parser(map.so_texture, &map, &text, SO_TEXTURE);
-	xpm_parser(map.we_texture, &map, &text, WE_TEXTURE);
-	printf("%d\n", text.pixels[SO_TEXTURE][59][61]);
+	if (xpm_parser(&mlx, &map, &text))
+		return (1);
+	//mlx_config(&mlx);
 	//i = -1;
 	/*while (1)
 	{
@@ -43,6 +40,6 @@ int main(int argc, char **argv)
 			ft_calculate_perpDistance(&ray);
 		}
 	}*/
-	mlx_loop(mlx.mlx);
+	//mlx_loop(mlx.mlx);
 	return (0);
 }

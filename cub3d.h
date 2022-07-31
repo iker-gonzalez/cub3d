@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/31 08:55:12 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/07/31 11:34:57 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@
 #include <stdio.h>
 #include <fcntl.h>
 
-#define GAME_TITLE "🤬 WOLPAPASTEIN 🤬"
+# define GAME_TITLE "🤬 WOLPAPASTEIN 🤬"
 
-#define NO_TEXTURE 0
-#define EA_TEXTURE 1
-#define SO_TEXTURE 2
-#define WE_TEXTURE 3
+# define NO_TEXTURE 0
+# define EA_TEXTURE 1
+# define SO_TEXTURE 2
+# define WE_TEXTURE 3
 
 # define FOV 66
 # define WIN_WIDTH 960
@@ -107,9 +107,9 @@ typedef struct s_player {
 
 
 typedef struct s_map {
-	char* no_texture;
-	char* ea_texture;
-	char* so_texture;
+	char *no_texture;
+	char *ea_texture;
+	char *so_texture;
 	char *we_texture;
 	char *f_color;
 	char *c_color;
@@ -143,9 +143,9 @@ void	ft_calculate_drawValues(t_ray *ray, t_draw *draw);
 void	mlx_config(t_mlx *mlx);
 
 //textures
-int		ft_validate_xpm(t_map *map, t_mlx *mlx, t_text *text);
+int		ft_validate_xpm(char *path, void *mlx, t_text *text);
 int		create_trgb(int t, int r, int g, int b);
-void	xpm_parser(char *texture_path, t_map *map, t_text *text, int text_nb);
+int		xpm_parser(t_mlx *mlx, t_map *map, t_text *text);
 
 
 #endif
