@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:06:42 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/18 20:41:54 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/07/31 19:25:39 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	ft_check_extension(char *file)
 	if (ft_strncmp(extension, ".cub", 4) != 0)
 	{
 		printf("Error: invalid map extension\n");
-		return (1);
+		return (0);
 	}
-	return(0);
+	return(1);
 	
 }

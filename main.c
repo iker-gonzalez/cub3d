@@ -6,13 +6,24 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/30 21:40:44 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/07/31 21:18:42 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <fcntl.h>
 #include <stdio.h>
+
+int	ft_print_error(int errno)
+{
+	if (errno == 1)
+		printf("Error:\nWrong number of arguments\n");
+	if (errno == 2)
+		printf("Error:\nNot Allowed Line First Char or Map Position\n");
+	if (errno == 3)
+		printf("Error:\nWrong newline position\n");
+	exit (1);
+}
 
 void	ft_print_premap(t_data *data)
 {
@@ -39,40 +50,45 @@ int	ft_check_fchars(t_data *data)
 	char	*set;
 
 	i = 0;
-	set = "NSEWFC10";
+	set = "NSEWFC1";
 	while (data->line[i] == ' ')
 		i++;
 	j = 0;
-	data->order = 0;
 	while (set[j])
 	{
 		if (data->line[i] == '0' || data->line[i] == '1')
-			data->order++;
+			data->order = 1;
 		if (set[j] == data->line[i] || data->line[i] == '\n')
 			break ;
 		j++;
 	}
 	if (j > 7 || (data->y < 6 && data->order > 0))
-	{
-		printf("Error:\nNot Allowed Line First Char or Position\n");
-		return (0);
-	}
+		ft_print_error(2);
 	return (1);
 }
 
 void	ft_get_y(t_data *data)
 {
+	int i;
+
+	i = 0;
 	data->y = 0;
+	data->order = 0;
 	if (!data->fd || data->fd != -1)
 	{
 		data->line = " ";
 		while (data->line != NULL)
 		{
+			printf("order -> %d\n", data->order);
 			data->line = get_next_line(data->fd);
 			if (data->line == NULL || !ft_check_fchars(data))
 				break ;
 			if (data->line[0] != '\n')
 				data->y++;
+			if (data->line[0] == '\n' && data->order != 0)
+				i = 1;
+			if (i && (ft_strchr(data->line, '0') || ft_strchr(data->line, '1')))
+				ft_print_error(3);
 		}
 	}
 	else
@@ -106,10 +122,10 @@ void	ft_premap(char *map, t_data *data)
 		j++;
 	}
 	data->premap[j] = NULL;
+	ft_print_premap(data);
 	close(data->fd);
 }
 
-	/* ft_print_premap(data); */
 
 int	main(int argc, char **argv)
 {
@@ -117,14 +133,11 @@ int	main(int argc, char **argv)
 
 	data.fd = open(argv[1], O_RDONLY);
 	if (argc != 2)
-	{
-		printf("Error:\nWrong number of arguments\n");
-		return (1);
-	}
-	if (ft_check_extension(argv[1]))
-		return (1);
+		ft_print_error(1);
+	if (!ft_check_extension(argv[1]))
+		return (0);
 	else
 		ft_get_y(&data);
 	ft_premap(argv[1], &data);
-	return (0);
+	return (1);
 }
