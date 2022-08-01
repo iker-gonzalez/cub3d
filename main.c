@@ -6,13 +6,42 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/31 21:18:42 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/01 21:33:07 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <fcntl.h>
 #include <stdio.h>
+
+int	ft_isstrprint(t_data *data)
+{
+	int i;
+
+	i = 0;
+	while(data->line[i])
+	{
+		if(ft_isprint(data->line[i]))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	ft_isstrspace(t_data *data)
+{
+	size_t i;
+
+	i = 0;
+	while(data->line[i])
+	{
+		if(data->line[i] == ' ')
+			i++;
+	}
+	if (i == ft_strlen(data->line))
+		return (1);
+	return (0);
+}
 
 int	ft_print_error(int errno)
 {
@@ -70,8 +99,10 @@ int	ft_check_fchars(t_data *data)
 void	ft_get_y(t_data *data)
 {
 	int i;
+	int j;
 
 	i = 0;
+	j = 0;
 	data->y = 0;
 	data->order = 0;
 	if (!data->fd || data->fd != -1)
@@ -87,8 +118,13 @@ void	ft_get_y(t_data *data)
 				data->y++;
 			if (data->line[0] == '\n' && data->order != 0)
 				i = 1;
-			if (i && (ft_strchr(data->line, '0') || ft_strchr(data->line, '1')))
-				ft_print_error(3);
+			if (i && ft_isstrprint(data) && !ft_isstrspace(data))
+			{
+				/* while (data->line[j] == ' ') */
+				/* 	j++; */
+				/* if (data->line[j] != '\n') */
+					ft_print_error(3);
+			}
 		}
 	}
 	else

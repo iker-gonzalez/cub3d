@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/31 18:46:14 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/01 21:01:29 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_data{
 	int y;
 	int fd;
 	int order;
+	int spaces;
 	char *line;
 	char **premap;
 }	t_data;
