@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 18:18:41 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/31 12:03:22 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/02 17:19:48 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,6 +208,7 @@ int	ft_validate_xpm(char *path, void *mlx, t_text *text)
 
 int	xpm_parser(t_mlx *mlx, t_map *map, t_text *text)
 {
+	text->pixels = (int ***)malloc(sizeof(int **) * (NB_TEXTURES + 1));
 	if (ft_validate_xpm(map->no_texture, mlx->mlx, text))
 		return (1);
 	else

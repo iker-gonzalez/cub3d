@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 17:23:26 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/31 12:23:31 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/02 18:23:58 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //calculate ray position and direction
 void	ft_ray_position_direction(t_map *map, t_player *player, t_ray *ray, int i)
 {
-	ray->cameraX = 2 * i / map->columns - 1; //x-coordinate in camera space
+	ray->cameraX = 2 * i / (double)map->columns - 1; //x-coordinate in camera space
 	ray->rayDirX = ray->rayDirX + player->planeX * ray->cameraX;
 	ray->rayDirY = ray->rayDirY + player->planeY * ray->cameraX;
 }
@@ -23,8 +23,8 @@ void	ft_ray_position_direction(t_map *map, t_player *player, t_ray *ray, int i)
 //mapX and mapY represent the current square of the map the ray is in.
 void	ray_map_coordinates(t_ray *ray, t_player *player)
 {
-	ray->mapX = player->posX;
-	ray->mapY = player->posY;
+	ray->mapX = (int)player->posX;
+	ray->mapY = (int)player->posY;
 }
 
 //formula to calculate delta distance
@@ -75,6 +75,7 @@ void	ft_calculate_side_distance(t_ray *ray, t_player *player)
 
 void	dda_algorithm(t_map *map, t_ray *ray)
 {
+	ray->hit = 0;
 	while (ray->hit == 0)
 	{
 		//jump to next map square, either in x-direction, or in y-direction
@@ -91,7 +92,11 @@ void	dda_algorithm(t_map *map, t_ray *ray)
 			ray->side = 1;
 		}
 		//Check if ray has hit a wall
-		if (map->map_content[ray->mapX][ray->mapY] > 0) 
+		printf("hola\n");
+		printf("ray->mapx: %d\n", ray->mapX);
+		printf("ray->mapy: %d\n", ray->mapY);
+		printf("%d\n", map->map_content[ray->mapX][ray->mapY]);
+		if (map->map_content[ray->mapX][ray->mapY] == 1) 
 			ray->hit = 1;
 	  } 
 }

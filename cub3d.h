@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/31 13:05:01 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/02 18:05:07 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@
 
 # define NO_TRANSPARENCY 0x00
 # define NB_TEXTURES 4
-# define TEXTURE_SIZE 64
+# define TEXTURE_WIDTH 64
+# define TEXTURE_HEIGHT 64
 
 //info for each texture xpm
 typedef	struct s_text
@@ -57,7 +58,6 @@ typedef struct s_img
 	int		line_length;
 	int		endian;
 }				t_img;
-
 
 //struct for mlx
 typedef struct s_mlx
@@ -86,7 +86,7 @@ typedef struct s_ray {
 	//the distance the ray has to travel from its start position to the first x-side and the first y-side.
 	double	sideDistX;
 	double	sideDistY;
-	//the distance the ray has to travel to go from 1 x-side to the next x-side, or from 1 y-side to the next y-side.
+	//the distance the ray has to travel to go from 1 x-side to the next x-side, or from 1 y-side to the next y-side intersection.
 	double	deltaDistX;
 	double	deltaDistY;
 	//used to calculate the lenght of the ray
@@ -98,12 +98,18 @@ typedef struct s_ray {
 	int hit;
 	//was a NS (0) or a EW (1) wall hit?
 	int side;
+	//represents the exact value where the wall was hit, not just the integer coordinates of the wall. 
+	int wallX;
+	//x-coordinate of the texture we have to use
+	int texX;
+	//y-coordinate of the texture we have to use
+	int textY;
 }				t_ray;
 
 typedef struct s_player {
 	double	posX;
 	double	posY;
-	//direction vector (-1 left; 0 straight; 1 right)
+	//initial direction vector (-1 left; 0 straight; 1 right)
 	double	dirX;
 	double	dirY;
 	//plane vector determines the FOV of the player
@@ -125,8 +131,8 @@ typedef struct s_map {
 	//The variables time and oldTime will be used to store the time of the current and the previous frame,
 	//the time difference between these two can be used to determinate how much you should move when a certain key is pressed (to move a
 	//constant speed no matter how long the calculation of the frames takes), and for the FPS counter.
-	double	time;
-	double	oldTime;
+	double	time; // time of current frame
+	double	oldTime; // time of previous frame
 }				t_map;
 
 //initial config
@@ -141,11 +147,14 @@ void	ft_calculate_delta_distance(t_ray *ray);
 void	ft_calculate_side_distance(t_ray *ray, t_player *player);
 void	dda_algorithm(t_map *map, t_ray *ray);
 void	ft_calculate_perpDistance(t_ray *ray);
+void	ft_calculate_texture_x_coordinate(t_ray *ray, t_player *player);
+
 
 //drawing functions
 void	ft_calculate_drawValues(t_ray *ray, t_draw *draw);
 void	init_new_img(t_img *img, t_mlx *mlx);
-void	ft_paint_pixel(t_img *img, t_mlx *mlx, int x, int y, int color);
+void	ft_paint_pixels(t_img *img, t_ray *ray, t_draw *draw, t_text *text);
+void	my_img_pixel_put(t_img *img, int x, int y, int color);
 
 
 //mlx functions
