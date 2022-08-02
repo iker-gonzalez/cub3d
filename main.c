@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/01 21:33:07 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/02 21:20:58 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,44 @@ int	ft_isstrprint(t_data *data)
 
 int	ft_isstrspace(t_data *data)
 {
-	size_t i;
+	int i;
+	int j;
 
 	i = 0;
+	j = 0;
 	while(data->line[i])
 	{
-		if(data->line[i] == ' ')
-			i++;
+		if(data->line[i] == ' ' || data->line[i] == '\t')
+			j++;
+		i++;
 	}
-	if (i == ft_strlen(data->line))
+	printf("I >>>>>>>>>> %d\n", i);
+	printf("J >>>>>>>>>> %d\n", j);
+	if ((i - 1) == j && j != 0)
 		return (1);
 	return (0);
 }
+
+int	ft_isspace(char *data)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (data[i])
+	{
+		if (data[i] == ' ')
+			j++;
+		i++;
+	}
+	printf("I >>>>>>>>>> %d\n", i);
+	printf("J >>>>>>>>>> %d\n", j);
+	if ((i - 1) == j && j != 0)
+		return (1);
+	return (0);
+}
+
 
 int	ft_print_error(int errno)
 {
@@ -50,7 +76,7 @@ int	ft_print_error(int errno)
 	if (errno == 2)
 		printf("Error:\nNot Allowed Line First Char or Map Position\n");
 	if (errno == 3)
-		printf("Error:\nWrong newline position\n");
+		printf("Error:\nWrong newline or char position\n");
 	exit (1);
 }
 
@@ -99,10 +125,8 @@ int	ft_check_fchars(t_data *data)
 void	ft_get_y(t_data *data)
 {
 	int i;
-	int j;
 
 	i = 0;
-	j = 0;
 	data->y = 0;
 	data->order = 0;
 	if (!data->fd || data->fd != -1)
@@ -110,7 +134,7 @@ void	ft_get_y(t_data *data)
 		data->line = " ";
 		while (data->line != NULL)
 		{
-			printf("order -> %d\n", data->order);
+			/* printf("order -> %d\n", data->order); */
 			data->line = get_next_line(data->fd);
 			if (data->line == NULL || !ft_check_fchars(data))
 				break ;
@@ -118,13 +142,8 @@ void	ft_get_y(t_data *data)
 				data->y++;
 			if (data->line[0] == '\n' && data->order != 0)
 				i = 1;
-			if (i && ft_isstrprint(data) && !ft_isstrspace(data))
-			{
-				/* while (data->line[j] == ' ') */
-				/* 	j++; */
-				/* if (data->line[j] != '\n') */
-					ft_print_error(3);
-			}
+			if (i && data->line[0] != '\n')
+				ft_print_error(3);
 		}
 	}
 	else
@@ -135,6 +154,7 @@ void	ft_get_y(t_data *data)
 void	ft_premap(char *map, t_data *data)
 {
 	char	*tbl;
+	/* char	*tba; */
 	size_t	size;
 	size_t	i;
 	int		j;
@@ -146,6 +166,9 @@ void	ft_premap(char *map, t_data *data)
 	while (j < (data->y))
 	{
 		tbl = get_next_line(data->fd);
+		/* tba = tbl; */
+		/* if (ft_isspace(tba)) */
+		/* 	tbl = get_next_line(data->fd); */
 		if (tbl[0] == '\n')
 			continue ;
 		if (tbl != NULL)
