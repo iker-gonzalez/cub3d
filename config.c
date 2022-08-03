@@ -6,59 +6,79 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 18:05:30 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/02 18:27:16 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/03 18:54:24 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "cub3d.h"
 
-/*
-111111
-100001
-100001
-111111
-*/
+void	print_map(t_map *map)
+{
+	int row;
+	int col;
+
+	row = 0;
+	while (row < map->rows)
+	{
+		col = 0;
+		while (col < map->columns)
+		{
+			printf("%c", map->map_content[row][col]);
+			col++;
+		}
+		row++;
+	}
+}
 
 void	set_map_values(t_map *map)
 {
-	map->columns = 6;
-	map->rows = 4;
+	int fd;
+	char *line;
+	int row;
+	int col;
+	int i;
+
+	fd = open("maps/valid/map2.cub", O_RDONLY);
+	if (fd == -1)
+	{
+		printf("Error: file can not be open\n");
+		return ;
+	}
+	line = get_next_line(fd);
+	map->columns = ft_strlen(line);
+	row = 0;
+	while(line != NULL)
+	{
+		row++;
+		line = get_next_line(fd);
+	}
+	map->rows = row;
+	map->map_content = (char **)malloc(sizeof(char *) * (map->rows + 1));
+	close(fd);
+	fd = open("maps/valid/map2.cub", O_RDONLY);
+	if (fd == -1)
+	{
+		printf("Error: file can not be open\n");
+		return ;
+	}
+	row = 0;
+	while(row < map->rows)
+	{
+		col = 0;
+		i = 0;
+		line = get_next_line(fd);
+		map->map_content[row] = malloc(sizeof(char) * (ft_strlen(line + 1)));
+		while (col < ft_strlen(line))
+		{
+			map->map_content[row][col] = line[i];
+			i++;
+			col++;
+		}
+		row++;
+	}
+	print_map(map);
 	map->time = 0;
 	map->oldTime = 0;
-
-	map->map_content = (char **)malloc(sizeof(char *) * (map->rows + 1));
-
-	map->map_content[0] = malloc(sizeof(char) * (map->columns + 1));
-	map->map_content[0][0] = 1;
-	map->map_content[0][1] = 1;
-	map->map_content[0][2] = 1;
-	map->map_content[0][3] = 1;
-	map->map_content[0][4] = 1;
-	map->map_content[0][5] = 1;
-	
-	map->map_content[1] = malloc(sizeof(char) * (map->columns + 1));
-	map->map_content[1][0] = 1;
-	map->map_content[1][1] = 0;
-	map->map_content[1][2] = 0;
-	map->map_content[1][3] = 0;
-	map->map_content[1][4] = 0;
-	map->map_content[1][5] = 1;
-	
-	map->map_content[2] = malloc(sizeof(char) * (map->columns + 1));
-	map->map_content[2][0] = 1;
-	map->map_content[2][1] = 0;
-	map->map_content[2][2] = 0;
-	map->map_content[2][3] = 0;
-	map->map_content[2][4] = 0;
-	map->map_content[2][5] = 1;
-	
-	map->map_content[3] = malloc(sizeof(char) * (map->columns + 1));
-	map->map_content[3][0] = 1;
-	map->map_content[3][1] = 1;
-	map->map_content[3][2] = 1;
-	map->map_content[3][3] = 1;
-	map->map_content[3][4] = 1;
-	map->map_content[3][5] = 1;
 }
 
 void	set_player_values(t_player *player)
@@ -85,3 +105,4 @@ void	file_config(t_map *map, t_player *player)
 	set_player_values(player);
 	set_texture_paths(map);
 }
+

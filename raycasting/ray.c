@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 17:23:26 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/02 18:23:58 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/03 17:32:59 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,9 @@ void	dda_algorithm(t_map *map, t_ray *ray)
 			ray->side = 1;
 		}
 		//Check if ray has hit a wall
-		printf("hola\n");
-		printf("ray->mapx: %d\n", ray->mapX);
-		printf("ray->mapy: %d\n", ray->mapY);
-		printf("%d\n", map->map_content[ray->mapX][ray->mapY]);
+		//printf("ray->mapx: %d\n", ray->mapX);
+		//printf("ray->mapy: %d\n", ray->mapY);
+		//printf("%d\n", map->map_content[ray->mapX][ray->mapY]);
 		if (map->map_content[ray->mapX][ray->mapY] == 1) 
 			ray->hit = 1;
 	  } 

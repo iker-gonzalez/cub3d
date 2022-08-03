@@ -6,7 +6,7 @@
 #    By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 16:17:30 by ikgonzal          #+#    #+#              #
-#    Updated: 2022/07/31 12:20:50 by ikgonzal         ###   ########.fr        #
+#    Updated: 2022/08/03 17:22:40 by ikgonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SANITIZER = -fsanitize=address -g3
 SRC  =	main.c \
 		gnl/get_next_line.c \
 		gnl/get_next_line_utils.c \
-		validation/config.c \
+		config.c \
 		mlx_functions.c \
 		textures/parsing/fill_text_matrix.c \
 		raycasting/ray.c \

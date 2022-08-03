@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/02 18:05:07 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/03 19:08:40 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@
 # define WE_TEXTURE 3
 
 # define FOV 66
-# define WIN_WIDTH 960
-# define WIN_HEIGHT 600
+# define WIN_WIDTH 64
+# define WIN_HEIGHT 64
 
 # define NO_TRANSPARENCY 0x00
 # define NB_TEXTURES 4
@@ -103,7 +103,7 @@ typedef struct s_ray {
 	//x-coordinate of the texture we have to use
 	int texX;
 	//y-coordinate of the texture we have to use
-	int textY;
+	int texY;
 }				t_ray;
 
 typedef struct s_player {

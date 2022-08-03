@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 12:17:38 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/02 18:00:52 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/03 19:22:07 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 void	ft_calculate_drawValues(t_ray *ray, t_draw *draw)
 {
+	int pitch = 100;
 	//Calculate height of line to draw on screen
 	draw->lineHeight = (int)(WIN_HEIGHT/ ray->perpWallDist);
 
 	//calculate lowest and highest pixel to fill in current stripe
 	draw->drawStart = -draw->lineHeight / 2 + WIN_HEIGHT / 2;
+	
 	if(draw->drawStart < 0)
 		draw->drawStart = 0;
 	draw->drawEnd = draw->lineHeight / 2 + WIN_HEIGHT / 2;
@@ -28,6 +30,7 @@ void	ft_calculate_drawValues(t_ray *ray, t_draw *draw)
 
 void	ft_calculate_texture_x_coordinate(t_ray *ray, t_player *player)
 {
+	int x;
 	//calculate value of wallX (where exactly the wall was hit)
 	if (ray->side == 0)
 		ray->wallX = player->posY + ray->perpWallDist * ray->rayDirY;
@@ -36,7 +39,8 @@ void	ft_calculate_texture_x_coordinate(t_ray *ray, t_player *player)
 	ray->wallX -= floor((ray->wallX));
 
 	//x coordinate on the texture
-	ray->texX = ray->wallX * (double)(TEXTURE_WIDTH);
+	x = ray->wallX * (double)(TEXTURE_WIDTH);
+	ray->texX = (int)x;
 	if(ray->side == 0 && ray->rayDirX > 0)
 		ray->texX = TEXTURE_WIDTH - ray->texX - 1;
 	if(ray->side == 1 && ray->rayDirY < 0)
@@ -50,15 +54,21 @@ void	ft_paint_pixels(t_img *img, t_ray *ray, t_draw *draw, t_text *text)
 
 	// How much to increase the texture coordinate per screen pixel
 	step = 1.0 * TEXTURE_HEIGHT / draw->lineHeight;
+	//printf("step: %f\n", step);
 	// Starting texture coordinate
 	double texPos;
-	texPos = (draw->drawStart /*- pitch*/ - WIN_HEIGHT / 2 + draw->lineHeight / 2) * step;
+	texPos = (draw->drawStart - WIN_HEIGHT / 2 + draw->lineHeight / 2) * step;
+	//printf("texPos: %f\n", texPos);
 	y = draw->drawStart;
+	printf("drawStart: %d\n", draw->drawStart);
+	printf("drawEnd: %d\n", draw->drawEnd);
 	while (y < draw->drawEnd)
 	{
-		ray->textY = (int)texPos & (TEXTURE_HEIGHT - 1);
+		ray->texY = (int)texPos & (TEXTURE_HEIGHT - 1);
 		texPos += step;
-		my_img_pixel_put(img, ray->texX, ray->textY, text->pixels[NO_TEXTURE][ray->texX][ray->textY]);
+		//printf("ray->texX: %d\n", ray->texX);
+		//printf("ray->texY: %d\n", ray->texY);
+		my_img_pixel_put(img, ray->texX, ray->texY, text->pixels[NO_TEXTURE][ray->texX][ray->texY]);
 		y++;
 	}
 	
