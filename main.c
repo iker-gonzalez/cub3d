@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/02 21:20:58 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/03 21:06:38 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,10 @@ int	ft_isspace(char *data)
 			j++;
 		i++;
 	}
+	i -= 1;
 	printf("I >>>>>>>>>> %d\n", i);
 	printf("J >>>>>>>>>> %d\n", j);
-	if ((i - 1) == j && j != 0)
+	if (i == j && j != 0)
 		return (1);
 	return (0);
 }
@@ -96,6 +97,18 @@ void	ft_print_premap(t_data *data)
 		}
 		j++;
 	}
+}
+
+int	ft_fchar(char *line)
+{
+	int		i;
+
+	i = 0;
+	while (line[i] == ' ')
+		i++;
+	if (line[i] == '1')
+		return (1);
+	return (0);
 }
 
 int	ft_check_fchars(t_data *data)
@@ -134,7 +147,7 @@ void	ft_get_y(t_data *data)
 		data->line = " ";
 		while (data->line != NULL)
 		{
-			/* printf("order -> %d\n", data->order); */
+			printf("order -> %d\n", data->order);
 			data->line = get_next_line(data->fd);
 			if (data->line == NULL || !ft_check_fchars(data))
 				break ;
@@ -143,7 +156,10 @@ void	ft_get_y(t_data *data)
 			if (data->line[0] == '\n' && data->order != 0)
 				i = 1;
 			if (i && data->line[0] != '\n')
+			{
+				printf("i -> %d\n", i);
 				ft_print_error(3);
+			}
 		}
 	}
 	else
@@ -154,21 +170,23 @@ void	ft_get_y(t_data *data)
 void	ft_premap(char *map, t_data *data)
 {
 	char	*tbl;
-	/* char	*tba; */
 	size_t	size;
 	size_t	i;
 	int		j;
+	int		x;
 
 	data->fd = open(map, O_RDONLY);
 	data->premap = (char **)malloc((data->y + 1) * sizeof(char *));
 	j = 0;
+	x = 0;
 	tbl = NULL;
 	while (j < (data->y))
 	{
 		tbl = get_next_line(data->fd);
-		/* tba = tbl; */
-		/* if (ft_isspace(tba)) */
-		/* 	tbl = get_next_line(data->fd); */
+		if (ft_fchar(tbl))
+			x = 1;
+		if (ft_isspace(tbl) && x == 0)
+			free(tbl);
 		if (tbl[0] == '\n')
 			continue ;
 		if (tbl != NULL)
