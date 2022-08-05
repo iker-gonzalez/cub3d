@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/04 21:49:13 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/05 19:14:23 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,27 +185,17 @@ void	ft_premap(char *map, t_data *data)
 	size_t	size;
 	size_t	i;
 	int		j;
-	/* int		x; */
 
 	data->fd = open(map, O_RDONLY);
 	data->premap = (char **)malloc((data->y + 1) * sizeof(char *));
 	j = 0;
-	/* x = 0; */
 	tbl = NULL;
 	while (j < (data->y))
 	{
 		tbl = get_next_line(data->fd);
-		/* printf("%s\n", tbl); */
-		/* if (ft_fchar(t5gcbl)) */
-		/* 	x = 1; */
-		/* if (tbl == NULL) */
-		/* 	break ; */
-		/* if (tbl && ft_isspace(tbl) && !ft_fchar(tbl)) */
-		/* { */
-		/* 	continue; */
-		/* 	/1* free(tbl); *1/ */
-		/* } */
-		if (tbl[0] == '\n')
+		if (tbl == NULL)
+			break ;
+		if ((tbl[0] == '\n') || (tbl && ft_isspace(tbl) && !ft_fchar(tbl)))
 			continue ;
 		if (tbl != NULL)
 			size = ft_strlen(tbl);
