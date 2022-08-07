@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 12:17:38 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/03 19:22:07 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/07 12:30:10 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@ void	ft_calculate_drawValues(t_ray *ray, t_draw *draw)
 	draw->lineHeight = (int)(WIN_HEIGHT/ ray->perpWallDist);
 
 	//calculate lowest and highest pixel to fill in current stripe
-	draw->drawStart = -draw->lineHeight / 2 + WIN_HEIGHT / 2;
+	draw->drawStart = -draw->lineHeight / 2 + WIN_HEIGHT / 2 + pitch;
 	
 	if(draw->drawStart < 0)
 		draw->drawStart = 0;
-	draw->drawEnd = draw->lineHeight / 2 + WIN_HEIGHT / 2;
+
+	draw->drawEnd = draw->lineHeight / 2 + WIN_HEIGHT / 2 + pitch;
 	if(draw->drawEnd >= WIN_HEIGHT)
 		draw->drawEnd = WIN_HEIGHT - 1;
 }
@@ -45,6 +46,7 @@ void	ft_calculate_texture_x_coordinate(t_ray *ray, t_player *player)
 		ray->texX = TEXTURE_WIDTH - ray->texX - 1;
 	if(ray->side == 1 && ray->rayDirY < 0)
 		ray->texX = TEXTURE_WIDTH - ray->texX - 1;
+	//printf("ray->texX: %d\n", ray->texX);
 }
 
 void	ft_paint_pixels(t_img *img, t_ray *ray, t_draw *draw, t_text *text)
@@ -57,7 +59,7 @@ void	ft_paint_pixels(t_img *img, t_ray *ray, t_draw *draw, t_text *text)
 	//printf("step: %f\n", step);
 	// Starting texture coordinate
 	double texPos;
-	texPos = (draw->drawStart - WIN_HEIGHT / 2 + draw->lineHeight / 2) * step;
+	texPos = (draw->drawStart - 100 - WIN_HEIGHT / 2 + draw->lineHeight / 2) * step;
 	//printf("texPos: %f\n", texPos);
 	y = draw->drawStart;
 	printf("drawStart: %d\n", draw->drawStart);
@@ -65,6 +67,7 @@ void	ft_paint_pixels(t_img *img, t_ray *ray, t_draw *draw, t_text *text)
 	while (y < draw->drawEnd)
 	{
 		ray->texY = (int)texPos & (TEXTURE_HEIGHT - 1);
+		printf("ray->texY: %d\n", ray->texY);
 		texPos += step;
 		//printf("ray->texX: %d\n", ray->texX);
 		//printf("ray->texY: %d\n", ray->texY);

@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/03 19:14:07 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/07 12:19:36 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int main(int argc, char **argv)
 	ft_memset(&img, 0, sizeof(t_img));
 	ft_memset(&draw, 0, sizeof(t_draw));
 	file_config(&map, &player);
-	printf("drawSTART: %d\n", draw.drawStart);
 	mlx.mlx = mlx_init();
 	if (xpm_parser(&mlx, &map, &text))
 		return (1);
@@ -50,7 +49,7 @@ int main(int argc, char **argv)
 	//{
 		//raycasting loop
 		init_new_img(&img, &mlx);
-		while (++i < map.columns)
+		while (++i < WIN_WIDTH)
 		{
 			ft_ray_position_direction(&map, &player, &ray, i);
 			ray_map_coordinates(&ray, &player);

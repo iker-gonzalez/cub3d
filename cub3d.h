@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/03 19:08:40 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/07 12:24:27 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@
 # define WE_TEXTURE 3
 
 # define FOV 66
-# define WIN_WIDTH 64
-# define WIN_HEIGHT 64
+# define WIN_WIDTH 640
+# define WIN_HEIGHT 480
 
 # define NO_TRANSPARENCY 0x00
 # define NB_TEXTURES 4
@@ -99,7 +99,7 @@ typedef struct s_ray {
 	//was a NS (0) or a EW (1) wall hit?
 	int side;
 	//represents the exact value where the wall was hit, not just the integer coordinates of the wall. 
-	int wallX;
+	double wallX;
 	//x-coordinate of the texture we have to use
 	int texX;
 	//y-coordinate of the texture we have to use
@@ -107,12 +107,13 @@ typedef struct s_ray {
 }				t_ray;
 
 typedef struct s_player {
+	// represent the position vector of the player
 	double	posX;
 	double	posY;
-	//initial direction vector (-1 left; 0 straight; 1 right)
+	// initial direction vector (-1 left; 0 straight; 1 right)
 	double	dirX;
 	double	dirY;
-	//plane vector determines the FOV of the player
+	// plane vector determines the FOV of the player
 	double	planeX;
 	double	planeY;
 }				t_player;
@@ -128,9 +129,8 @@ typedef struct s_map {
 	int columns;
 	int rows;
 	char** map_content;
-	//The variables time and oldTime will be used to store the time of the current and the previous frame,
 	//the time difference between these two can be used to determinate how much you should move when a certain key is pressed (to move a
-	//constant speed no matter how long the calculation of the frames takes), and for the FPS counter.
+	//constant speed no matter how long the calculation of the frames takes), and for the frames per second (FPS) counter.
 	double	time; // time of current frame
 	double	oldTime; // time of previous frame
 }				t_map;
@@ -166,5 +166,6 @@ int		ft_validate_xpm(char *path, void *mlx, t_text *text);
 int		create_trgb(int t, int r, int g, int b);
 int		xpm_parser(t_mlx *mlx, t_map *map, t_text *text);
 
+void	print_values(t_ray *ray, t_draw *draw);
 
 #endif
