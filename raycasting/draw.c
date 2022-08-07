@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 12:17:38 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/07 12:30:10 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/07 14:47:48 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_calculate_drawValues(t_ray *ray, t_draw *draw)
 	int pitch = 100;
 	//Calculate height of line to draw on screen
 	draw->lineHeight = (int)(WIN_HEIGHT/ ray->perpWallDist);
-
+	printf("line->height: %d\n", draw->lineHeight);
 	//calculate lowest and highest pixel to fill in current stripe
 	draw->drawStart = -draw->lineHeight / 2 + WIN_HEIGHT / 2 + pitch;
 	
@@ -49,14 +49,14 @@ void	ft_calculate_texture_x_coordinate(t_ray *ray, t_player *player)
 	//printf("ray->texX: %d\n", ray->texX);
 }
 
-void	ft_paint_pixels(t_img *img, t_ray *ray, t_draw *draw, t_text *text)
+void	ft_paint_pixels(t_img *img, t_ray *ray, t_draw *draw, t_text *text, int x)
 {
 	double step;
 	int		y;
 
 	// How much to increase the texture coordinate per screen pixel
 	step = 1.0 * TEXTURE_HEIGHT / draw->lineHeight;
-	//printf("step: %f\n", step);
+	printf("step: %f\n", step);
 	// Starting texture coordinate
 	double texPos;
 	texPos = (draw->drawStart - 100 - WIN_HEIGHT / 2 + draw->lineHeight / 2) * step;
@@ -71,7 +71,7 @@ void	ft_paint_pixels(t_img *img, t_ray *ray, t_draw *draw, t_text *text)
 		texPos += step;
 		//printf("ray->texX: %d\n", ray->texX);
 		//printf("ray->texY: %d\n", ray->texY);
-		my_img_pixel_put(img, ray->texX, ray->texY, text->pixels[NO_TEXTURE][ray->texX][ray->texY]);
+		my_img_pixel_put(img, x, y, text->pixels[NO_TEXTURE][ray->texX][ray->texY]);
 		y++;
 	}
 	

@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/07 12:19:36 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/07 14:48:20 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int main(int argc, char **argv)
 			ft_calculate_perpDistance(&ray);
 			ft_calculate_drawValues(&ray, &draw);
 			ft_calculate_texture_x_coordinate(&ray, &player);
-			ft_paint_pixels(&img, &ray, &draw, &text);
+			ft_paint_pixels(&img, &ray, &draw, &text, i);
 		}
 		mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, img.img, 0, 0);
 	//}

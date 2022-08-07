@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/07 12:24:27 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/07 14:48:10 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ void	ft_calculate_texture_x_coordinate(t_ray *ray, t_player *player);
 //drawing functions
 void	ft_calculate_drawValues(t_ray *ray, t_draw *draw);
 void	init_new_img(t_img *img, t_mlx *mlx);
-void	ft_paint_pixels(t_img *img, t_ray *ray, t_draw *draw, t_text *text);
+void	ft_paint_pixels(t_img *img, t_ray *ray, t_draw *draw, t_text *text, int x);
 void	my_img_pixel_put(t_img *img, int x, int y, int color);
 
 
