@@ -6,7 +6,7 @@
 #    By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 16:17:30 by ikgonzal          #+#    #+#              #
-#    Updated: 2022/07/26 20:33:35 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/08/07 19:55:06 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,8 @@ S = -fsanitize=address -g
 
 SRC  =	main.c \
 		error.c \
+		cub3_checkutils.c \
+		cub3_print_utils.c \
 		gnl/get_next_line.c \
 		gnl/get_next_line_utils.c \
 

@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/04 20:47:05 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/07 19:59:01 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@
 # define SO_TEXTURE 2
 # define WE_TEXTURE 3
 
-typedef struct s_data{
+typedef struct s_tmp{
 	int y;
 	int x;
 	int fd;
-	int order;
+	int pos;
 	int spaces;
-	char *line;
+	char *ln;
 	char **premap;
-}	t_data;
+}	t_tmp;
 
 typedef struct s_map {
 	char* no_texture;
@@ -45,8 +45,13 @@ typedef struct s_map {
 	char** map_content;
 }	t_map;
 
-int	ft_check_extension(char *file);
-
-
+int		ft_isstrprint(t_tmp *tmp);
+int		ft_isstrspace(t_tmp *tmp);
+int		ft_check_fchars(t_tmp *tmp);
+void	ft_print_premap(t_tmp *tmp);
+int		ft_fchar(char *line);
+int		ft_isspace(char *line);
+int		ft_check_extension(char *file);
+int		ft_print_error(int errno);
 
 #endif
