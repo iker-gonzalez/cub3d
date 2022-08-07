@@ -6,11 +6,11 @@
 #    By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 16:17:30 by ikgonzal          #+#    #+#              #
-#    Updated: 2022/08/07 19:55:06 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/08/07 21:08:03 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =	cub3d
+NAME =	Cub3d
 
 CC = gcc
 FLAGS =	-Wall -Wextra -Werror
