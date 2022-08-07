@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/07 19:58:23 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/07 21:04:20 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,29 @@
 #include <fcntl.h>
 #include <stdio.h>
 
+void	ft_get_x(t_tmp *tmp)
+{
+	if (tmp->ln != NULL)
+	{
+		if (tmp->x < ft_strlen(tmp->ln))
+			tmp->x = ft_strlen(tmp->ln);
+		if (tmp->ln[tmp->x - 1] == '\n')
+			tmp->x = tmp->x - 1;
+	}
+}
+	/* printf("x MAX -> %zu\n", tmp->x); */
+
 void	ft_get_y(t_tmp *tmp)
 {
 	int	i;
 
 	i = 0;
-	tmp->y = 0;
-	tmp->pos = 0;
 	if (!tmp->fd || tmp->fd != -1)
 	{
-		tmp->ln = " ";
 		while (tmp->ln != NULL)
 		{
 			tmp->ln = get_next_line(tmp->fd);
+			ft_get_x(tmp);
 			if (tmp->ln == NULL || !ft_check_fchars(tmp))
 				break ;
 			if ((tmp->ln[0] != '\n') || (!ft_isspace(tmp->ln)))
@@ -75,15 +85,19 @@ void	ft_premap(char *map, t_tmp *tmp)
 		j++;
 	}
 	tmp->premap[j] = NULL;
+	ft_print_premap(tmp);
 	free(tmp->ln);
 	close(tmp->fd);
 }
-	/* ft_print_premap(tmp); */
 
 int	main(int argc, char **argv)
 {
 	t_tmp	tmp;
 
+	tmp.y = 0;
+	tmp.x = 0;
+	tmp.pos = 0;
+	tmp.ln = " ";
 	tmp.fd = open(argv[1], O_RDONLY);
 	if (argc != 2)
 		ft_print_error(1);
