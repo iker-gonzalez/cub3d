@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 19:28:12 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/07 20:02:22 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/08 21:10:55 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	ft_check_fchars(t_tmp *tmp)
 		j++;
 	}
 	tmp->pos = order;
-	if (j > 7 || (tmp->y < 6 && tmp->pos > 0))
+	if (j > 7 || (tmp->y <= 6 && tmp->pos != 0))
 		ft_print_error(2);
 	return (1);
 }
