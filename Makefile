@@ -6,15 +6,15 @@
 #    By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 16:17:30 by ikgonzal          #+#    #+#              #
-#    Updated: 2022/08/07 21:08:03 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/08/08 20:33:46 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =	Cub3d
 
 CC = gcc
-FLAGS =	-Wall -Wextra -Werror
-S = -fsanitize=address -g
+FLAGS =	-Wall -Wextra -Werror -g3
+S = -fsanitize=address -g3
 
 SRC  =	main.c \
 		error.c \

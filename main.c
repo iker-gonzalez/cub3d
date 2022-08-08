@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/07 21:04:20 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/08 20:49:48 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	ft_get_y(t_tmp *tmp)
 				i = 1;
 			if ((i && tmp->ln[0] != '\n') || (tmp->pos && ft_isspace(tmp->ln)))
 				ft_print_error(3);
+			free(tmp->ln);
 		}
 	}
 	else
@@ -60,10 +61,23 @@ size_t	ft_sizelines(t_tmp *tmp)
 	return (0);
 }
 
+void ft_free(char **premap)
+{
+	int	i;
+
+	i = 0;
+	while (premap[i] != NULL)
+	{
+		free(premap[i]);
+		i++;
+	}
+	free(premap);
+	premap = NULL;
+}
+	
 void	ft_premap(char *map, t_tmp *tmp)
 {
 	size_t	size;
-	size_t	i;
 	int		j;
 
 	tmp->fd = open(map, O_RDONLY);
@@ -75,18 +89,17 @@ void	ft_premap(char *map, t_tmp *tmp)
 		if (tmp->ln == NULL)
 			break ;
 		if ((tmp->ln[0] == '\n') || (tmp->ln && ft_isspace(tmp->ln)))
+		{
+			free(tmp->ln);
 			continue ;
+		}
 		size = ft_sizelines(tmp);
-		tmp->premap[j] = (char *)malloc((size + 1) * sizeof(char));
-		i = -1;
-		while (++i < size)
-			tmp->premap[j][i] = tmp->ln[i];
-		tmp->premap[j][i] = '\0';
+		tmp->premap[j] = ft_strdup(tmp->ln);
 		j++;
+		free(tmp->ln);
 	}
 	tmp->premap[j] = NULL;
 	ft_print_premap(tmp);
-	free(tmp->ln);
 	close(tmp->fd);
 }
 
@@ -106,5 +119,6 @@ int	main(int argc, char **argv)
 	else
 		ft_get_y(&tmp);
 	ft_premap(argv[1], &tmp);
+	ft_free(tmp.premap);
 	return (1);
 }
