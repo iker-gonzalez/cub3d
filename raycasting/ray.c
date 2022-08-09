@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 17:23:26 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/09 18:07:42 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/09 18:25:45 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,8 @@ void	dda_algorithm(t_map *map, t_ray *ray)
 		printf("ray->mapx: %d\n", ray->mapX);
 		printf("ray->mapy: %d\n", ray->mapY);
 		printf("%d\n", map->map_content[ray->mapX][ray->mapY]);
-		if (map->map_content[ray->mapX][ray->mapY] > 48)
-		{
+		if (map->map_content[ray->mapX][ray->mapY] == 49)
 			ray->hit = 1;
-		}
 	}
 	printf("=================\n");
 }
