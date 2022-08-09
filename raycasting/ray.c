@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 17:23:26 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/07 12:35:06 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/09 17:58:03 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	ft_calculate_delta_distance(t_ray *ray)
 	else
 		//length of ray from one y-side to next y-side
 		ray->deltaDistY = sqrt(1 + (ray->rayDirX * ray->rayDirX) / (ray->rayDirY * ray->rayDirY));
-	printf("deltaX: %f\n", ray->deltaDistX);
-	printf("deltaY: %f\n", ray->deltaDistY );
+	//printf("deltaX: %f\n", ray->deltaDistX);
+	//printf("deltaY: %f\n", ray->deltaDistY );
 }
 
 //calculate step and initial sideDist
@@ -73,8 +73,8 @@ void	ft_calculate_side_distance(t_ray *ray, t_player *player)
 		//length of ray from current player position to next y-side
 		ray->sideDistY = (ray->mapY + 1.0 - player->posY) * ray->deltaDistY;
 	}
-	printf("sideY: %f\n", ray->sideDistY);
-	printf("sideX: %f\n", ray->sideDistX);
+	//printf("sideY: %f\n", ray->sideDistY);
+	//printf("sideX: %f\n", ray->sideDistX);
 }
 
 void	dda_algorithm(t_map *map, t_ray *ray)
@@ -96,12 +96,13 @@ void	dda_algorithm(t_map *map, t_ray *ray)
 			ray->side = 1;
 		}
 		//Check if ray has hit a wall
-		//printf("ray->mapx: %d\n", ray->mapX);
-		//printf("ray->mapy: %d\n", ray->mapY);
-		//printf("%d\n", map->map_content[ray->mapX][ray->mapY]);
-		if (map->map_content[ray->mapX][ray->mapY] > 0)
+		printf("ray->mapx: %d\n", ray->mapX);
+		printf("ray->mapy: %d\n", ray->mapY);
+		printf("%d\n", map->map_content[ray->mapX][ray->mapY]);
+		if (map->map_content[ray->mapX][ray->mapY] > 48)
 		{
 			ray->hit = 1;
 		}
-	  } 
+	}
+	printf("=================\n");
 }

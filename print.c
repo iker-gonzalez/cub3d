@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 12:22:10 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/07 12:32:21 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/09 17:31:23 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,4 @@ void	print_draw(t_ray *ray, t_draw *draw)
 	printf("drawStart: %d\n", draw->drawStart);
 	printf("drawEnd: %d\n", draw->drawEnd);
 	printf("--------------------\n\n");
-}
-
-void	print_delta(t_ray *ray)
-{
-	
 }

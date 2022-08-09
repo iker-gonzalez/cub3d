@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 11:24:30 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/31 12:23:43 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/09 17:49:10 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,5 @@ void	ft_calculate_perpDistance(t_ray *ray)
 		ray->perpWallDist = (ray->sideDistX - ray->deltaDistX);
 	else
 		ray->perpWallDist = (ray->sideDistY - ray->deltaDistY);
+	//printf("ray->perpWallDist: %f\n", ray->perpWallDist);
 }
