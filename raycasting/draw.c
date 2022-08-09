@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 12:17:38 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/07 14:47:48 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/09 17:22:45 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,16 @@
 
 void	ft_calculate_drawValues(t_ray *ray, t_draw *draw)
 {
-	int pitch = 100;
 	//Calculate height of line to draw on screen
 	draw->lineHeight = (int)(WIN_HEIGHT/ ray->perpWallDist);
 	printf("line->height: %d\n", draw->lineHeight);
 	//calculate lowest and highest pixel to fill in current stripe
-	draw->drawStart = -draw->lineHeight / 2 + WIN_HEIGHT / 2 + pitch;
+	draw->drawStart = -draw->lineHeight / 2 + WIN_HEIGHT / 2;
 	
 	if(draw->drawStart < 0)
 		draw->drawStart = 0;
 
-	draw->drawEnd = draw->lineHeight / 2 + WIN_HEIGHT / 2 + pitch;
+	draw->drawEnd = draw->lineHeight / 2 + WIN_HEIGHT / 2;
 	if(draw->drawEnd >= WIN_HEIGHT)
 		draw->drawEnd = WIN_HEIGHT - 1;
 }
@@ -59,7 +58,7 @@ void	ft_paint_pixels(t_img *img, t_ray *ray, t_draw *draw, t_text *text, int x)
 	printf("step: %f\n", step);
 	// Starting texture coordinate
 	double texPos;
-	texPos = (draw->drawStart - 100 - WIN_HEIGHT / 2 + draw->lineHeight / 2) * step;
+	texPos = (draw->drawStart - WIN_HEIGHT / 2 + draw->lineHeight / 2) * step;
 	//printf("texPos: %f\n", texPos);
 	y = draw->drawStart;
 	printf("drawStart: %d\n", draw->drawStart);
