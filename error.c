@@ -6,11 +6,12 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:06:42 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/08 20:37:16 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/10 20:11:41 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "libft/libft.h"
 #include <stdio.h>
 
 int	ft_check_extension(char *file)

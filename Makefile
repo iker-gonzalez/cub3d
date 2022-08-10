@@ -6,7 +6,7 @@
 #    By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 16:17:30 by ikgonzal          #+#    #+#              #
-#    Updated: 2022/08/08 20:33:46 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/08/10 21:18:11 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,14 @@ NAME =	Cub3d
 
 CC = gcc
 FLAGS =	-Wall -Wextra -Werror -g3
-S = -fsanitize=address -g3
+S = -fsanitize=address
 
 SRC  =	main.c \
 		error.c \
-		cub3_checkutils.c \
-		cub3_print_utils.c \
+		gets.c \
+		checkutils.c \
+		print_utils.c \
+		map_utils.c \
 		gnl/get_next_line.c \
 		gnl/get_next_line_utils.c \
 
@@ -56,10 +58,10 @@ san : $(OBJ)
 clean:
 	@ rm -rf cub3d
 	@ rm -rf $(OBJ)
-	@ rm -rf libft/*.o
-	@ rm -rf libft/libft.a
-	@ rm -rf minilibx/*.o
-	@ rm -rf minilibx/libmlx.a
+	@ rm -rf ./libft/*.o
+	@ rm -rf ./libft/libft.a
+	@ rm -rf ./minilibx/*.o
+	@ rm -rf ./minilibx/libmlx.a
 	@ echo "cub3d cleaned ✅"
 
 fclean: clean
