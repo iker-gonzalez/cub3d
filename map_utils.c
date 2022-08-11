@@ -6,13 +6,41 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 20:34:02 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/11 19:10:20 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/11 20:04:11 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <fcntl.h>
 #include <stdio.h>
+
+void	ft_check_mapchars(t_tmp *tmp)
+{
+	char	*set;
+	int		i;
+	int		j;
+	int		k;
+
+	set = "10NSWO ";
+	i = 0;
+	while (tmp->map[i] != NULL)
+	{
+		j= 0;
+		while (tmp->map[i][j])
+		{
+			k = 0;
+			while (set[k])
+			{
+				if (set[k] != tmp->map[i][j])
+					break;
+				k++;
+			}
+			printf(">>>>>%d\n", k);
+			j++;
+		}
+		i++;
+	}
+}
 
 size_t	ft_fill_blanks(size_t x, int i, t_tmp *tmp)
 {
@@ -49,4 +77,5 @@ void	ft_extract_map(t_tmp *tmp)
 		i++;
 	}
 	tmp->map[i] = NULL;
+	ft_check_mapchars(tmp);
 }
