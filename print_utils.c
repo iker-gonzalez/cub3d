@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 19:37:35 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/10 21:44:40 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/11 19:11:26 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	ft_print_map(t_tmp *tmp)
 	int	j;
 	int	i;
 
-	/* printf("ENTRA\n"); */
 	j = 0;
 	while (tmp->map[j] != NULL)
 	{
@@ -31,6 +30,8 @@ void	ft_print_map(t_tmp *tmp)
 		j++;
 	}
 }
+
+	/* printf("ENTRA\n"); */
 
 void	ft_print_premap(t_tmp *tmp)
 {

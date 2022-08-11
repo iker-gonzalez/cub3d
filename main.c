@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/10 21:37:47 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/11 19:18:56 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ void	ft_premap(char *map, t_tmp *tmp)
 	}
 	tmp->premap[j] = NULL;
 	ft_extract_map(tmp);
-	/* ft_print_premap(tmp); */
 	close(tmp->fd);
 }
+	/* ft_print_premap(tmp); */
 		/* ft_sizelines(tmp); */
 
 int	main(int argc, char **argv)
@@ -85,6 +85,7 @@ int	main(int argc, char **argv)
 	ft_premap(argv[1], &tmp);
 	ft_print_map(&tmp);
 	ft_free(tmp.premap);
+	ft_free(tmp.map);
 	return (1);
 }
 	/* printf("MAX---%zu\n", tmp.max_x); */
