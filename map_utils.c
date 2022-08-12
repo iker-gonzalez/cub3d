@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 20:34:02 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/11 20:04:11 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/12 19:40:29 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,18 @@ void	ft_check_mapchars(t_tmp *tmp)
 			k = 0;
 			while (set[k])
 			{
-				if (set[k] != tmp->map[i][j])
+				if (set[k] == tmp->map[i][j] || tmp->map[i][j] == '\n')
 					break;
 				k++;
 			}
-			printf(">>>>>%d\n", k);
+			if (k > 6)
+				ft_print_error(4);
 			j++;
 		}
 		i++;
 	}
 }
+				/* printf(">>>>>%d\n", k); */
 
 size_t	ft_fill_blanks(size_t x, int i, t_tmp *tmp)
 {
