@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/11 19:18:56 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/12 20:16:38 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	main(int argc, char **argv)
 	else
 		ft_get_y(&tmp);
 	ft_premap(argv[1], &tmp);
-	ft_print_map(&tmp);
+	ft_print_map(tmp.premap);
 	ft_free(tmp.premap);
 	ft_free(tmp.map);
 	return (1);

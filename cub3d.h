@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/10 21:33:48 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/12 20:17:46 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,9 @@ void	ft_get_y(t_tmp *tmp);
 int		ft_isstrprint(t_tmp *tmp);
 int		ft_isstrspace(t_tmp *tmp);
 int		ft_check_fchars(t_tmp *tmp);
-void	ft_print_premap(t_tmp *tmp);
-void	ft_print_map(t_tmp *tmp);
+/* void	ft_print_premap(t_tmp *tmp); */
+void	ft_print_map(char **map);
+/* void	ft_print_map(t_tmp *tmp); */
 void	ft_extract_map(t_tmp *tmp);
 int		ft_fchar(char *line);
 int		ft_isspace(char *line);

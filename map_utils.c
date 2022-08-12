@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 20:34:02 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/12 19:40:29 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/12 19:45:20 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ void	ft_check_mapchars(t_tmp *tmp)
 	i = 0;
 	while (tmp->map[i] != NULL)
 	{
-		j= 0;
+		j = 0;
 		while (tmp->map[i][j])
 		{
 			k = 0;
 			while (set[k])
 			{
 				if (set[k] == tmp->map[i][j] || tmp->map[i][j] == '\n')
-					break;
+					break ;
 				k++;
 			}
 			if (k > 6)
