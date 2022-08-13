@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:06:42 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/12 19:43:03 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/13 20:30:26 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,7 @@ int	ft_print_error(int errno)
 		printf("Error:\nWrong newline or Char position\n");
 	if (errno == 4)
 		printf("Error:\nNot Allowed Char Map\n");
+	if (errno == 5)
+		printf("Error:\nMap not closed\n");
 	exit (1);
 }

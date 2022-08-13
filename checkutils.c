@@ -6,12 +6,13 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 19:28:12 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/10 20:32:10 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/13 20:32:21 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "libft/libft.h"
+#include <stdio.h>
 
 int	ft_isstrprint(t_tmp *tmp)
 {
@@ -68,16 +69,10 @@ int	ft_isspace(char *line)
 	/* printf("I >>>>>>>>>> %d\n", i); */
 	/* printf("J >>>>>>>>>> %d\n", j); */
 
-int	ft_fchar(char *line)
+void	ft_lchar(char *line)
 {
-	int		i;
-
-	i = 0;
-	while (line[i] == ' ')
-		i++;
-	if (line[i] == '1')
-		return (1);
-	return (0);
+	if (line[ft_strlen(line) - 2] != '1')
+		ft_print_error(5);
 }
 	/* printf("I >>>>>>>>>> %d\n", i); */
 	/* printf("ln[i]>>>>>>>>>> %c\n", ln[i]); */
@@ -106,5 +101,7 @@ int	ft_check_fchars(t_tmp *tmp)
 	tmp->pos = order;
 	if (j >= 7 || (tmp->y <= 6 && tmp->pos != 0))
 		ft_print_error(2);
+	if (order == 1)
+		ft_lchar(tmp->ln);
 	return (1);
 }

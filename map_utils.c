@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 20:34:02 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/12 19:45:20 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/13 20:33:39 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	ft_extract_map(t_tmp *tmp)
 			x++;
 		}
 		tmp->map[i][x - 1] = '\n';
+		tmp->map[i][x] = '\0';
 		y++;
 		i++;
 	}
