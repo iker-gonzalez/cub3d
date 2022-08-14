@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 19:28:12 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/13 20:32:21 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/14 21:33:46 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	ft_isspace(char *line)
 
 void	ft_lchar(char *line)
 {
-	if (line[ft_strlen(line) - 2] != '1')
+	if (line[ft_strlen(line) - 2] != '1' && line[ft_strlen(line) - 2] != ' ')
 		ft_print_error(5);
 }
 	/* printf("I >>>>>>>>>> %d\n", i); */

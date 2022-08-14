@@ -6,13 +6,51 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 20:34:02 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/13 20:33:39 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/14 21:33:24 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <fcntl.h>
 #include <stdio.h>
+
+void	ft_check_walls(t_tmp *tmp)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (tmp->map[i] != NULL)
+	{
+		j = 0;
+		if (tmp->map[i + 1] != NULL)
+		{
+			while (tmp->map[i][j])
+			{
+				if ((((tmp->map[i][j] == ' ')) &&
+				((tmp->map[i][j + 1] != ' ') && (tmp->map[i][j + 1] != '\n'))) &&
+				(((tmp->map[i][j + 1] != '1')) ||
+				((tmp->map[i + 1][j] != ' ') && (tmp->map[i + 1][j] != '1'))))
+					ft_print_error(5);
+				if ((tmp->map[0][j] == '1') &&
+				((((tmp->map[0][j + 1]) != '1') && ((tmp->map[0][j + 1]) != '\n')) &&
+				((tmp->map[0][j + 1]) != ' ')))
+					ft_print_error(5);
+				if ((tmp->map[i][j] == '0') &&
+				(((tmp->map[i][j + 1]) != '1') && ((tmp->map[i][j + 1]) != '0')))
+					ft_print_error(5);
+				j++;
+			}
+		}
+		i++;
+	}
+}
+				/* printf("> ->%c\n", tmp->map[i][j]); */
+				/* printf("j+1 ->%c\n", tmp->map[i][j+1]); */
+				/* printf("i+1 ->%c\n", tmp->map[i+1][j]); */
+				/* printf("elsei+1 ->%c\n", tmp->map[i+1][j]); */
+				/* printf("else> ->%c\n", tmp->map[i][j]); */
+				/* printf("elsej+1 ->%c\n", tmp->map[i][j+1]); */
 
 void	ft_check_mapchars(t_tmp *tmp)
 {
@@ -28,12 +66,11 @@ void	ft_check_mapchars(t_tmp *tmp)
 		j = 0;
 		while (tmp->map[i][j])
 		{
-			k = 0;
-			while (set[k])
+			k = -1;
+			while (set[++k])
 			{
 				if (set[k] == tmp->map[i][j] || tmp->map[i][j] == '\n')
 					break ;
-				k++;
 			}
 			if (k > 6)
 				ft_print_error(4);
@@ -41,6 +78,7 @@ void	ft_check_mapchars(t_tmp *tmp)
 		}
 		i++;
 	}
+	ft_check_walls(tmp);
 }
 				/* printf(">>>>>%d\n", k); */
 
