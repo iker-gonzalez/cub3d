@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 19:28:12 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/14 21:33:46 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/15 21:18:02 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ int	ft_isspace(char *line)
 	/* printf("I >>>>>>>>>> %d\n", i); */
 	/* printf("J >>>>>>>>>> %d\n", j); */
 
-void	ft_lchar(char *line)
+void	ft_lchar(char *line, t_tmp *tmp)
 {
 	if (line[ft_strlen(line) - 2] != '1' && line[ft_strlen(line) - 2] != ' ')
-		ft_print_error(5);
+		ft_print_error(5, tmp);
 }
 	/* printf("I >>>>>>>>>> %d\n", i); */
 	/* printf("ln[i]>>>>>>>>>> %c\n", ln[i]); */
@@ -100,8 +100,8 @@ int	ft_check_fchars(t_tmp *tmp)
 	}
 	tmp->pos = order;
 	if (j >= 7 || (tmp->y <= 6 && tmp->pos != 0))
-		ft_print_error(2);
+		ft_print_error(2, tmp);
 	if (order == 1)
-		ft_lchar(tmp->ln);
+		ft_lchar(tmp->ln, tmp);
 	return (1);
 }

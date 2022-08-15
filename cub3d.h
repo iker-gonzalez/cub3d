@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/12 20:17:46 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/15 21:13:52 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_tmp{
 	char	*ln;
 	char	**premap;
 	char	**map;
+	char	player;
 }	t_tmp;
 
 typedef struct s_map {
@@ -55,6 +56,7 @@ void	ft_extract_map(t_tmp *tmp);
 int		ft_fchar(char *line);
 int		ft_isspace(char *line);
 int		ft_check_extension(char *file);
-int		ft_print_error(int errno);
+int		ft_print_error(int errno, t_tmp *tmp);
+void	ft_free(char **premap);
 
 #endif

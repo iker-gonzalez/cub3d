@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 20:34:02 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/14 21:33:24 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/15 21:18:25 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,15 @@ void	ft_check_walls(t_tmp *tmp)
 				((tmp->map[i][j + 1] != ' ') && (tmp->map[i][j + 1] != '\n'))) &&
 				(((tmp->map[i][j + 1] != '1')) ||
 				((tmp->map[i + 1][j] != ' ') && (tmp->map[i + 1][j] != '1'))))
-					ft_print_error(5);
+					ft_print_error(5, tmp);
 				if ((tmp->map[0][j] == '1') &&
 				((((tmp->map[0][j + 1]) != '1') && ((tmp->map[0][j + 1]) != '\n')) &&
 				((tmp->map[0][j + 1]) != ' ')))
-					ft_print_error(5);
+					ft_print_error(5, tmp);
 				if ((tmp->map[i][j] == '0') &&
-				(((tmp->map[i][j + 1]) != '1') && ((tmp->map[i][j + 1]) != '0')))
-					ft_print_error(5);
+				(((tmp->map[i][j + 1]) != '1') && ((tmp->map[i][j + 1]) != '0') &&
+				(tmp->map[i][j +1] != 'N')))
+					ft_print_error(5, tmp);
 				j++;
 			}
 		}
@@ -52,6 +53,41 @@ void	ft_check_walls(t_tmp *tmp)
 				/* printf("else> ->%c\n", tmp->map[i][j]); */
 				/* printf("elsej+1 ->%c\n", tmp->map[i][j+1]); */
 
+void	ft_check_player(t_tmp *tmp)
+{
+	char		*set;
+	int			i;
+	int			j;
+	int			k;
+	static int	o;
+
+	set = "NSWO";
+	i = -1;
+	while (tmp->map[++i] != NULL)
+	{
+		j = -1;
+		while (tmp->map[i][++j])
+		{
+			k = -1;
+			while (set[++k])
+			{
+				if (set[k] == tmp->map[i][j])
+				{
+					tmp->player = tmp->map[i][j];
+					o += 1;
+				}
+			}
+		}
+	}
+	if (o != 1)
+		ft_print_error(6, tmp);
+}
+
+	/* printf("A >>>>%d\n", o); */
+	/* printf("Char >>>%c\n", tmp->map[i][j]); */
+	/* printf("B >>>>%d\n", o); */
+	/* printf("C >>>>%d\n", o); */
+
 void	ft_check_mapchars(t_tmp *tmp)
 {
 	char	*set;
@@ -60,11 +96,11 @@ void	ft_check_mapchars(t_tmp *tmp)
 	int		k;
 
 	set = "10NSWO ";
-	i = 0;
-	while (tmp->map[i] != NULL)
+	i = -1;
+	while (tmp->map[++i] != NULL)
 	{
-		j = 0;
-		while (tmp->map[i][j])
+		j = -1;
+		while (tmp->map[i][++j])
 		{
 			k = -1;
 			while (set[++k])
@@ -73,11 +109,10 @@ void	ft_check_mapchars(t_tmp *tmp)
 					break ;
 			}
 			if (k > 6)
-				ft_print_error(4);
-			j++;
+				ft_print_error(4, tmp);
 		}
-		i++;
 	}
+	ft_check_player(tmp);
 	ft_check_walls(tmp);
 }
 				/* printf(">>>>>%d\n", k); */

@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 19:07:06 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/14 21:33:35 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/15 21:10:54 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_get_y(t_tmp *tmp)
 			if (tmp->ln[0] == '\n' && tmp->pos != 0)
 				i = 1;
 			if ((i && tmp->ln[0] != '\n') || (tmp->pos && ft_isspace(tmp->ln)))
-				ft_print_error(3);
+				ft_print_error(3, tmp);
 			free(tmp->ln);
 		}
 	}
