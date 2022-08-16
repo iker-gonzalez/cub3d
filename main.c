@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/15 21:12:41 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/16 19:45:20 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	main(int argc, char **argv)
 	tmp.pos = 0;
 	tmp.ln = " ";
 	tmp.fd = open(argv[1], O_RDONLY);
-	if (argc != 2)
+	if (argc != 2 || tmp.fd == -1)
 		ft_print_error(1, &tmp);
 	if (!ft_check_extension(argv[1]))
 		return (0);

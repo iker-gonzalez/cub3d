@@ -6,7 +6,7 @@
 #    By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 16:17:30 by ikgonzal          #+#    #+#              #
-#    Updated: 2022/08/10 21:18:11 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/08/16 21:18:13 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC  =	main.c \
 		checkutils.c \
 		print_utils.c \
 		map_utils.c \
+		check_map.c \
 		gnl/get_next_line.c \
 		gnl/get_next_line_utils.c \
 
