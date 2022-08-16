@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 12:17:38 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/09 17:32:01 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/16 17:03:56 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,9 @@ void	ft_paint_pixels(t_img *img, t_ray *ray, t_draw *draw, t_text *text, int x)
 	double texPos;
 	texPos = (draw->drawStart - WIN_HEIGHT / 2 + draw->lineHeight / 2) * step;
 	//printf("texPos: %f\n", texPos);
-	y = draw->drawStart;
+	y = 0;
+	while (y < draw->drawStart)
+		my_img_pixel_put(img, x, y++, create_trgb(NO_TRANSPARENCY, 0, 255, 255));
 	//printf("drawStart: %d\n", draw->drawStart);
 	//printf("drawEnd: %d\n", draw->drawEnd);
 	while (y < draw->drawEnd)
@@ -73,5 +75,8 @@ void	ft_paint_pixels(t_img *img, t_ray *ray, t_draw *draw, t_text *text, int x)
 		my_img_pixel_put(img, x, y, text->pixels[NO_TEXTURE][ray->texX][ray->texY]);
 		y++;
 	}
+	while (y < WIN_HEIGHT)
+		my_img_pixel_put(img, x, y++, create_trgb(NO_TRANSPARENCY, 96, 96, 96));
+
 	
 }
