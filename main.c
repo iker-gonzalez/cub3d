@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/17 17:21:41 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/17 18:33:28 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,8 @@ int main(int argc, char **argv)
 	map.current_col = -1;
 	//raycasting loop
 	init_new_img(&p);
-	while (++map.current_col < WIN_WIDTH)
-	{
-		raycasting_loop(&p);
-		printf("current col: %d\n", map.current_col);
-	}
+	raycasting_loop(&p);
+	//printf("current col: %d\n", map.current_col);
 	//clear_window(&mlx, &img);
 	ft_hook(&p);
 	mlx_loop(mlx.mlx);

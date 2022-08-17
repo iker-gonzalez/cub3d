@@ -102,5 +102,4 @@ void	dda_algorithm(t_player *p)
 		if (p->map->map_content[p->ray->mapX][p->ray->mapY] == 49)
 			p->ray->hit = 1;
 	}
-	printf("=================\n");
 }

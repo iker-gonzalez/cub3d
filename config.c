@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 18:05:30 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/17 17:32:29 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/17 18:10:31 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,13 @@ void	file_config(t_map *map, t_player *player)
 	set_texture_paths(map);
 }
 
-
-
+void	set_structs(t_player *p, t_img *img, t_ray *ray, t_draw *draw)
+{
+	ft_memset(p->ray, 0, sizeof(t_ray));
+	ft_memset(p->img, 0, sizeof(t_img));
+	ft_memset(p->draw, 0, sizeof(t_draw));
+	ft_memset(p, 0, sizeof(t_player));
+	p->img = img;
+	p->ray = ray;
+	p->draw = draw;
+}

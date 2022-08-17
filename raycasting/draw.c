@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 12:17:38 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/17 17:27:43 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/17 18:34:25 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,14 +87,21 @@ void	ft_paint_pixels(t_player *p)
 
 void	raycasting_loop(t_player *p)
 {
-	ft_ray_position_direction(p);
-	ray_map_coordinates(p);
-	ft_calculate_delta_distance(p);
-	ft_calculate_side_distance(p);
-	dda_algorithm(p);
-	ft_calculate_perpDistance(p);
-	ft_calculate_drawValues(p);
-	ft_calculate_texture_x_coordinate(p);
-	ft_paint_pixels(p);
-	mlx_put_image_to_window(p->mlx->mlx, p->mlx->mlx_win, p->img->img, 0, 0);
+	while (p->map->current_col < WIN_WIDTH)
+	{
+		printf("=================\n");
+		printf("current col: %d\n", p->map->current_col);
+		ft_ray_position_direction(p);
+		ray_map_coordinates(p);
+		ft_calculate_delta_distance(p);
+		ft_calculate_side_distance(p);
+		dda_algorithm(p);
+		ft_calculate_perpDistance(p);
+		ft_calculate_drawValues(p);
+		ft_calculate_texture_x_coordinate(p);
+		ft_paint_pixels(p);
+		mlx_put_image_to_window(p->mlx->mlx, p->mlx->mlx_win, p->img->img, 0, 0);
+		printf("img: %d\n", p->img->img);
+		p->map->current_col++;
+	}
 }
