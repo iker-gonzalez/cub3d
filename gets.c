@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 19:07:06 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/15 21:10:54 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/17 20:54:26 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,12 @@ void	ft_get_x(t_tmp *tmp)
 	{
 		if (tmp->x < ft_strlen(tmp->ln))
 			tmp->x = ft_strlen(tmp->ln);
-		if (tmp->ln[tmp->x - 1] == '\n')
-			tmp->x = tmp->x - 1;
 	}
 }
+
+		/* if (tmp->ln[tmp->x - 1] == '\n') */
+		/* 	tmp->x = tmp->x - 1; */
+
 	/* printf("x MAX -> %zu\n", tmp->x); */
 
 void	ft_get_y(t_tmp *tmp)

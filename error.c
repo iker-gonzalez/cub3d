@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:06:42 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/15 21:22:05 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/17 20:38:11 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,14 @@ int	ft_print_error(int errno, t_tmp *tmp)
 	if (errno == 5)
 		printf("Error:\nMap not properly closed\n");
 	if (errno == 6)
-		printf("Error:\nToo much players\n");
+		printf("Error:\nWrong number of players\n");
+	if (tmp->ln)
+		free(tmp->ln);
 	if (tmp->premap)
 		ft_free(tmp->premap);
 	if (tmp->map)
 		ft_free(tmp->map);
 	exit (1);
 }
+		/* printf("FREE:\nPREMAP\n"); */
+		/* printf("FREE:\nMAP\n"); */

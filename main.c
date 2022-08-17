@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/17 18:49:43 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/17 20:34:27 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int	main(int argc, char **argv)
 {
 	t_tmp	tmp;
 
+	tmp.premap = NULL;
+	tmp.map = NULL;
 	tmp.y = 0;
 	tmp.x = 0;
 	tmp.max_x = 0;
