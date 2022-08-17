@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 12:17:38 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/17 18:34:25 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/17 18:47:09 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	ft_paint_pixels(t_player *p)
 	texPos = (p->draw->drawStart - WIN_HEIGHT / 2 + p->draw->lineHeight / 2) * step;
 	//printf("texPos: %f\n", texPos);
 	y = 0;
-	printf("drawStart: %d\n", p->draw->drawStart);
+	//printf("drawStart: %d\n", p->draw->drawStart);
 	//printf("img: %d\n", p->img->img);
 	while (y < p->draw->drawStart)
 	{
@@ -70,7 +70,7 @@ void	ft_paint_pixels(t_player *p)
 		//printf("y: %d\n", y);
 	}
 	//printf("drawStart: %d\n", p->draw->drawStart);
-	printf("drawEnd: %d\n", p->draw->drawEnd);
+	//printf("drawEnd: %d\n", p->draw->drawEnd);
 	while (y < p->draw->drawEnd)
 	{
 		p->ray->texY = (int)texPos & (TEXTURE_HEIGHT - 1);
@@ -89,8 +89,7 @@ void	raycasting_loop(t_player *p)
 {
 	while (p->map->current_col < WIN_WIDTH)
 	{
-		printf("=================\n");
-		printf("current col: %d\n", p->map->current_col);
+		//printf("=================\n");
 		ft_ray_position_direction(p);
 		ray_map_coordinates(p);
 		ft_calculate_delta_distance(p);
@@ -101,7 +100,6 @@ void	raycasting_loop(t_player *p)
 		ft_calculate_texture_x_coordinate(p);
 		ft_paint_pixels(p);
 		mlx_put_image_to_window(p->mlx->mlx, p->mlx->mlx_win, p->img->img, 0, 0);
-		printf("img: %d\n", p->img->img);
 		p->map->current_col++;
 	}
 }

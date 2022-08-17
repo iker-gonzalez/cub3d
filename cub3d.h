@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/17 18:06:10 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/17 18:57:18 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,7 @@ typedef struct s_map {
 	double	time; // time of current frame
 	double	oldTime; // time of previous frame
 	int		current_col;
+	int		render;
 }				t_map;
 
 typedef struct s_player {
@@ -188,6 +189,11 @@ int		ft_hook(t_player *player);
 void	raycasting_loop(t_player *p);
 
 void	set_structs(t_player *p, t_img *img, t_ray *ray, t_draw *draw);
+
+//moves
+void	ft_move_up(t_player *player);
+void	ft_move_down(t_player *player);
+
 
 
 

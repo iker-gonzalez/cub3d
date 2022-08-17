@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 12:44:17 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/17 18:11:26 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/17 18:45:38 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ void	my_img_pixel_put(t_player *p, int x, int y, int color)
 
 void	init_new_img(t_player *p)
 {	
-	printf("mlx: %d\n", p->mlx->mlx);
-	printf("llola\n");
 	p->img->img = mlx_new_image(p->mlx->mlx, WIN_WIDTH, WIN_HEIGHT);
 	p->img->addr = mlx_get_data_addr(p->img->img, &p->img->bits_per_pixel, &p->img->line_length,
 								&p->img->endian);
