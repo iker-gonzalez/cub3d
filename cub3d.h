@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/07 14:48:10 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/16 19:14:03 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,16 @@
 # define FOV 66
 # define WIN_WIDTH 640
 # define WIN_HEIGHT 480
+
+# define ESC_KEY_MAC 53
+# define LEFT_ARR_MAC 123
+# define UP_ARR_MAC 126
+# define RIGHT_ARR_MAC 124
+# define DOWN_ARR_MAC 125
+# define A_KEY_MAC 0
+# define W_KEY_MAC 13
+# define D_KEY_MAC 2
+# define S_KEY_MAC 1
 
 # define NO_TRANSPARENCY 0x00
 # define NB_TEXTURES 4
@@ -106,19 +116,6 @@ typedef struct s_ray {
 	int texY;
 }				t_ray;
 
-typedef struct s_player {
-	// represent the position vector of the player
-	double	posX;
-	double	posY;
-	// initial direction vector (-1 left; 0 straight; 1 right)
-	double	dirX;
-	double	dirY;
-	// plane vector determines the FOV of the player
-	double	planeX;
-	double	planeY;
-}				t_player;
-
-
 typedef struct s_map {
 	char *no_texture;
 	char *ea_texture;
@@ -133,7 +130,26 @@ typedef struct s_map {
 	//constant speed no matter how long the calculation of the frames takes), and for the frames per second (FPS) counter.
 	double	time; // time of current frame
 	double	oldTime; // time of previous frame
+	int		current_col;
 }				t_map;
+
+typedef struct s_player {
+	// represent the position vector of the player
+	double	posX;
+	double	posY;
+	// initial direction vector (-1 left; 0 straight; 1 right)
+	double	dirX;
+	double	dirY;
+	// plane vector determines the FOV of the player
+	double	planeX;
+	double	planeY;
+	t_mlx	*mlx;
+	t_map	*map;
+	t_img	*img;
+	t_ray	*ray;
+	t_draw	*draw;
+	t_text	*text;
+}				t_player;
 
 //initial config
 void	set_map_values(t_map *map); //fictional values
@@ -141,20 +157,20 @@ void	set_player_values(t_player *player);
 void	file_config(t_map *map, t_player *player);
 
 //raycasting functions
-void	ft_ray_position_direction(t_map *map, t_player *player, t_ray *ray, int i);
-void	ray_map_coordinates(t_ray *ray, t_player *player);
-void	ft_calculate_delta_distance(t_ray *ray);
-void	ft_calculate_side_distance(t_ray *ray, t_player *player);
-void	dda_algorithm(t_map *map, t_ray *ray);
-void	ft_calculate_perpDistance(t_ray *ray);
-void	ft_calculate_texture_x_coordinate(t_ray *ray, t_player *player);
+void	ft_ray_position_direction(t_player *p);
+void	ray_map_coordinates(t_player *p);
+void	ft_calculate_delta_distance(t_player *p);
+void	ft_calculate_side_distance(t_player *p);
+void	dda_algorithm(t_player *p);
+void	ft_calculate_perpDistance(t_player *p);
+void	ft_calculate_texture_x_coordinate(t_player *p);
 
 
 //drawing functions
-void	ft_calculate_drawValues(t_ray *ray, t_draw *draw);
-void	init_new_img(t_img *img, t_mlx *mlx);
-void	ft_paint_pixels(t_img *img, t_ray *ray, t_draw *draw, t_text *text, int x);
-void	my_img_pixel_put(t_img *img, int x, int y, int color);
+void	ft_calculate_drawValues(t_player *p);
+void	init_new_img(t_player *p);
+void	ft_paint_pixels(t_player *p);
+void	my_img_pixel_put(t_player *p, int x, int y, int color);
 
 
 //mlx functions
@@ -167,5 +183,9 @@ int		create_trgb(int t, int r, int g, int b);
 int		xpm_parser(t_mlx *mlx, t_map *map, t_text *text);
 
 void	print_values(t_ray *ray, t_draw *draw);
+
+int		ft_hook(t_player *player);
+void	raycasting_loop(t_player *p);
+
 
 #endif

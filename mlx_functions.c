@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 12:44:17 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/02 18:06:29 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/17 17:20:13 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,17 @@
 #include "cub3d.h"
 #include <stdio.h>
 
-void	my_img_pixel_put(t_img *img, int x, int y, int color)
+void	my_img_pixel_put(t_player *p, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+	dst = p->img->addr + (y * p->img->line_length + x * (p->img->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
 }
-/*
-void	ft_paint_pixel(t_img *img, t_mlx *mlx, int x, int y, int color)
-{
-	my_img_pixel_put(img, 5, 5, 16711680);
-	mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, img->img, 0, 0);
-}
-*/
-void	init_new_img(t_img *img, t_mlx *mlx)
+
+void	init_new_img(t_player *p)
 {	
-	img->img = mlx_new_image(mlx->mlx, WIN_WIDTH, WIN_HEIGHT);
-	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->line_length,
-								&img->endian);
+	p->img->img = mlx_new_image(p->mlx->mlx, WIN_WIDTH, WIN_HEIGHT);
+	p->img->addr = mlx_get_data_addr(p->img->img, &p->img->bits_per_pixel, &p->img->line_length,
+								&p->img->endian);
 }

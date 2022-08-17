@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/07 14:48:20 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/17 17:21:41 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int clear_window(t_mlx *mlx, t_img *img)
 int main(int argc, char **argv)
 {
 	t_map map;
-	t_player player;
+	t_player p;
 	t_ray	ray;
 	t_mlx	mlx;
 	t_text	text;
@@ -33,38 +33,33 @@ int main(int argc, char **argv)
 	int i;
 	
 	ft_memset(&map, 0, sizeof(t_map));
-	ft_memset(&player, 0, sizeof(t_player));
+	ft_memset(&p, 0, sizeof(t_player));
 	ft_memset(&ray, 0, sizeof(t_ray));
 	ft_memset(&mlx, 0, sizeof(t_mlx));
 	ft_memset(&text, 0, sizeof(t_text));
 	ft_memset(&img, 0, sizeof(t_img));
 	ft_memset(&draw, 0, sizeof(t_draw));
-	file_config(&map, &player);
+	file_config(&map, &p);
+	p.mlx = &mlx;
+	p.map = &map;
+	p.img = &img;
+	p.ray = &ray;
+	p.draw = &draw;
+	p.text = &text;
 	mlx.mlx = mlx_init();
 	if (xpm_parser(&mlx, &map, &text))
 		return (1);
 	mlx.mlx_win = mlx_new_window(mlx.mlx, WIN_WIDTH, WIN_HEIGHT, GAME_TITLE);
-	i = -1;
-	//while (1)
-	//{
-		//raycasting loop
-		init_new_img(&img, &mlx);
-		while (++i < WIN_WIDTH)
-		{
-			ft_ray_position_direction(&map, &player, &ray, i);
-			ray_map_coordinates(&ray, &player);
-			ft_calculate_delta_distance(&ray);
-			ft_calculate_side_distance(&ray, &player);
-			dda_algorithm(&map, &ray);
-			ft_calculate_perpDistance(&ray);
-			ft_calculate_drawValues(&ray, &draw);
-			ft_calculate_texture_x_coordinate(&ray, &player);
-			ft_paint_pixels(&img, &ray, &draw, &text, i);
-		}
-		mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, img.img, 0, 0);
-	//}
+	map.current_col = -1;
+	//raycasting loop
+	init_new_img(&p);
+	while (++map.current_col < WIN_WIDTH)
+	{
+		raycasting_loop(&p);
+		printf("current col: %d\n", map.current_col);
+	}
 	//clear_window(&mlx, &img);
+	ft_hook(&p);
 	mlx_loop(mlx.mlx);
-
 	return (0);
 }
