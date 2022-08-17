@@ -6,14 +6,16 @@
 #    By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 16:17:30 by ikgonzal          #+#    #+#              #
-#    Updated: 2022/08/16 21:18:13 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/08/17 17:50:52 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =	Cub3d
 
 CC = gcc
+
 FLAGS =	-Wall -Wextra -Werror -g3
+
 S = -fsanitize=address
 
 SRC  =	main.c \
@@ -29,11 +31,12 @@ SRC  =	main.c \
 LIB = Libft/libft.a
 
 LIBFT = -Llibft -lft
+
 MLX = -Lmlx -lmlx
 
 OBJ = $(SRC:.c=.o)
 
-.c.o: $(SRCS)
+.c.o: $(SRC)
 	@$(CC) $(FLAGS) -c -o $@ $<
 
 all : $(NAME)

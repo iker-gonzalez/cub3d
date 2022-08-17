@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/16 19:45:20 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/17 18:49:43 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,6 @@
 #include <stdio.h>
 #include "gnl/get_next_line.h"
 #include "libft/libft.h"
-
-/* void	ft_sizelines(t_tmp *tmp) */
-/* { */
-/* 	if (tmp->max_x < ft_strlen(tmp->ln)) */
-/* 			tmp->max_x = ft_strlen(tmp->ln); */
-/* } */
 
 void	ft_free(char **premap)
 {

@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:13:56 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/16 21:17:45 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/17 18:49:57 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	ft_walls_cases(t_tmp *tmp, int i, int j)
 	(tmp->map[tmp->y - 9][j] != '\n'))
 		ft_print_error(5, tmp);
 }	
-
 
 void	ft_check_walls(t_tmp *tmp)
 {
@@ -91,4 +90,3 @@ void	ft_check_mapchars(t_tmp *tmp)
 	ft_check_player(tmp);
 	ft_check_walls(tmp);
 }
-
