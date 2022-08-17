@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/17 18:57:18 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/17 19:13:28 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,6 +193,7 @@ void	set_structs(t_player *p, t_img *img, t_ray *ray, t_draw *draw);
 //moves
 void	ft_move_up(t_player *player);
 void	ft_move_down(t_player *player);
+void	ft_move_right(t_player *player);
 
 
 
