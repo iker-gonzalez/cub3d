@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:53:28 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/18 18:04:28 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/18 18:58:00 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_move_up(t_player *player)
 {
+	printf("pepe parriba");
 	player->map->render = 0;
 	if(player->map->map_content[(int)(player->posX + player->dirX) /* *moveSpeed */][(int)(player->posY)] == 48)
 	{
@@ -62,11 +63,11 @@ void	ft_move_right(t_player *player)
 {
 	//both camera direction and camera plane must be rotated
 	double oldDirX = player->dirX;
-	player->dirX = -player->dirX /* * cos(-rotSpeed) */ + player->dirY /* * sin(-rotSpeed) */;
-	player->dirY = -oldDirX /* * sin(-rotSpeed)*/ - player->dirY /* * cos(-rotSpeed)*/;
+	player->dirX = player->dirX * cos(-1) - player->dirY * sin(-1);
+	player->dirY = oldDirX * sin(-1) + player->dirY * cos(-1);
 	double oldPlaneX = player->planeX;
-	player->planeX = -player->planeX /* * cos(-rotSpeed) */ + player->planeY  /* * sin(-rotSpeed) */;
-	player->planeY = -oldPlaneX /* * sin(-rotSpeed) */ - player->planeY /* * cos(-rotSpeed) */;
+	player->planeX = player->planeX * cos(-1) - player->planeY * sin(-1);
+	player->planeY = oldPlaneX * sin(-1) + player->planeY * cos(-1);
 	/*----------------*/
 	player->map->current_col = 0;
 	init_new_img(player);
@@ -78,11 +79,11 @@ void	ft_move_left(t_player *player)
 {
 	//both camera direction and camera plane must be rotated
 	double oldDirX = player->dirX;
-	player->dirX = player->dirX /* * cos(-rotSpeed) */ - player->dirY /* * sin(-rotSpeed) */;
-	player->dirY = oldDirX /* * sin(-rotSpeed)*/ + player->dirY /* * cos(-rotSpeed)*/;
+	player->dirX = player->dirX * cos(1) - player->dirY * sin(1);
+	player->dirY = oldDirX * sin(1) + player->dirY * cos(1);
 	double oldPlaneX = player->planeX;
-	player->planeX = player->planeX /* * cos(-rotSpeed) */ - player->planeY  /* * sin(-rotSpeed) */;
-	player->planeY = oldPlaneX /* * sin(-rotSpeed) */ + player->planeY /* * cos(-rotSpeed) */;
+	player->planeX = player->planeX * cos(1) - player->planeY * sin(1);
+	player->planeY = oldPlaneX * sin(1) + player->planeY * cos(1);
 	/*----------------*/
 	player->map->current_col = 0;
 	init_new_img(player);
