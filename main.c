@@ -6,13 +6,11 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/17 20:34:27 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/19 19:40:27 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include <fcntl.h>
-#include <stdio.h>
 #include "gnl/get_next_line.h"
 #include "libft/libft.h"
 
@@ -79,7 +77,8 @@ int	main(int argc, char **argv)
 	else
 		ft_get_y(&tmp);
 	ft_premap(argv[1], &tmp);
-	ft_print_map(tmp.map);
+	ft_header(tmp.premap);
+	ft_print_map(tmp.premap);
 	ft_free(tmp.premap);
 	ft_free(tmp.map);
 	return (1);

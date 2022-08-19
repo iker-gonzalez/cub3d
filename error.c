@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:06:42 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/17 20:38:11 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/19 20:14:37 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	ft_print_error(int errno, t_tmp *tmp)
 		printf("Error:\nMap not properly closed\n");
 	if (errno == 6)
 		printf("Error:\nWrong number of players\n");
+	if (errno == 7)
+		printf("Error:\nBad formatted headers\n");
 	if (tmp->ln)
 		free(tmp->ln);
 	if (tmp->premap)

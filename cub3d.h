@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/16 21:19:32 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/19 19:37:21 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,7 @@ void	ft_get_y(t_tmp *tmp);
 int		ft_isstrprint(t_tmp *tmp);
 int		ft_isstrspace(t_tmp *tmp);
 int		ft_check_fchars(t_tmp *tmp);
-/* void	ft_print_premap(t_tmp *tmp); */
 void	ft_print_map(char **map);
-/* void	ft_print_map(t_tmp *tmp); */
 void	ft_extract_map(t_tmp *tmp);
 int		ft_fchar(char *line);
 int		ft_isspace(char *line);
@@ -62,5 +60,6 @@ void	ft_check_mapchars(t_tmp *tmp);
 void	ft_check_walls(t_tmp *tmp);
 void	ft_walls_cases(t_tmp *tmp, int i, int j);
 void	ft_check_player(t_tmp *tmp);
+void	ft_headers(t_tmp *tmp);
 
 #endif

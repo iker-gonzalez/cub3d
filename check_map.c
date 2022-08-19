@@ -6,13 +6,11 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:13:56 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/17 18:49:57 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/19 19:40:07 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include <fcntl.h>
-#include <stdio.h>
 
 void	ft_walls_cases(t_tmp *tmp, int i, int j)
 {

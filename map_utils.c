@@ -6,12 +6,11 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 20:34:02 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/17 19:53:46 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/19 19:39:42 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include <fcntl.h>
 
 void	ft_check_player(t_tmp *tmp)
 {
