@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/19 19:37:21 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/20 19:51:03 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ typedef struct s_tmp{
 	char	*ln;
 	char	**premap;
 	char	**map;
+	char	*no_path;
+	char	*so_path;
+	char	*ea_path;
+	char	*we_path;
+	char	*f_val;
+	char	*c_val;
 	char	player;
 }	t_tmp;
 
