@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/20 19:51:03 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/21 20:54:25 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define WE_TEXTURE 3
 
 # include <stdlib.h>
+# include <stdio.h>
 
 typedef struct s_tmp{
 	int		y;
@@ -26,6 +27,7 @@ typedef struct s_tmp{
 	int		fd;
 	int		pos;
 	int		spaces;
+	int		map_y;
 	char	*ln;
 	char	**premap;
 	char	**map;

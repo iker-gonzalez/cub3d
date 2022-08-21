@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 20:34:02 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/19 19:39:42 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/21 20:25:08 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_check_player(t_tmp *tmp)
 	int			k;
 	static int	o;
 
-	set = "NSWO";
+	set = "NSWE";
 	while (tmp->map[++i] != NULL)
 	{
 		j = -1;
@@ -63,13 +63,12 @@ void	ft_extract_map(t_tmp *tmp)
 	while (tmp->premap[y] != NULL)
 	{
 		tmp->map[i] = (char *)malloc((tmp->max_x + 1) * sizeof(char));
-		x = 0;
-		while (x < tmp->max_x)
+		x = -1;
+		while (++x < tmp->max_x)
 		{
 			tmp->map[i][x] = tmp->premap[y][x];
 			if (tmp->premap[y][x] == '\n' && x < tmp->max_x)
 				x = ft_fill_blanks(x, i, tmp);
-			x++;
 		}
 		tmp->map[i][x - 1] = '\n';
 		tmp->map[i][x] = '\0';
@@ -77,5 +76,6 @@ void	ft_extract_map(t_tmp *tmp)
 		i++;
 	}
 	tmp->map[i] = NULL;
+	tmp->map_y = i - 1;
 	ft_check_mapchars(tmp);
 }

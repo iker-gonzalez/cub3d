@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:06:42 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/19 20:14:37 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/21 21:11:09 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,10 @@ int	ft_check_extension(char *file)
 int	ft_print_error(int errno, t_tmp *tmp)
 {
 	if (errno == 1)
+	{
 		printf("Error:\nWrong number of arguments\n");
+		exit (1);
+	}
 	if (errno == 2)
 		printf("Error:\nNot Allowed Line First Char or Map Position\n");
 	if (errno == 3)

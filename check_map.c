@@ -6,11 +6,12 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:13:56 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/19 19:40:07 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/21 21:05:26 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include <stdio.h>
 
 void	ft_walls_cases(t_tmp *tmp, int i, int j)
 {
@@ -31,10 +32,13 @@ void	ft_walls_cases(t_tmp *tmp, int i, int j)
 	((tmp->map[i + 1][j] != '1') && (tmp->map[i + 1][j] != tmp->player) &&
 	(tmp->map[i + 1][j] != '0')))
 		ft_print_error(5, tmp);
-	if ((tmp->map[tmp->y - 9][j] != '1') && (tmp->map[tmp->y - 9][j] != ' ') &&
-	(tmp->map[tmp->y - 9][j] != '\n'))
+	if ((tmp->map[tmp->map_y][j] != '1') && (tmp->map[tmp->map_y][j] != ' ') &&
+	(tmp->map[tmp->map_y][j] != '\n') && (tmp->map[tmp->map_y][j] != '\0'))
 		ft_print_error(5, tmp);
 }	
+
+		/* printf("%s\n", tmp->map[tmp->map_y]); */
+		/* printf("%d\n", tmp->map_y); */
 
 void	ft_check_walls(t_tmp *tmp)
 {
@@ -81,10 +85,12 @@ void	ft_check_mapchars(t_tmp *tmp)
 				if (set[k] == tmp->map[i][j] || tmp->map[i][j] == '\n')
 					break ;
 			}
-			if (k > 6)
+			if (k > 7)
+				/* printf("%d\n", k); */
 				ft_print_error(4, tmp);
 		}
 	}
 	ft_check_player(tmp);
 	ft_check_walls(tmp);
 }
+

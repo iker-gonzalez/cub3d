@@ -6,12 +6,13 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 19:28:12 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/19 19:37:42 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/21 20:56:36 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "libft/libft.h"
+#include <stdio.h>
 
 int	ft_isstrprint(t_tmp *tmp)
 {
@@ -106,9 +107,12 @@ int	ft_check_fchars(t_tmp *tmp)
 		j++;
 	}
 	tmp->pos = order;
-	if (j >= 7 || (tmp->y <= 6 && tmp->pos != 0))
+	if (j >= 7 || (tmp->y < 6 && tmp->pos != 0))
 		ft_print_error(2, tmp);
 	return (1);
 }
 	/* if (order == 1) */
 	/* 	ft_lchar(tmp->ln, tmp); */
+		/* printf("J => %d\n", j); */
+		/* printf("Y => %d\n", tmp->y); */
+		/* printf("Pos => %d\n", tmp->pos); */

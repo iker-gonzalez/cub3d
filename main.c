@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/20 19:52:23 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/21 21:22:01 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	ft_premap(char *map, t_tmp *tmp)
 		tmp->premap[j] = ft_strdup(tmp->ln);
 		j++;
 		free(tmp->ln);
+		printf("J ------ %d\n", j);
 	}
 	tmp->premap[j] = NULL;
 	ft_extract_map(tmp);
@@ -58,17 +59,23 @@ void	ft_premap(char *map, t_tmp *tmp)
 	/* ft_print_premap(tmp); */
 		/* ft_sizelines(tmp); */
 
+void	ft_init_tmp(t_tmp *tmp)
+{
+	tmp->premap = NULL;
+	tmp->map = NULL;
+	tmp->y = 0;
+	tmp->x = 0;
+	tmp->max_x = 0;
+	tmp->map_y = 0;
+	tmp->pos = 0;
+	tmp->ln = " ";
+}
+
 int	main(int argc, char **argv)
 {
 	t_tmp	tmp;
 
-	tmp.premap = NULL;
-	tmp.map = NULL;
-	tmp.y = 0;
-	tmp.x = 0;
-	tmp.max_x = 0;
-	tmp.pos = 0;
-	tmp.ln = " ";
+	ft_init_tmp(&tmp);
 	tmp.fd = open(argv[1], O_RDONLY);
 	if (argc != 2 || tmp.fd == -1)
 		ft_print_error(1, &tmp);
@@ -79,8 +86,10 @@ int	main(int argc, char **argv)
 	ft_premap(argv[1], &tmp);
 	ft_headers(&tmp);
 	ft_print_map(tmp.premap);
-	ft_free(tmp.premap);
-	ft_free(tmp.map);
+	if (tmp.premap != NULL)
+		ft_free(tmp.premap);
+	if (tmp.map != NULL)
+		ft_free(tmp.map);
 	return (1);
 }
 	/* printf("MAX---%zu\n", tmp.max_x); */
