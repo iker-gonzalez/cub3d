@@ -6,21 +6,28 @@
 #    By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 16:17:30 by ikgonzal          #+#    #+#              #
-#    Updated: 2022/08/17 18:55:47 by ikgonzal         ###   ########.fr        #
+#    Updated: 2022/08/22 20:10:25 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =	cub3D
 
-CC = gcc
-
-FLAGS =	-Wall -Wextra -Werror -fsanitize=address -g3
-
 MLX_FLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit 
 
-SANITIZER = -fsanitize=address -g3
+CC = gcc
+
+FLAGS =	-Wall -Wextra -Werror -g3
+
+S = -fsanitize=address
 
 SRC  =	main.c \
+		error.c \
+		gets.c \
+		checkutils.c \
+		print_utils.c \
+		map_utils.c \
+		map_header.c \
+		check_map.c \
 		gnl/get_next_line.c \
 		gnl/get_next_line_utils.c \
 		config.c \
@@ -34,18 +41,32 @@ SRC  =	main.c \
 
 LIB = Libft/libft.a
 
+LIBFT = -Llibft -lft
+
 OBJ = $(SRC:.c=.o)
+
+.c.o: $(SRC)
+	@$(CC) $(FLAGS) -c -o $@ $<
 
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	@$(MAKE) -s -C ./libft
-	@$(MAKE) -s -C ./libft bonus
+	@$(MAKE) -C ./libft
+	@$(MAKE) -C ./libft bonus
 	@ echo "libft compiled 🔋"
-	@$(MAKE) -s -C ./mlx
+	@$(MAKE) -Wno -C ./minilibx
 	@ echo "mlx compiled 📇"
-	$(CC) $(FLAGS) $(LIB) $(OBJ) $(MLX_FLAGS) $(SANITIZER) -o $(NAME)
+	$(CC) $(FLAGS) $(LIB) $(OBJ) $(MLX_FLAGS) -o $(NAME)
 	@ echo "cub3d compiled 🧊"
+
+san : $(OBJ)
+	@$(MAKE) -C ./libft
+	@$(MAKE) -C ./libft bonus
+	@ echo "libft compiled 🔋"
+	@$(MAKE) -Wno -C ./minilibx
+	@ echo "minilibx compiled 📇"
+	$(CC) $(FLAGS) $(LIB) $(S) $(OBJ) $(MLX_FLAGS) -o $(NAME)
+	@ echo "cub3d sanitized 🧊"
 
 clean:
 	@ rm -rf cub3d

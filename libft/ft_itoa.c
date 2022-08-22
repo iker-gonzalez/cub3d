@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 17:41:39 by ikgonzal          #+#    #+#             */
-/*   Updated: 2021/07/15 17:47:03 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/13 19:01:07 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,11 @@ char	*fill_str(long num, char *tmp, int j)
 
 char	*ft_itoa(int n)
 {
-	int		i;
-	int		j;
+	int	j;
 	long	num;
 	char	*tmp;
 
 	num = (long)n;
-	i = 0;
 	j = ft_count(num);
 	tmp = malloc (sizeof(char) * j + 1);
 	if (tmp == NULL)

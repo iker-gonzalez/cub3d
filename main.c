@@ -3,60 +3,93 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
+/*   By: ingonzal <ingonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/17 18:33:28 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/22 19:42:18 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "gnl/get_next_line.h"
+#include "libft/libft.h"
 
-int clear_window(t_mlx *mlx, t_img *img)
+void	ft_free(char **premap)
 {
-	if (img->img)
-		mlx_destroy_image(mlx->mlx, img->img);
-	if (mlx->mlx && mlx->mlx_win)
-		mlx_destroy_window(mlx->mlx, mlx->mlx_win);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (premap[i] != NULL)
+	{
+		free(premap[i]);
+		i++;
+	}
+	free(premap);
+	premap = NULL;
+}	
+
+void	ft_premap(char *map, t_tmp *tmp)
+{
+	int		j;
+
+	tmp->fd = open(map, O_RDONLY);
+	tmp->premap = (char **)malloc((tmp->y + 1) * sizeof(char *));
+	j = 0;
+	while (j < (tmp->y))
+	{
+		tmp->ln = get_next_line(tmp->fd);
+		if (tmp->ln == NULL)
+			break ;
+		if ((tmp->ln[0] == '\n') || (tmp->ln && ft_isspace(tmp->ln)))
+		{
+			free(tmp->ln);
+			continue ;
+		}
+		if (tmp->max_x < ft_strlen(tmp->ln))
+			tmp->max_x = ft_strlen(tmp->ln);
+		tmp->premap[j] = ft_strdup(tmp->ln);
+		j++;
+		free(tmp->ln);
+		printf("J ------ %d\n", j);
+	}
+	tmp->premap[j] = NULL;
+	ft_extract_map(tmp);
+	close(tmp->fd);
+}
+	/* ft_print_premap(tmp); */
+		/* ft_sizelines(tmp); */
+
+void	ft_init_tmp(t_tmp *tmp)
+{
+	tmp->premap = NULL;
+	tmp->map = NULL;
+	tmp->y = 0;
+	tmp->x = 0;
+	tmp->max_x = 0;
+	tmp->map_y = 0;
+	tmp->pos = 0;
+	tmp->ln = " ";
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_map map;
-	t_player p;
-	t_ray	ray;
-	t_mlx	mlx;
-	t_text	text;
-	t_img img;
-	t_draw draw;
-	int i;
-	
-	ft_memset(&map, 0, sizeof(t_map));
-	ft_memset(&p, 0, sizeof(t_player));
-	ft_memset(&ray, 0, sizeof(t_ray));
-	ft_memset(&mlx, 0, sizeof(t_mlx));
-	ft_memset(&text, 0, sizeof(t_text));
-	ft_memset(&img, 0, sizeof(t_img));
-	ft_memset(&draw, 0, sizeof(t_draw));
-	file_config(&map, &p);
-	p.mlx = &mlx;
-	p.map = &map;
-	p.img = &img;
-	p.ray = &ray;
-	p.draw = &draw;
-	p.text = &text;
-	mlx.mlx = mlx_init();
-	if (xpm_parser(&mlx, &map, &text))
-		return (1);
-	mlx.mlx_win = mlx_new_window(mlx.mlx, WIN_WIDTH, WIN_HEIGHT, GAME_TITLE);
-	map.current_col = -1;
-	//raycasting loop
-	init_new_img(&p);
-	raycasting_loop(&p);
-	//printf("current col: %d\n", map.current_col);
-	//clear_window(&mlx, &img);
-	ft_hook(&p);
-	mlx_loop(mlx.mlx);
-	return (0);
+	t_tmp	tmp;
+
+	ft_init_tmp(&tmp);
+	tmp.fd = open(argv[1], O_RDONLY);
+	if (argc != 2 || tmp.fd == -1)
+		ft_print_error(1, &tmp);
+	if (!ft_check_extension(argv[1]))
+		return (0);
+	else
+		ft_get_y(&tmp);
+	ft_premap(argv[1], &tmp);
+	ft_headers(&tmp);
+	ft_print_map(tmp.premap);
+	if (tmp.premap != NULL)
+		ft_free(tmp.premap);
+	if (tmp.map != NULL)
+		ft_free(tmp.map);
+	return (1);
 }
+	/* printf("MAX---%zu\n", tmp.max_x); */
