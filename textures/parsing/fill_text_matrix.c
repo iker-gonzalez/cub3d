@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 18:18:41 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/02 17:19:48 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/22 20:53:27 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	ft_extract_colors_nb(char *line, t_text *text, int end)
 void	ft_skip_to_color_nb(char *line, t_text *text)
 {
 	int start;
-	char	*nb;
 	int end;
 
 	start = 0;
@@ -82,8 +81,6 @@ int	ft_hex_to_int(char *color)
 {
 	int i;
 	char *hex;
-	int	value;
-	int result;
 
 	i = 0;
 	while (color[i] != '#' || i < 2)
@@ -111,7 +108,7 @@ void	ft_parse_pixel_column(t_text *text, int col, int text_nb)
 	}
 }
 
-void	ft_fill_pixels(t_map *map, t_text *text, int text_nb, int fd)
+void	ft_fill_pixels(t_text *text, int text_nb)
 {
 	int		col;
 
@@ -126,10 +123,9 @@ void	ft_fill_pixels(t_map *map, t_text *text, int text_nb, int fd)
 	
 }
 
-void	ft_create_pixels_array(t_map *map, t_text *text, int text_nb, int fd)
+void	ft_create_pixels_array(t_text *text, int fd)
 {
 	char	*line;
-	int		col;
 	int		row;
 
 	text->pixels_map = (char **)malloc(sizeof(char *) * (text->rows + 1));
@@ -145,7 +141,7 @@ void	ft_create_pixels_array(t_map *map, t_text *text, int text_nb, int fd)
 	text->pixels_map[row] = NULL;
 }
 
-void	ft_fill_colors(t_map *map, t_text *text, int text_nb, int fd)
+void	ft_fill_colors(t_text *text, int fd)
 {
 	int end_row;
 	int i;
@@ -165,11 +161,11 @@ void	ft_fill_colors(t_map *map, t_text *text, int text_nb, int fd)
 		i++;
 		row++;
 	}
-	ft_create_pixels_array(map, text, text_nb, fd);
-	ft_fill_pixels(map, text, text_nb, fd);
+	ft_create_pixels_array(text, fd);
+	ft_fill_pixels(text, fd);
 }
 
-void	parse_xpm(char *texture_path, t_map *map, t_text *text, int text_nb)
+void	parse_xpm(char *texture_path, t_text *text)
 {
 	int fd;
 	char *line;
@@ -190,7 +186,7 @@ void	parse_xpm(char *texture_path, t_map *map, t_text *text, int text_nb)
 		i++;
 	}
 	ft_skip_to_color_nb(line, text);
-	ft_fill_colors(map, text, text_nb, fd);
+	ft_fill_colors(text, fd);
 }
 
 int	ft_validate_xpm(char *path, void *mlx, t_text *text)
@@ -212,19 +208,19 @@ int	xpm_parser(t_mlx *mlx, t_map *map, t_text *text)
 	if (ft_validate_xpm(map->no_texture, mlx->mlx, text))
 		return (1);
 	else
-		parse_xpm(map->no_texture, map, text, NO_TEXTURE);
+		parse_xpm(map->no_texture, text);
 
 	if (ft_validate_xpm(map->ea_texture, mlx->mlx, text))
 		return (1);
 	else
-		parse_xpm(map->ea_texture, map, text, EA_TEXTURE);	
+		parse_xpm(map->ea_texture, text);	
 	if (ft_validate_xpm(map->so_texture, mlx->mlx, text))
 		return (1);
 	else
-		parse_xpm(map->so_texture, map, text, SO_TEXTURE);
+		parse_xpm(map->so_texture, text);
 	if (ft_validate_xpm(map->we_texture, mlx->mlx, text))
 		return (1);
 	else
-		parse_xpm(map->we_texture, map, text, WE_TEXTURE);
+		parse_xpm(map->we_texture, text);
 	return (0);
 }

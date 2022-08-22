@@ -6,7 +6,7 @@
 #    By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 16:17:30 by ikgonzal          #+#    #+#              #
-#    Updated: 2022/08/22 20:10:25 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/08/22 20:53:57 by ikgonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ FLAGS =	-Wall -Wextra -Werror -g3
 
 S = -fsanitize=address
 
-SRC  =	main.c \
+SRC  =	ikermain.c \
 		error.c \
 		gets.c \
 		checkutils.c \
@@ -54,7 +54,7 @@ $(NAME) : $(OBJ)
 	@$(MAKE) -C ./libft
 	@$(MAKE) -C ./libft bonus
 	@ echo "libft compiled 🔋"
-	@$(MAKE) -Wno -C ./minilibx
+	@$(MAKE) -Wno -C ./mlx
 	@ echo "mlx compiled 📇"
 	$(CC) $(FLAGS) $(LIB) $(OBJ) $(MLX_FLAGS) -o $(NAME)
 	@ echo "cub3d compiled 🧊"
@@ -63,7 +63,7 @@ san : $(OBJ)
 	@$(MAKE) -C ./libft
 	@$(MAKE) -C ./libft bonus
 	@ echo "libft compiled 🔋"
-	@$(MAKE) -Wno -C ./minilibx
+	@$(MAKE) -Wno -C ./mlx
 	@ echo "minilibx compiled 📇"
 	$(CC) $(FLAGS) $(LIB) $(S) $(OBJ) $(MLX_FLAGS) -o $(NAME)
 	@ echo "cub3d sanitized 🧊"

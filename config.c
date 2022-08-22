@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 18:05:30 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/18 18:27:18 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/22 20:58:20 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	set_map_values(t_map *map)
 		i = 0;
 		line = get_next_line(fd);
 		map->map_content[row] = malloc(sizeof(char) * (ft_strlen(line + 1)));
-		while (col < ft_strlen(line))
+		while (col < (int)ft_strlen(line))
 		{
 			map->map_content[row][col] = line[i];
 			i++;
@@ -76,7 +76,7 @@ void	set_map_values(t_map *map)
 		}
 		row++;
 	}
-	print_map(map);
+	//print_map(map);
 	map->time = 0;
 	map->oldTime = 0;
 }
@@ -116,3 +116,17 @@ void	set_structs(t_player *p, t_img *img, t_ray *ray, t_draw *draw)
 	p->ray = ray;
 	p->draw = draw;
 }
+
+void	ft_free(char **premap)
+{
+	int	i;
+
+	i = 0;
+	while (premap[i] != NULL)
+	{
+		free(premap[i]);
+		i++;
+	}
+	free(premap);
+	premap = NULL;
+}	
