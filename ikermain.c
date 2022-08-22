@@ -12,7 +12,7 @@ int clear_window(t_mlx *mlx, t_img *img)
 	return (0);
 }
 
-int main(int argc, char **argv)
+int main()
 {
 	t_map map;
 	t_player p;
@@ -21,7 +21,6 @@ int main(int argc, char **argv)
 	t_text	text;
 	t_img img;
 	t_draw draw;
-	int i;
 	
 	ft_memset(&map, 0, sizeof(t_map));
 	ft_memset(&p, 0, sizeof(t_player));

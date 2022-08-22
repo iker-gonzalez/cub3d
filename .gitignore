@@ -59,5 +59,6 @@ a.out
 *.a
 *.o
 *.replace
-Cub3d
+cub3D
 prueba*
+ikermain.c
