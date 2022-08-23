@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 18:18:41 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/22 20:53:27 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/23 18:06:19 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ void	ft_create_pixels_array(t_text *text, int fd)
 	text->pixels_map[row] = NULL;
 }
 
-void	ft_fill_colors(t_text *text, int fd)
+void	ft_fill_colors(t_text *text, int text_nb, int fd)
 {
 	int end_row;
 	int i;
@@ -162,10 +162,10 @@ void	ft_fill_colors(t_text *text, int fd)
 		row++;
 	}
 	ft_create_pixels_array(text, fd);
-	ft_fill_pixels(text, fd);
+	ft_fill_pixels(text, text_nb);
 }
 
-void	parse_xpm(char *texture_path, t_text *text)
+void	parse_xpm(char *texture_path, t_text *text, int text_nb)
 {
 	int fd;
 	char *line;
@@ -186,7 +186,7 @@ void	parse_xpm(char *texture_path, t_text *text)
 		i++;
 	}
 	ft_skip_to_color_nb(line, text);
-	ft_fill_colors(text, fd);
+	ft_fill_colors(text, text_nb, fd);
 }
 
 int	ft_validate_xpm(char *path, void *mlx, t_text *text)
@@ -208,19 +208,19 @@ int	xpm_parser(t_mlx *mlx, t_map *map, t_text *text)
 	if (ft_validate_xpm(map->no_texture, mlx->mlx, text))
 		return (1);
 	else
-		parse_xpm(map->no_texture, text);
+		parse_xpm(map->no_texture, text, NO_TEXTURE);
 
 	if (ft_validate_xpm(map->ea_texture, mlx->mlx, text))
 		return (1);
 	else
-		parse_xpm(map->ea_texture, text);	
+		parse_xpm(map->ea_texture, text, EA_TEXTURE);	
 	if (ft_validate_xpm(map->so_texture, mlx->mlx, text))
 		return (1);
 	else
-		parse_xpm(map->so_texture, text);
+		parse_xpm(map->so_texture, text, SO_TEXTURE);
 	if (ft_validate_xpm(map->we_texture, mlx->mlx, text))
 		return (1);
 	else
-		parse_xpm(map->we_texture, text);
+		parse_xpm(map->we_texture, text, WE_TEXTURE);
 	return (0);
 }

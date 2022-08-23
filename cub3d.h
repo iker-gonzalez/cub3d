@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/22 20:44:20 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/23 17:57:01 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@
 # define WIN_WIDTH 640
 # define WIN_HEIGHT 480
 
-# define NO_TEXTURE 1
-# define EA_TEXTURE 2
-# define SO_TEXTURE 3
-# define WE_TEXTURE 4
+# define NO_TEXTURE 0
+# define EA_TEXTURE 1
+# define SO_TEXTURE 2
+# define WE_TEXTURE 3
 
 # define ESC_KEY_MAC 53
 # define LEFT_ARR_MAC 123
