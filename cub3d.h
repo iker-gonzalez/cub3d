@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/23 17:57:01 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/23 18:50:10 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,7 @@ typedef struct s_map {
 	double	oldTime; // time of previous frame
 	int		current_col;
 	int		render;
+	int		render_2;
 }				t_map;
 
 typedef struct s_player {

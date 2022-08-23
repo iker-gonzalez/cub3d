@@ -30,6 +30,7 @@ int main()
 	ft_memset(&img, 0, sizeof(t_img));
 	ft_memset(&draw, 0, sizeof(t_draw));
 	file_config(&map, &p);
+	map.render_2 = 0;
 	p.mlx = &mlx;
 	p.map = &map;
 	p.img = &img;
