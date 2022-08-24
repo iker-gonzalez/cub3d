@@ -49,6 +49,7 @@ int main()
 	//printf("current col: %d\n", map.current_col);
 	//clear_window(&mlx, &img);
 	ft_hook(&p);
+	mlx_loop_hook(mlx.mlx, raycasting_loop, &p);
 	mlx_loop(mlx.mlx);
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 16:17:30 by ikgonzal          #+#    #+#              #
-#    Updated: 2022/08/22 20:53:57 by ikgonzal         ###   ########.fr        #
+#    Updated: 2022/08/24 19:20:09 by ikgonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME =	cub3D
 
 MLX_FLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit 
 
-CC = gcc
+CC = gcc -O2
 
 FLAGS =	-Wall -Wextra -Werror -g3
 

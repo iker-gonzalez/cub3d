@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:53:28 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/24 17:35:45 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/24 19:15:12 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	ft_move_up(t_player *player)
 		player->map->render += 1;
 		player->posY += player->dirY * moveSpeed;
 	}
-	if (player->map->render == 2)
+	/*if (player->map->render == 2)
 	{
-		player->map->current_col = 0;
+		//player->map->current_col = 0;
 		//init_new_img(player);
-		raycasting_loop(player);
-	}
+		//raycasting_loop(player);
+	}*/
 }
 
 void	ft_move_down(t_player *player)
@@ -54,12 +54,12 @@ void	ft_move_down(t_player *player)
 		player->map->render += 1;
 		player->posY -= player->dirY * moveSpeed;
 	}
-	if (player->map->render == 2)
+	/*if (player->map->render == 2)
 	{
-		player->map->current_col = 0;
+		//player->map->current_col = 0;
 		//init_new_img(player);
-		raycasting_loop(player);
-	}
+		//raycasting_loop(player);
+	}*/
 }
 
 void	ft_move_right(t_player *player)
@@ -72,9 +72,9 @@ void	ft_move_right(t_player *player)
 	player->planeX = player->planeX * TURN_RIGHT_COS - player->planeY * TURN_RIGHT_SIN;
 	player->planeY = oldPlaneX * TURN_RIGHT_SIN + player->planeY * TURN_RIGHT_COS;
 	/*----------------*/
-	player->map->current_col = 0;
+	//player->map->current_col = 0;
 	//init_new_img(player);
-	raycasting_loop(player);
+	//raycasting_loop(player);
 }
 
 void	ft_move_left(t_player *player)
@@ -87,8 +87,8 @@ void	ft_move_left(t_player *player)
 	player->planeX = player->planeX * TURN_LEFT_COS - player->planeY * TURN_LEFT_SIN;
 	player->planeY = oldPlaneX * TURN_LEFT_SIN + player->planeY * TURN_LEFT_COS;
 	/*----------------*/
-	player->map->current_col = 0;
+	//player->map->current_col = 0;
 	//init_new_img(player);
-	raycasting_loop(player);
+	//raycasting_loop(player);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 12:17:38 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/24 18:29:06 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/24 19:48:09 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	ft_paint_pixels(t_player *p)
 	y = 0;
 	//printf("drawStart: %d\n", p->draw->drawStart);
 	//printf("img: %d\n", p->img->img);
+	
 	while (y < p->draw->drawStart)
 	{
 		my_img_pixel_put(p, p->map->current_col, y, create_trgb(NO_TRANSPARENCY, 0, 255, 255));
@@ -78,7 +79,20 @@ void	ft_paint_pixels(t_player *p)
 		texPos += step;
 		//printf("ray->texX: %d\n", ray->texX);
 		//printf("ray->texY: %d\n", ray->texY);
-		my_img_pixel_put(p, p->map->current_col, y, p->text->pixels[NO_TEXTURE][p->ray->texX][p->ray->texY]);
+		if (p->ray->side == 0)
+		{
+			if (p->ray->rayDirX < 0)
+				my_img_pixel_put(p, p->map->current_col, y, p->text->pixels[NO_TEXTURE][p->ray->texX][p->ray->texY]);
+			else
+				my_img_pixel_put(p, p->map->current_col, y, p->text->pixels[SO_TEXTURE][p->ray->texX][p->ray->texY]);
+		}
+		else
+		{
+			if (p->ray->rayDirY < 0)
+				my_img_pixel_put(p, p->map->current_col, y, p->text->pixels[WE_TEXTURE][p->ray->texX][p->ray->texY]);
+			else
+				my_img_pixel_put(p, p->map->current_col, y, p->text->pixels[EA_TEXTURE][p->ray->texX][p->ray->texY]);
+		}
 		y++;
 	}
 	while (y < WIN_HEIGHT)
@@ -110,8 +124,10 @@ void	ft_draw_floor_ceil(t_player *p)
 	}
 }
 
-void	raycasting_loop(t_player *p)
+int	raycasting_loop(t_player *p)
 {
+	p->map->current_col = 0;
+	mlx_clear_window(p->mlx->mlx, p->mlx->mlx_win);
 	while (p->map->current_col < WIN_WIDTH)
 	{
 		//printf("=================\n");
@@ -124,8 +140,9 @@ void	raycasting_loop(t_player *p)
 		ft_calculate_drawValues(p);
 		ft_calculate_texture_x_coordinate(p);
 		ft_paint_pixels(p);
-		mlx_put_image_to_window(p->mlx->mlx, p->mlx->mlx_win, p->img->img, 0, 0);
 		p->map->current_col++;
 	}
+	mlx_put_image_to_window(p->mlx->mlx, p->mlx->mlx_win, p->img->img, 0, 0);
+	return (0);
 }
 
