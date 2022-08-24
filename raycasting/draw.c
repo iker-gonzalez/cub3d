@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 12:17:38 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/23 18:58:51 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/24 18:29:06 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,31 @@ void	ft_paint_pixels(t_player *p)
 		my_img_pixel_put(p, p->map->current_col, y++, create_trgb(NO_TRANSPARENCY, 96, 96, 96));
 }
 
+void	ft_draw_floor_ceil(t_player *p)
+{
+	int i;
+	int k;
+
+	k = 0;
+	while (k < WIN_WIDTH)
+	{
+		i = 0;
+		printf("k: %d\n", k);
+		while (i < (WIN_HEIGHT / 2))
+		{
+			printf("i: %d\n", i);
+			my_img_pixel_put(p, k, i, create_trgb(NO_TRANSPARENCY, 0, 255, 255));
+			i++;
+		}
+		while (i < WIN_HEIGHT)
+		{
+			my_img_pixel_put(p, k, i, create_trgb(NO_TRANSPARENCY, 96, 96, 96));
+			i++;
+		}
+		k++;
+	}
+}
+
 void	raycasting_loop(t_player *p)
 {
 	while (p->map->current_col < WIN_WIDTH)
@@ -103,3 +128,4 @@ void	raycasting_loop(t_player *p)
 		p->map->current_col++;
 	}
 }
+

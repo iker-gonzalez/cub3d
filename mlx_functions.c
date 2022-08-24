@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 12:44:17 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/23 18:29:06 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/24 18:18:26 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,9 @@ void	my_img_pixel_put(t_player *p, int x, int y, int color)
 
 void	init_new_img(t_player *p)
 {	
-	printf("pepe entra\n");
-	if (p->img->img != NULL)
-		mlx_destroy_image(p->mlx->mlx, p->img->img);
+	//if (p->img->img != NULL)
+	//	mlx_destroy_image(p->mlx->mlx, p->img->img);
 	p->img->img = mlx_new_image(p->mlx->mlx, WIN_WIDTH, WIN_HEIGHT);
-	printf("pepe img\n");
 	p->img->addr = mlx_get_data_addr(p->img->img, &p->img->bits_per_pixel, &p->img->line_length,
 								&p->img->endian);
-	printf("pepe addr\n");
 }

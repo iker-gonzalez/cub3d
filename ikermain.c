@@ -44,6 +44,7 @@ int main()
 	map.current_col = -1;
 	//raycasting loop
 	init_new_img(&p);
+	//ft_draw_floor_ceil(&p);
 	raycasting_loop(&p);
 	//printf("current col: %d\n", map.current_col);
 	//clear_window(&mlx, &img);

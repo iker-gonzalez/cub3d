@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:53:28 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/23 19:42:22 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/24 17:35:45 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	ft_move_up(t_player *player)
 {
 	double moveSpeed = 0.3;
-	printf("pepe parriba");
 	player->map->render = 0;
 	double value = player->posX + player->dirX * moveSpeed;
 	if(player->map->map_content[(int)(value)][(int)(player->posY)] == 48)
@@ -32,8 +31,7 @@ void	ft_move_up(t_player *player)
 	if (player->map->render == 2)
 	{
 		player->map->current_col = 0;
-		init_new_img(player);
-		printf("up new image success\n");
+		//init_new_img(player);
 		raycasting_loop(player);
 	}
 }
@@ -59,8 +57,7 @@ void	ft_move_down(t_player *player)
 	if (player->map->render == 2)
 	{
 		player->map->current_col = 0;
-		init_new_img(player);
-		printf("down new image success\n");
+		//init_new_img(player);
 		raycasting_loop(player);
 	}
 }
@@ -69,15 +66,14 @@ void	ft_move_right(t_player *player)
 {
 	//both camera direction and camera plane must be rotated
 	double oldDirX = player->dirX;
-	player->dirX = player->dirX * cos(-0.1) - player->dirY * sin(-0.1);
-	player->dirY = oldDirX * sin(-0.1) + player->dirY * cos(-0.1);
+	player->dirX = player->dirX * TURN_RIGHT_COS - player->dirY * TURN_RIGHT_SIN;
+	player->dirY = oldDirX * TURN_RIGHT_SIN + player->dirY * TURN_RIGHT_COS;
 	double oldPlaneX = player->planeX;
-	player->planeX = player->planeX * cos(-0.1) - player->planeY * sin(-0.1);
-	player->planeY = oldPlaneX * sin(-0.1) + player->planeY * cos(-0.1);
+	player->planeX = player->planeX * TURN_RIGHT_COS - player->planeY * TURN_RIGHT_SIN;
+	player->planeY = oldPlaneX * TURN_RIGHT_SIN + player->planeY * TURN_RIGHT_COS;
 	/*----------------*/
 	player->map->current_col = 0;
-	init_new_img(player);
-	printf("right new image success\n");
+	//init_new_img(player);
 	raycasting_loop(player);
 }
 
@@ -85,15 +81,14 @@ void	ft_move_left(t_player *player)
 {
 	//both camera direction and camera plane must be rotated
 	double oldDirX = player->dirX;
-	player->dirX = player->dirX * cos(0.1) - player->dirY * sin(0.1);
-	player->dirY = oldDirX * sin(0.1) + player->dirY * cos(0.1);
+	player->dirX = player->dirX * TURN_LEFT_COS - player->dirY * TURN_LEFT_SIN;
+	player->dirY = oldDirX * TURN_LEFT_SIN + player->dirY * TURN_LEFT_COS;
 	double oldPlaneX = player->planeX;
-	player->planeX = player->planeX * cos(0.1) - player->planeY * sin(0.1);
-	player->planeY = oldPlaneX * sin(0.1) + player->planeY * cos(0.1);
+	player->planeX = player->planeX * TURN_LEFT_COS - player->planeY * TURN_LEFT_SIN;
+	player->planeY = oldPlaneX * TURN_LEFT_SIN + player->planeY * TURN_LEFT_COS;
 	/*----------------*/
 	player->map->current_col = 0;
-	init_new_img(player);
-	printf("left new image success\n");
+	//init_new_img(player);
 	raycasting_loop(player);
 }
 

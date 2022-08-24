@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/23 18:50:10 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/24 18:00:20 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,13 @@
 # define NB_TEXTURES 4
 # define TEXTURE_WIDTH 64
 # define TEXTURE_HEIGHT 64
+
+# define TURN_LEFT_COS 0.995
+# define TURN_LEFT_SIN 0.0998
+# define TURN_RIGHT_COS 0.995
+# define TURN_RIGHT_SIN -0.0998
+
+
 
 //info for each texture xpm
 typedef	struct s_text
@@ -192,7 +199,7 @@ void	ft_calculate_drawValues(t_player *p);
 void	init_new_img(t_player *p);
 void	ft_paint_pixels(t_player *p);
 void	my_img_pixel_put(t_player *p, int x, int y, int color);
-
+void	ft_draw_floor_ceil(t_player *p);
 
 //mlx functions
 void	mlx_config(t_mlx *mlx);

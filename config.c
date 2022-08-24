@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 18:05:30 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/22 20:58:20 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/24 17:33:16 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	print_map(t_map *map)
 		col = 0;
 		while (col < map->columns)
 		{
-			printf("%c", map->map_content[row][col]);
+			//printf("%c", map->map_content[row][col]);
 			col++;
 		}
 		row++;

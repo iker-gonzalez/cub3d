@@ -35,15 +35,13 @@ void	ft_calculate_delta_distance(t_player *p)
 		p->ray->deltaDistX = INFINITY;
 	else
 		//length of p->ray from one x-side to next x-side
-		p->ray->deltaDistX = sqrt(1 + (p->ray->rayDirY * p->ray->rayDirY) / (p->ray->rayDirX * p->ray->rayDirX));
+		p->ray->deltaDistX = fabs(1 / p->ray->rayDirX);
 		
 	if (p->ray->rayDirY == 0)
 		p->ray->deltaDistY = INFINITY;
 	else
 		//length of p->ray from one y-side to next y-side
-		p->ray->deltaDistY = sqrt(1 + (p->ray->rayDirX * p->ray->rayDirX) / (p->ray->rayDirY * p->ray->rayDirY));
-	//printf("deltaX: %f\n", p->ray->deltaDistX);
-	//printf("deltaY: %f\n", p->ray->deltaDistY );
+		p->ray->deltaDistY = fabs(1 / p->ray->rayDirY);
 }
 
 //calculate step and initial sideDist
@@ -73,8 +71,6 @@ void	ft_calculate_side_distance(t_player *p)
 		//length of p->ray from current p position to next y-side
 		p->ray->sideDistY = (p->ray->mapY + 1.0 - p->posY) * p->ray->deltaDistY;
 	}
-	//printf("sideY: %f\n", p->ray->sideDistY);
-	//printf("sideX: %f\n", p->ray->sideDistX);
 }
 
 void	dda_algorithm(t_player *p)
@@ -96,9 +92,6 @@ void	dda_algorithm(t_player *p)
 			p->ray->side = 1;
 		}
 		//Check if p->ray has hit a wall
-		//printf("p->ray->mapx: %d\n", p->ray->mapX);
-		//printf("p->ray->mapy: %d\n", p->ray->mapY);
-		//printf("%d\n", map->map_content[p->ray->mapX][p->ray->mapY]);
 		if (p->map->map_content[p->ray->mapX][p->ray->mapY] == 49)
 			p->ray->hit = 1;
 	}
