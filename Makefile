@@ -6,7 +6,7 @@
 #    By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 16:17:30 by ikgonzal          #+#    #+#              #
-#    Updated: 2022/08/24 19:20:09 by ikgonzal         ###   ########.fr        #
+#    Updated: 2022/08/26 18:15:07 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ FLAGS =	-Wall -Wextra -Werror -g3
 
 S = -fsanitize=address
 
-SRC  =	ikermain.c \
+SRC  =	main.c \
 		error.c \
 		gets.c \
 		checkutils.c \

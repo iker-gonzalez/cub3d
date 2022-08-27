@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/22 19:42:18 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/26 19:57:17 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@ void	ft_free(char **premap)
 	int	i;
 
 	i = 0;
-	while (premap[i] != NULL)
+	while (premap[i])
 	{
 		free(premap[i]);
 		i++;
 	}
+	printf("FreeLine >>> %d\n", i);
 	free(premap);
 	premap = NULL;
 }	

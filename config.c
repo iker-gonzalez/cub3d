@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 18:05:30 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/24 17:33:16 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/26 18:32:31 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,16 +117,16 @@ void	set_structs(t_player *p, t_img *img, t_ray *ray, t_draw *draw)
 	p->draw = draw;
 }
 
-void	ft_free(char **premap)
-{
-	int	i;
+/* void	ft_free(char **premap) */
+/* { */
+/* 	int	i; */
 
-	i = 0;
-	while (premap[i] != NULL)
-	{
-		free(premap[i]);
-		i++;
-	}
-	free(premap);
-	premap = NULL;
-}	
+/* 	i = 0; */
+/* 	while (premap[i] != NULL) */
+/* 	{ */
+/* 		free(premap[i]); */
+/* 		i++; */
+/* 	} */
+/* 	free(premap); */
+/* 	premap = NULL; */
+/* } */	
