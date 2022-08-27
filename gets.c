@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 19:07:06 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/21 20:53:57 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/26 20:15:48 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_get_y(t_tmp *tmp)
 			ft_get_x(tmp);
 			if (tmp->ln == NULL || !ft_check_fchars(tmp))
 				break ;
-			if ((tmp->ln[0] != '\n') || (!ft_isspace(tmp->ln)))
+			if ((tmp->ln[0] != '\n') && (!ft_isspace(tmp->ln)))
 				tmp->y++;
 			if (tmp->ln[0] == '\n' && tmp->pos != 0)
 				i = 1;

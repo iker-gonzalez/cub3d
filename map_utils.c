@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 20:34:02 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/21 20:25:08 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/26 19:47:26 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_extract_map(t_tmp *tmp)
 
 	y = 6;
 	i = 0;
-	tmp->map = (char **)malloc((tmp->y - 6) * sizeof(char *));
+	tmp->map = (char **)malloc((tmp->y - 5) * sizeof(char *));
 	while (tmp->premap[y] != NULL)
 	{
 		tmp->map[i] = (char *)malloc((tmp->max_x + 1) * sizeof(char));
