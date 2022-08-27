@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:13:56 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/26 18:42:53 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/27 20:54:15 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ void	ft_check_mapchars(t_tmp *tmp)
 					break ;
 			}
 			if (k > 7)
-				/* printf("%d\n", k); */
 				ft_print_error(4, tmp);
 		}
 	}
@@ -94,3 +93,4 @@ void	ft_check_mapchars(t_tmp *tmp)
 	ft_check_walls(tmp);
 }
 
+				/* printf("%d\n", k); */

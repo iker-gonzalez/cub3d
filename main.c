@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/26 19:57:17 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/27 21:17:15 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ void	ft_free(char **premap)
 	int	i;
 
 	i = 0;
-	while (premap[i])
+	while (premap[i] != NULL)
 	{
 		free(premap[i]);
 		i++;
 	}
-	printf("FreeLine >>> %d\n", i);
 	free(premap);
 	premap = NULL;
 }	
+	/* printf("FreeLine >>> %d\n", i); */
 
 void	ft_premap(char *map, t_tmp *tmp)
 {
@@ -51,12 +51,12 @@ void	ft_premap(char *map, t_tmp *tmp)
 		tmp->premap[j] = ft_strdup(tmp->ln);
 		j++;
 		free(tmp->ln);
-		printf("J ------ %d\n", j);
 	}
 	tmp->premap[j] = NULL;
 	ft_extract_map(tmp);
 	close(tmp->fd);
 }
+		/* printf("J ------ %d\n", j); */
 	/* ft_print_premap(tmp); */
 		/* ft_sizelines(tmp); */
 
@@ -86,7 +86,7 @@ int	main(int argc, char **argv)
 		ft_get_y(&tmp);
 	ft_premap(argv[1], &tmp);
 	ft_headers(&tmp);
-	ft_print_map(tmp.premap);
+	ft_print_map(tmp.map);
 	if (tmp.premap != NULL)
 		ft_free(tmp.premap);
 	if (tmp.map != NULL)

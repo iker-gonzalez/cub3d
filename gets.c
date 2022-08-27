@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 19:07:06 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/26 20:15:48 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/27 20:55:50 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ void	ft_get_y(t_tmp *tmp)
 				ft_print_error(3, tmp);
 			free(tmp->ln);
 		}
-		printf("pos -> %d\n", tmp->y);
 	}
 	else
 		printf("Error:\nFile\n");
 	close(tmp->fd);
 }
+		/* printf("pos -> %d\n", tmp->y); */
 			/* printf("pos -> %d\n", tmp->pos); */
