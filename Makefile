@@ -6,7 +6,7 @@
 #    By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 16:17:30 by ikgonzal          #+#    #+#              #
-#    Updated: 2022/08/27 21:39:47 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/08/28 20:00:35 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,14 +30,14 @@ SRC  =	main.c \
 		check_map.c \
 		gnl/get_next_line.c \
 		gnl/get_next_line_utils.c \
-		config.c \
-		mlx_functions.c \
-		textures/parsing/fill_text_matrix.c \
-		raycasting/ray.c \
-		raycasting/ray_2.c \
-		raycasting/draw.c \
-		ft_hook.c \
-		moves.c \
+		# config.c \
+		# mlx_functions.c \
+		# textures/parsing/fill_text_matrix.c \
+		# raycasting/ray.c \
+		# raycasting/ray_2.c \
+		# raycasting/draw.c \
+		# ft_hook.c \
+		# moves.c \
 
 LIB = Libft/libft.a
 
@@ -56,7 +56,7 @@ $(NAME) : $(OBJ)
 	@ echo "libft compiled 🔋"
 	@$(MAKE) -Wno -C ./mlx
 	@ echo "mlx compiled 📇"
-	$(CC) $(FLAGS) $(LIB) $(OBJ) $(MLX_FLAGS) -o $(NAME)
+	$(CC) $(OBJ) $(FLAGS) $(LIB) $(MLX_FLAGS) -o $(NAME)
 	@ echo "cub3d compiled 🧊"
 
 san : $(OBJ)
@@ -65,7 +65,16 @@ san : $(OBJ)
 	@ echo "libft compiled 🔋"
 	@$(MAKE) -Wno -C ./mlx
 	@ echo "minilibx compiled 📇"
-	$(CC) $(FLAGS) $(LIB) $(S) $(OBJ) $(MLX_FLAGS) -o $(NAME)
+	$(CC) $(OBJ) $(FLAGS) $(LIB) $(S) $(MLX_FLAGS) -o $(NAME)
+	@ echo "cub3d sanitized 🧊"
+
+doc : $(OBJ)
+	@$(MAKE) -C ./libft
+	@$(MAKE) -C ./libft bonus
+	@ echo "libft compiled 🔋"
+	# @$(MAKE) -Wno -C ./mlx
+	@ echo "minilibx compiled 📇"
+	$(CC) $(OBJ) $(FLAGS) $(LIB) -o $(NAME)
 	@ echo "cub3d sanitized 🧊"
 
 clean:

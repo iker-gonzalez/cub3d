@@ -6,13 +6,29 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:06:42 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/27 21:31:37 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/28 20:37:16 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "libft/libft.h"
 /* #include <stdio.h> */
+
+void	ft_free(char **premap)
+{
+	int	i;
+
+	i = 0;
+	while (premap[i])
+	{
+		free(premap[i]);
+		i++;
+	}
+	free(premap);
+	premap = NULL;
+}	
+	/* printf("FreeLine >>> %d\n", i); */
+	/* printf("FreeLine >>> %d\n", i); */
 
 int	ft_check_extension(char *file)
 {
