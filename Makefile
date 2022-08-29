@@ -6,7 +6,7 @@
 #    By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 16:17:30 by ikgonzal          #+#    #+#              #
-#    Updated: 2022/08/28 20:00:35 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/08/29 14:14:37 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,20 +30,33 @@ SRC  =	main.c \
 		check_map.c \
 		gnl/get_next_line.c \
 		gnl/get_next_line_utils.c \
-		# config.c \
-		# mlx_functions.c \
-		# textures/parsing/fill_text_matrix.c \
-		# raycasting/ray.c \
-		# raycasting/ray_2.c \
-		# raycasting/draw.c \
-		# ft_hook.c \
-		# moves.c \
+		config.c \
+		mlx_functions.c \
+		textures/parsing/fill_text_matrix.c \
+		raycasting/ray.c \
+		raycasting/ray_2.c \
+		raycasting/draw.c \
+		ft_hook.c \
+		moves.c \
+
+SRC2  =	main.c \
+		error.c \
+		gets.c \
+		checkutils.c \
+		print_utils.c \
+		map_utils.c \
+		map_header.c \
+		check_map.c \
+		gnl/get_next_line.c \
+		gnl/get_next_line_utils.c \
 
 LIB = Libft/libft.a
 
 LIBFT = -Llibft -lft
 
 OBJ = $(SRC:.c=.o)
+
+OBJ2 = $(SRC2:.c=.o)
 
 .c.o: $(SRC)
 	@$(CC) $(FLAGS) -c -o $@ $<
@@ -68,13 +81,13 @@ san : $(OBJ)
 	$(CC) $(OBJ) $(FLAGS) $(LIB) $(S) $(MLX_FLAGS) -o $(NAME)
 	@ echo "cub3d sanitized 🧊"
 
-doc : $(OBJ)
+doc : $(OBJ2)
 	@$(MAKE) -C ./libft
 	@$(MAKE) -C ./libft bonus
 	@ echo "libft compiled 🔋"
 	# @$(MAKE) -Wno -C ./mlx
-	@ echo "minilibx compiled 📇"
-	$(CC) $(OBJ) $(FLAGS) $(LIB) -o $(NAME)
+	# @ echo "minilibx compiled 📇"
+	$(CC) $(OBJ2) $(FLAGS) $(LIB) -o $(NAME)
 	@ echo "cub3d sanitized 🧊"
 
 clean:
