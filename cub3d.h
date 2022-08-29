@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/24 19:31:24 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/29 17:16:57 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 
 # define GAME_TITLE "🤬 WOLPAPASTEIN 🤬"
 # define FOV 66
-# define WIN_WIDTH 1280
-# define WIN_HEIGHT 960
+# define WIN_WIDTH 640
+# define WIN_HEIGHT 480
 
 # define NO_TEXTURE 0
 # define EA_TEXTURE 1

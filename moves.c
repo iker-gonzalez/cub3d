@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:53:28 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/24 19:15:12 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/29 17:18:27 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,11 @@ void	ft_move_right(t_player *player)
 	//player->map->current_col = 0;
 	//init_new_img(player);
 	//raycasting_loop(player);
+	printf("dirX: %f\n", player->dirX);
+	printf("dirY: %f\n", player->dirY);
+	printf("planeX: %f\n", player->planeX);
+	printf("planeY: %f\n", player->planeY);
+	printf("---------------------\n");
 }
 
 void	ft_move_left(t_player *player)
@@ -90,5 +95,11 @@ void	ft_move_left(t_player *player)
 	//player->map->current_col = 0;
 	//init_new_img(player);
 	//raycasting_loop(player);
+	printf("dirX: %f\n", player->dirX);
+	printf("dirY: %f\n", player->dirY);
+	printf("planeX: %f\n", player->planeX);
+	printf("planeY: %f\n", player->planeY);
+	printf("---------------------\n");
+
 }
 

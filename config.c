@@ -6,12 +6,12 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 18:05:30 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/24 17:33:16 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/29 17:46:29 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
+/*
 void	print_map(t_map *map)
 {
 	int row;
@@ -29,7 +29,7 @@ void	print_map(t_map *map)
 		row++;
 	}
 }
-
+*/
 void	set_map_values(t_map *map)
 {
 	int fd;
@@ -83,12 +83,12 @@ void	set_map_values(t_map *map)
 
 void	set_player_values(t_player *player)
 {
-	player->posX = 12.9;
-	player->posY = 15.5;
-	player->dirX = -1;
-	player->dirY = 0;
-	player->planeX = 0.0;
-	player->planeY = 0.66;
+	player->posX = 2;
+	player->posY = 2;
+	player->dirX = 0;
+	player->dirY = 1;
+	player->planeX = 0.66;
+	player->planeY = 0.00;
 }
 
 void	set_texture_paths(t_map	*map)
@@ -129,4 +129,29 @@ void	ft_free(char **premap)
 	}
 	free(premap);
 	premap = NULL;
-}	
+}
+/*
+void	ft_init_player_dir(t_player *player)
+{
+	if (player->map == 'N')
+	{
+		player->dirX = -1.0;
+		player->planeY = 0.66;
+	}
+	else if (player->map == 'S')
+	{
+		player->dirX = 1.0;
+		player->planeY = -0.66;
+	}
+	else if (player->map == 'W')
+	{
+		player->dirY = -1.0;
+		player->planeX = -0.66;
+	}
+	else if (player->map == 'E')
+	{
+		player->dirY = 1.0;
+		player->planeX = 0.66;
+	}
+}*/
+
