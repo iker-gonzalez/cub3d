@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/28 21:39:59 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/30 21:27:51 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,16 @@ void	ft_change_struct(t_tmp *tmp, t_map *map)
 	map->we_texture = tmp->we_path;
 	map->f_color = tmp->f_int;
 	map->c_color = tmp->c_int;
-	printf("map.F[0] -> %d\n", map->f_color[0][0]);
-	printf("map.F[1] -> %d\n", map->f_color[1][0]);
-	printf("map.F[2] -> %d\n", map->f_color[2][0]);
-	printf("map.C[0] -> %d\n", map->c_color[0][0]);
-	printf("map.C[1] -> %d\n", map->c_color[1][0]);
-	printf("map.C[2] -> %d\n", map->c_color[2][0]);
+	map->map_content = tmp->map;
 }
 
-	/* printf(">>> %s\n", map->no_texture); */
+	/* printf("map.F[0] -> %d\n", map->f_color[0][0]); */
+	/* printf("map.F[1] -> %d\n", map->f_color[1][0]); */
+	/* printf("map.F[2] -> %d\n", map->f_color[2][0]); */
+	/* printf("map.C[0] -> %d\n", map->c_color[0][0]); */
+	/* printf("map.C[1] -> %d\n", map->c_color[1][0]); */
+	/* printf("map.C[2] -> %d\n", map->c_color[2][0]); */
+	/* /1* printf(">>> %s\n", map->no_texture); *1/ */
 	/* printf(">>> %s\n", map->so_texture); */
 	/* printf(">>> %s\n", map->ea_texture); */
 	/* printf(">>> %s\n", map->we_texture); */
@@ -120,6 +121,14 @@ void	ft_free_all(t_tmp *tmp, t_map *map)
 		free(map->ea_texture);
 	if (map->we_texture != NULL)
 		free(map->we_texture);
+	if (tmp->f_int != NULL)
+		ft_free_int(tmp->f_int);
+	if (tmp->c_int != NULL)
+		ft_free_int(tmp->c_int);
+	if (map->f_color != NULL)
+		ft_free_int(map->f_color);
+	if (map->c_color != NULL)
+		ft_free_int(map->c_color);
 }
 
 int	main(int argc, char **argv)
@@ -138,7 +147,7 @@ int	main(int argc, char **argv)
 	ft_premap(argv[1], &tmp);
 	ft_headers(&tmp);
 	ft_change_struct(&tmp, &map);
-	ft_print_map(tmp.map);
+	ft_print_map(map.map_content);
 	ft_free_all(&tmp, &map);
 	return (1);
 }

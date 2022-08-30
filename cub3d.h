@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/28 21:09:00 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/30 21:29:26 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,5 +246,6 @@ void	ft_walls_cases(t_tmp *tmp, int i, int j);
 void	ft_check_player(t_tmp *tmp);
 void	ft_headers(t_tmp *tmp);
 void	ft_change_struct(t_tmp *tmp, t_map *map);
+void	ft_free_int(int **array);
 
 #endif
