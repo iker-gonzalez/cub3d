@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/29 17:16:57 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/30 17:55:20 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,6 +216,11 @@ int		ft_hook(t_player *player);
 int	raycasting_loop(t_player *p);
 
 void	set_structs(t_player *p, t_img *img, t_ray *ray, t_draw *draw);
+void	ft_free_colors(t_text *text, int nb_colors);
+void	ft_free_pixels_map(t_text *text, int text_rows);
+void	ft_free_pixels(t_text *text, int text_columns);
+
+
 
 //moves
 void	ft_move_up(t_player *player);

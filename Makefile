@@ -6,7 +6,7 @@
 #    By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 16:17:30 by ikgonzal          #+#    #+#              #
-#    Updated: 2022/08/24 19:20:09 by ikgonzal         ###   ########.fr        #
+#    Updated: 2022/08/30 17:14:10 by ikgonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRC  =	ikermain.c \
 		raycasting/draw.c \
 		ft_hook.c \
 		moves.c \
+		free.c \
 
 LIB = Libft/libft.a
 

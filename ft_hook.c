@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:25:58 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/24 17:33:34 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/30 17:55:29 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	key_hook(int key, t_player *player)
 	if (key == ESC_KEY_MAC)
 	{
 		mlx_destroy_window(player->mlx->mlx, player->mlx->mlx_win);
+		ft_free_pixels(player->text, player->text->columns);
 		exit(0);
 	}
 	else if (key == UP_ARR_MAC)

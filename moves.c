@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:53:28 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/29 17:18:27 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/30 17:59:08 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@ void	ft_move_up(t_player *player)
 		player->map->render += 1;
 		player->posY += player->dirY * moveSpeed;
 	}
-	/*if (player->map->render == 2)
-	{
-		//player->map->current_col = 0;
-		//init_new_img(player);
-		//raycasting_loop(player);
-	}*/
 }
 
 void	ft_move_down(t_player *player)
@@ -43,23 +37,15 @@ void	ft_move_down(t_player *player)
 	double value = player->posX - player->dirX * moveSpeed;
 	if(player->map->map_content[(int)(value)][(int)(player->posY)] == 48)
 	{
-		//printf("pepi\n");
 		player->map->render += 1;
 		player->posX -= player->dirX * moveSpeed;
 	}
 	value = player->posY - player->dirY * moveSpeed;
 	if(player->map->map_content[(int)(player->posX)][(int)(value)] == 48)
 	{
-		//printf("pepe\n");
 		player->map->render += 1;
 		player->posY -= player->dirY * moveSpeed;
 	}
-	/*if (player->map->render == 2)
-	{
-		//player->map->current_col = 0;
-		//init_new_img(player);
-		//raycasting_loop(player);
-	}*/
 }
 
 void	ft_move_right(t_player *player)
@@ -71,15 +57,6 @@ void	ft_move_right(t_player *player)
 	double oldPlaneX = player->planeX;
 	player->planeX = player->planeX * TURN_RIGHT_COS - player->planeY * TURN_RIGHT_SIN;
 	player->planeY = oldPlaneX * TURN_RIGHT_SIN + player->planeY * TURN_RIGHT_COS;
-	/*----------------*/
-	//player->map->current_col = 0;
-	//init_new_img(player);
-	//raycasting_loop(player);
-	printf("dirX: %f\n", player->dirX);
-	printf("dirY: %f\n", player->dirY);
-	printf("planeX: %f\n", player->planeX);
-	printf("planeY: %f\n", player->planeY);
-	printf("---------------------\n");
 }
 
 void	ft_move_left(t_player *player)
@@ -91,15 +68,5 @@ void	ft_move_left(t_player *player)
 	double oldPlaneX = player->planeX;
 	player->planeX = player->planeX * TURN_LEFT_COS - player->planeY * TURN_LEFT_SIN;
 	player->planeY = oldPlaneX * TURN_LEFT_SIN + player->planeY * TURN_LEFT_COS;
-	/*----------------*/
-	//player->map->current_col = 0;
-	//init_new_img(player);
-	//raycasting_loop(player);
-	printf("dirX: %f\n", player->dirX);
-	printf("dirY: %f\n", player->dirY);
-	printf("planeX: %f\n", player->planeX);
-	printf("planeY: %f\n", player->planeY);
-	printf("---------------------\n");
-
 }
 

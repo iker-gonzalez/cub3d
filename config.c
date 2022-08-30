@@ -6,30 +6,12 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 18:05:30 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/29 17:46:29 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/30 17:57:57 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-/*
-void	print_map(t_map *map)
-{
-	int row;
-	int col;
 
-	row = 0;
-	while (row < map->rows)
-	{
-		col = 0;
-		while (col < map->columns)
-		{
-			//printf("%c", map->map_content[row][col]);
-			col++;
-		}
-		row++;
-	}
-}
-*/
 void	set_map_values(t_map *map)
 {
 	int fd;

@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 18:18:41 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/23 18:06:19 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/30 17:47:57 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,16 @@ int	ft_hex_to_int(char *color)
 {
 	int i;
 	char *hex;
+	int hex_int;
 
 	i = 0;
 	while (color[i] != '#' || i < 2)
 		i++;
 	i++;
 	hex = ft_substr(color, i, 6);
-	return (hex2int(hex));
+	hex_int = hex2int(hex);
+	free(hex);
+	return (hex_int);
 }
 
 void	ft_parse_pixel_column(t_text *text, int col, int text_nb)
@@ -120,7 +123,6 @@ void	ft_fill_pixels(t_text *text, int text_nb)
 		ft_parse_pixel_column(text, col, text_nb);
 		col++;
 	}
-	
 }
 
 void	ft_create_pixels_array(t_text *text, int fd)
@@ -163,6 +165,8 @@ void	ft_fill_colors(t_text *text, int text_nb, int fd)
 	}
 	ft_create_pixels_array(text, fd);
 	ft_fill_pixels(text, text_nb);
+	ft_free_colors(text, text->nb_colors);
+	ft_free_pixels_map(text, text->rows);
 }
 
 void	parse_xpm(char *texture_path, t_text *text, int text_nb)
@@ -186,6 +190,7 @@ void	parse_xpm(char *texture_path, t_text *text, int text_nb)
 		i++;
 	}
 	ft_skip_to_color_nb(line, text);
+	free(line);
 	ft_fill_colors(text, text_nb, fd);
 }
 
@@ -204,7 +209,7 @@ int	ft_validate_xpm(char *path, void *mlx, t_text *text)
 
 int	xpm_parser(t_mlx *mlx, t_map *map, t_text *text)
 {
-	text->pixels = (int ***)malloc(sizeof(int **) * (NB_TEXTURES + 1));
+	text->pixels = (int ***)malloc(sizeof(int **) * (NB_TEXTURES));
 	if (ft_validate_xpm(map->no_texture, mlx->mlx, text))
 		return (1);
 	else
