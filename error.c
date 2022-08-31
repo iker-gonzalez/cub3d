@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:06:42 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/31 17:48:08 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/31 21:40:37 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	ft_free_int(int **array)
 	i = 0;
 	while (i < 3)
 	{
-		printf(">>>>%d\n", array[i][0]);
 		tmp = &array[i][0];
 		free(tmp);
 		i++;
@@ -30,6 +29,8 @@ void	ft_free_int(int **array)
 	free(array);
 	array = NULL;
 }	
+
+		/* printf(">>>>%d\n", array[i][0]); */
 
 void	ft_free(char **premap)
 {
@@ -71,6 +72,20 @@ int	ft_check_extension(char *file)
 	return (1);
 }
 
+void	ft_free_errors(t_tmp *tmp)
+{
+	if (tmp->ln != NULL)
+		free(tmp->ln);
+	if (tmp->premap != NULL)
+		ft_free(tmp->premap);
+	if (tmp->map != NULL)
+		ft_free(tmp->map);
+	if (tmp->f_int != NULL)
+		ft_free_int(tmp->f_int);
+	if (tmp->c_int != NULL)
+		ft_free_int(tmp->c_int);
+}
+
 int	ft_print_error(int errno, t_tmp *tmp)
 {
 	if (errno == 1)
@@ -90,12 +105,7 @@ int	ft_print_error(int errno, t_tmp *tmp)
 		printf("Error:\nWrong number of players\n");
 	if (errno == 7)
 		printf("Error:\nBad formatted headers\n");
-	if (tmp->ln)
-		free(tmp->ln);
-	if (tmp->premap)
-		ft_free(tmp->premap);
-	if (tmp->map)
-		ft_free(tmp->map);
+	ft_free_errors(tmp);
 	exit (1);
 }
 		/* printf("FREE:\nPREMAP\n"); */

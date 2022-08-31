@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/31 18:41:13 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/31 21:25:44 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,15 @@ void	ft_change_struct(t_tmp *tmp, t_map *map)
 	map->we_texture = tmp->we_path;
 	map->f_color = tmp->f_int;
 	map->c_color = tmp->c_int;
+	map->player = tmp->player;
 	map->map_content = tmp->map;
+	map->columns = (int)tmp->max_x - 1;
+	map->rows = tmp->map_y + 1;
 }
 
+
+	/* printf("Rows -> %d\n", map->rows); */
+	/* printf("Columns -> %d\n", map->columns); */
 	/* printf("map.F[0] -> %d\n", map->f_color[0][0]); */
 	/* printf("map.F[1] -> %d\n", map->f_color[1][0]); */
 	/* printf("map.F[2] -> %d\n", map->f_color[2][0]); */
@@ -35,6 +41,7 @@ void	ft_change_struct(t_tmp *tmp, t_map *map)
 	/* printf(">>> %s\n", map->so_texture); */
 	/* printf(">>> %s\n", map->ea_texture); */
 	/* printf(">>> %s\n", map->we_texture); */
+	/* printf("Player - > %c\n", map->player); */
 
 void	ft_premap(char *map, t_tmp *tmp)
 {
@@ -63,6 +70,8 @@ void	ft_premap(char *map, t_tmp *tmp)
 	ft_extract_map(tmp);
 	close(tmp->fd);
 }
+
+		/* printf("Max_X -> %zu\n", tmp->max_x); */
 		/* printf("J ------ %d\n", j); */
 	/* ft_print_premap(tmp); */
 		/* ft_sizelines(tmp); */
@@ -147,7 +156,7 @@ int	main(int argc, char **argv)
 	ft_premap(argv[1], &tmp);
 	ft_headers(&tmp);
 	ft_change_struct(&tmp, &map);
-	ft_print_map(map.map_content);
+	ft_print_map(tmp.premap);
 	ft_free_all(&tmp, &map);
 	return (1);
 }

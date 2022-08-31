@@ -6,22 +6,59 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 20:34:02 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/26 19:47:26 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/31 21:05:17 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+static int ft_player_pos(t_tmp *tmp, int i, int j)
+{
+	static int o;
+
+	tmp->player = tmp->map[i][j];
+	tmp->player_y = i;
+	tmp->player_x = j;
+	tmp->map[i][j] = '0';
+	o += 1;
+
+	return (o);
+}
+
+/* static int ft_player_pos(t_tmp *tmp, char player, int i, int j) */
+/* { */
+/* 	char		*set; */
+/* 	static int	o; */
+/* 	int			k; */
+	
+/* 	k = 0; */
+/* 	set = "NSWE"; */
+/* 	while (set[k]) */
+/* 	{ */
+/* 		if (set[k] == player) */
+/* 		{ */
+/* 			tmp->player = player; */
+/* 			tmp->player_y = i; */
+/* 			tmp->player_x = j; */
+/* 			tmp->map[i][j] = '0'; */
+/* 			o += 1; */
+/* 		} */
+/* 		k++; */
+/* 	} */
+/* 	return (o); */
+/* } */
+
 void	ft_check_player(t_tmp *tmp)
 {
 	char		*set;
-	static int	i;
+	int			i;
 	int			j;
 	int			k;
 	static int	o;
 
 	set = "NSWE";
-	while (tmp->map[++i] != NULL)
+	i = 0;
+	while (tmp->map[i] != NULL)
 	{
 		j = -1;
 		while (tmp->map[i][++j])
@@ -30,16 +67,19 @@ void	ft_check_player(t_tmp *tmp)
 			while (set[++k])
 			{
 				if (set[k] == tmp->map[i][j])
-				{
-					tmp->player = tmp->map[i][j];
-					o += 1;
-				}
+					o = ft_player_pos(tmp, i, j);
 			}
 		}
+		i++;
 	}
 	if (o != 1)
 		ft_print_error(6, tmp);
 }
+
+			/* o = ft_player_pos(tmp, tmp->map[i][j], i, j); */
+					/* tmp->player = tmp->map[i][j]; */
+					/* o += 1; */
+					/* tmp->map[i][j] = '0'; */
 
 size_t	ft_fill_blanks(size_t x, int i, t_tmp *tmp)
 {

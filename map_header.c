@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 19:36:08 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/28 21:37:10 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/31 21:33:24 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,13 @@
 void ft_color_int(int rgb, int i,  t_tmp *tmp)
 {
 	if (tmp->rgb == 'F')
-	{
 		tmp->f_int[i][0] = rgb;
-		printf("F[%d] -> %d\n", i, tmp->f_int[i][0]);
-	}
 	if (tmp->rgb == 'C')
-	{
 		tmp->c_int[i][0] = rgb;
-		printf("C[%d] -> %d\n", i, tmp->c_int[i][0]);
-	}
 }
+
+		/* printf("F[%d] -> %d\n", i, tmp->f_int[i][0]); */
+		/* printf("C[%d] -> %d\n", i, tmp->c_int[i][0]); */
 
 void	ft_check_values(char *val, t_tmp *tmp)
 {
@@ -118,7 +115,9 @@ void	ft_headers(t_tmp *tmp)
 			j++;
 		if (j > 2)
 		{
-			ft_free(line);
+			printf("String >>>>>>> %s\n", line[j]);
+			if (line != NULL)
+				ft_free(line);
 			ft_print_error(7, tmp);
 		}
 		else
@@ -127,6 +126,6 @@ void	ft_headers(t_tmp *tmp)
 	}
 	ft_check_paths(tmp);
 }
-
+              /* clean = ft_strtrim(tmp->premap[i], ' '); */
 			/* printf("String >>>>>>> %s\n", line[j]); */
 			/* printf("J >>>>>>>>>>>> %d\n", j); */
