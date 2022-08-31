@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/30 17:55:20 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/08/31 17:58:04 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,12 +190,12 @@ void	ray_map_coordinates(t_player *p);
 void	ft_calculate_delta_distance(t_player *p);
 void	ft_calculate_side_distance(t_player *p);
 void	dda_algorithm(t_player *p);
-void	ft_calculate_perpDistance(t_player *p);
+void	ft_calculate_perp_distance(t_player *p);
 void	ft_calculate_texture_x_coordinate(t_player *p);
 
 
 //drawing functions
-void	ft_calculate_drawValues(t_player *p);
+void	ft_calculate_draw_values(t_player *p);
 void	init_new_img(t_player *p);
 void	ft_paint_pixels(t_player *p);
 void	my_img_pixel_put(t_player *p, int x, int y, int color);
@@ -206,27 +206,32 @@ void	mlx_config(t_mlx *mlx);
 
 
 //textures
-int		ft_validate_xpm(char *path, void *mlx, t_text *text);
-int		create_trgb(int t, int r, int g, int b);
-int		xpm_parser(t_mlx *mlx, t_map *map, t_text *text);
-
-void	print_values(t_ray *ray, t_draw *draw);
+int			ft_validate_xpm(char *path, void *mlx, t_text *text);
+int			create_trgb(int t, int r, int g, int b);
+int			xpm_parser(t_mlx *mlx, t_map *map, t_text *text);
+void		ft_extract_colors_nb(char *line, t_text *text, int end);
+void		ft_skip_to_color_nb(char *line, t_text *text);
+uint32_t	hex2int(char *hex);
+int			ft_hex_to_int(char *color);
+void		ft_parse_pixel_column(t_text *text, int col, int text_nb);
+void		ft_fill_pixels(t_text *text, int text_nb);
+void		ft_create_pixels_array(t_text *text, int fd);
+void		ft_fill_colors(t_text *text, int text_nb, int fd);
+void		parse_xpm(char *texture_path, t_text *text, int text_nb);
 
 int		ft_hook(t_player *player);
-int	raycasting_loop(t_player *p);
+int		raycasting_loop(t_player *p);
 
 void	set_structs(t_player *p, t_img *img, t_ray *ray, t_draw *draw);
 void	ft_free_colors(t_text *text, int nb_colors);
 void	ft_free_pixels_map(t_text *text, int text_rows);
 void	ft_free_pixels(t_text *text, int text_columns);
 
-
-
 //moves
 void	ft_move_up(t_player *player);
 void	ft_move_down(t_player *player);
-void	ft_move_right(t_player *player);
-void	ft_move_left(t_player *player);
+void	ft_move_right(t_player *p);
+void	ft_move_left(t_player *p);
 
 /* check errors */
 void	ft_get_x(t_tmp *tmp);

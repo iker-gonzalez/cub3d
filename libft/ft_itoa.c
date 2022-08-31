@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikgonzal <ikgonzal@student.42urduliz.com>  +#+  +:+       +#+        */
+/*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 17:41:39 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/13 19:01:07 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/31 17:17:13 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*fill_str(long num, char *tmp, int j)
 		tmp[0] = '0';
 		return (tmp);
 	}
-	while (num > 0 )
+	while (num > 0)
 	{
 		tmp[--j] = (num % 10) + '0';
 		num /= 10;
@@ -47,7 +47,7 @@ char	*fill_str(long num, char *tmp, int j)
 
 char	*ft_itoa(int n)
 {
-	int	j;
+	int		j;
 	long	num;
 	char	*tmp;
 
