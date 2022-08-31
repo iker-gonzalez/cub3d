@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:06:42 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/30 21:30:13 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/31 17:48:08 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@
 void	ft_free_int(int **array)
 {
 	int	i;
+	int	*tmp;
 
 	i = 0;
-	while (array[i])
+	while (i < 3)
 	{
-		free(array[i]);
+		printf(">>>>%d\n", array[i][0]);
+		tmp = &array[i][0];
+		free(tmp);
 		i++;
 	}
 	free(array);

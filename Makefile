@@ -81,6 +81,15 @@ san : $(OBJ)
 	$(CC) $(OBJ) $(FLAGS) $(LIB) $(S) $(MLX_FLAGS) -o $(NAME)
 	@ echo "cub3d sanitized 🧊"
 
+docsan : $(OBJ2)
+	@$(MAKE) -C ./libft
+	@$(MAKE) -C ./libft bonus
+	@ echo "libft compiled 🔋"
+	# @$(MAKE) -Wno -C ./mlx
+	# @ echo "minilibx compiled 📇"
+	$(CC) $(OBJ2) $(FLAGS) $(LIB) $(S)  -o $(NAME)
+	@ echo "cub3d sanitized 🧊"
+
 doc : $(OBJ2)
 	@$(MAKE) -C ./libft
 	@$(MAKE) -C ./libft bonus

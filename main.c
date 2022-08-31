@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/30 21:27:51 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/08/31 18:41:13 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	ft_premap(char *map, t_tmp *tmp)
 	/* ft_print_premap(tmp); */
 		/* ft_sizelines(tmp); */
 
-void ft_init_int(t_tmp *tmp, t_map *map)
+void ft_init_int(t_tmp *tmp)
 {
 	int i;
 
@@ -79,14 +79,14 @@ void ft_init_int(t_tmp *tmp, t_map *map)
 	tmp->c_int = (int **)malloc(3 * sizeof(int *));
 	while (++i < 3)
 		tmp->c_int[i] = (int *)malloc(sizeof(int));
-	i = -1;
-	map->f_color = (int **)malloc(3 * sizeof(int *));
-	while (++i < 3)
-		map->f_color[i] = (int *)malloc(sizeof(int));
-	i = -1;
-	map->c_color = (int **)malloc(3 * sizeof(int *));
-	while (++i < 3)
-		map->c_color[i] = (int *)malloc(sizeof(int));
+	/* i = -1; */
+	/* map->f_color = (int **)malloc(3 * sizeof(int *)); */
+	/* while (++i < 3) */
+	/* 	map->f_color[i] = (int *)malloc(sizeof(int)); */
+	/* i = -1; */
+	/* map->c_color = (int **)malloc(3 * sizeof(int *)); */
+	/* while (++i < 3) */
+	/* 	map->c_color[i] = (int *)malloc(sizeof(int)); */
 }
 
 void	ft_init_tmp(t_tmp *tmp, t_map *map)
@@ -104,7 +104,7 @@ void	ft_init_tmp(t_tmp *tmp, t_map *map)
 	map->so_texture = NULL;
 	map->ea_texture = NULL;
 	map->we_texture = NULL;
-	ft_init_int(tmp, map);
+	ft_init_int(tmp);
 }
 
 void	ft_free_all(t_tmp *tmp, t_map *map)
@@ -121,10 +121,10 @@ void	ft_free_all(t_tmp *tmp, t_map *map)
 		free(map->ea_texture);
 	if (map->we_texture != NULL)
 		free(map->we_texture);
-	if (tmp->f_int != NULL)
-		ft_free_int(tmp->f_int);
-	if (tmp->c_int != NULL)
-		ft_free_int(tmp->c_int);
+	/* if (tmp->f_int != NULL) */
+	/* 	ft_free_int(tmp->f_int); */
+	/* if (tmp->c_int != NULL) */
+	/* 	ft_free_int(tmp->c_int); */
 	if (map->f_color != NULL)
 		ft_free_int(map->f_color);
 	if (map->c_color != NULL)
