@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 19:36:08 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/31 21:33:24 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/01 18:00:59 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft/libft.h"
 #include "stdio.h"
 
-void ft_color_int(int rgb, int i,  t_tmp *tmp)
+void	ft_color_int(int rgb, int i, t_tmp *tmp)
 {
 	if (tmp->rgb == 'F')
 		tmp->f_int[i][0] = rgb;
@@ -37,7 +37,7 @@ void	ft_check_values(char *val, t_tmp *tmp)
 	while (line[++i] != NULL)
 	{
 		rgb[i] = ft_atoi(line[i]);
-		ft_color_int(rgb[i], i,  tmp);
+		ft_color_int(rgb[i], i, tmp);
 		j = -1;
 		while (ft_isprint(line[i][++j]))
 		{
@@ -115,7 +115,6 @@ void	ft_headers(t_tmp *tmp)
 			j++;
 		if (j > 2)
 		{
-			printf("String >>>>>>> %s\n", line[j]);
 			if (line != NULL)
 				ft_free(line);
 			ft_print_error(7, tmp);
@@ -126,6 +125,5 @@ void	ft_headers(t_tmp *tmp)
 	}
 	ft_check_paths(tmp);
 }
-              /* clean = ft_strtrim(tmp->premap[i], ' '); */
 			/* printf("String >>>>>>> %s\n", line[j]); */
 			/* printf("J >>>>>>>>>>>> %d\n", j); */

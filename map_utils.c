@@ -6,22 +6,46 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 20:34:02 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/31 21:05:17 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/01 18:02:20 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int ft_player_pos(t_tmp *tmp, int i, int j)
+void	ft_free_all(t_tmp *tmp, t_map *map)
 {
-	static int o;
+	if (tmp->premap != NULL)
+		ft_free(tmp->premap);
+	if (tmp->map != NULL)
+		ft_free(tmp->map);
+	if (map->no_texture != NULL)
+		free(map->no_texture);
+	if (map->so_texture != NULL)
+		free(map->so_texture);
+	if (map->ea_texture != NULL)
+		free(map->ea_texture);
+	if (map->we_texture != NULL)
+		free(map->we_texture);
+	if (map->f_color != NULL)
+		ft_free_int(map->f_color);
+	if (map->c_color != NULL)
+		ft_free_int(map->c_color);
+}
+
+	/* if (tmp->f_int != NULL) */
+	/* 	ft_free_int(tmp->f_int); */
+	/* if (tmp->c_int != NULL) */
+	/* 	ft_free_int(tmp->c_int); */
+
+static int	ft_player_pos(t_tmp *tmp, int i, int j)
+{
+	static int	o;
 
 	tmp->player = tmp->map[i][j];
 	tmp->player_y = i;
 	tmp->player_x = j;
 	tmp->map[i][j] = '0';
 	o += 1;
-
 	return (o);
 }
 
@@ -30,7 +54,6 @@ static int ft_player_pos(t_tmp *tmp, int i, int j)
 /* 	char		*set; */
 /* 	static int	o; */
 /* 	int			k; */
-	
 /* 	k = 0; */
 /* 	set = "NSWE"; */
 /* 	while (set[k]) */

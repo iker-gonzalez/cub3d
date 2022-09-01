@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:06:42 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/01 17:37:10 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/01 17:30:55 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	ft_check_extension(char *file)
 	ext = ft_substr(file, i, ft_strlen(file));
 	if (ft_strncmp(ext, ".cub", 4) != 0)
 	{
-		printf("Error:\nInvalid map extension\n");
+		printf("Error: invalid map extension\n");
 		free(ext);
 		return (0);
 	}
@@ -74,7 +74,7 @@ int	ft_check_extension(char *file)
 
 void	ft_free_errors(t_tmp *tmp)
 {
-	if (tmp->ln != NULL)
+	if (tmp->ln != NULL && tmp->ln != " ")
 		free(tmp->ln);
 	if (tmp->premap != NULL)
 		ft_free(tmp->premap);
@@ -91,6 +91,7 @@ int	ft_print_error(int errno, t_tmp *tmp)
 	if (errno == 1)
 	{
 		printf("Error:\nWrong number of arguments\n");
+		ft_free_errors(tmp);
 		exit (1);
 	}
 	if (errno == 2)
