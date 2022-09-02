@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:06:42 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/01 17:37:10 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/02 18:21:46 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,10 @@ void	ft_free_errors(t_tmp *tmp)
 		ft_free(tmp->premap);
 	if (tmp->map != NULL)
 		ft_free(tmp->map);
+}
+
+void	ft_free_int_errors(t_tmp *tmp)
+{
 	if (tmp->f_int != NULL)
 		ft_free_int(tmp->f_int);
 	if (tmp->c_int != NULL)
@@ -100,11 +104,17 @@ int	ft_print_error(int errno, t_tmp *tmp)
 	if (errno == 4)
 		printf("Error:\nNot Allowed Char Map\n");
 	if (errno == 5)
+	{
 		printf("Error:\nMap not properly closed\n");
+		ft_free_int_errors(tmp);
+	}
 	if (errno == 6)
 		printf("Error:\nWrong number of players\n");
 	if (errno == 7)
+	{
 		printf("Error:\nBad formatted headers\n");
+		ft_free_int_errors(tmp);
+	}
 	ft_free_errors(tmp);
 	exit (1);
 }

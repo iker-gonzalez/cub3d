@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/01 17:55:19 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/02 18:01:28 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_premap(char *map, t_tmp *tmp)
 	tmp->fd = open(map, O_RDONLY);
 	tmp->premap = (char **)malloc((tmp->y + 1) * sizeof(char *));
 	j = 0;
-	while (j < (tmp->y))
+	while (j <= (tmp->y))
 	{
 		tmp->ln = get_next_line(tmp->fd);
 		if (tmp->ln == NULL)

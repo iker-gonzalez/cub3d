@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 19:07:06 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/28 20:36:56 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/02 18:00:04 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_get_y(t_tmp *tmp)
 	i = 0;
 	if (!tmp->fd || tmp->fd != -1)
 	{
-		while (tmp->ln != NULL)
+		while (tmp->ln)
 		{
 			tmp->ln = get_next_line(tmp->fd);
 			ft_get_x(tmp);
