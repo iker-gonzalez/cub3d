@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 19:36:08 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/01 18:00:59 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/03 19:06:41 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@ void	ft_color_int(int rgb, int i, t_tmp *tmp)
 	if (tmp->rgb == 'C')
 		tmp->c_int[i][0] = rgb;
 }
-
-		/* printf("F[%d] -> %d\n", i, tmp->f_int[i][0]); */
-		/* printf("C[%d] -> %d\n", i, tmp->c_int[i][0]); */
 
 void	ft_check_values(char *val, t_tmp *tmp)
 {
@@ -54,9 +51,6 @@ void	ft_check_values(char *val, t_tmp *tmp)
 	ft_free(line);
 }
 
-			/* printf("String >>>>>>> %c\n", line[i][j]); */
-			/* printf("String >>>>>>> %s\n", line[j]); */
-			/* printf("J >>>>>>>>>>>> %d\n", j); */
 void	ft_check_paths(t_tmp *tmp)
 {
 	if (tmp->no_path == NULL || tmp->so_path == NULL || tmp->ea_path == NULL
@@ -89,17 +83,6 @@ void	ft_select_texture(char **line, t_tmp *tmp)
 	ft_free(line);
 }
 
-		/* printf("TMP String >>>>>>> %s\n", tmp->no_path); */
-		/* printf("TMP String >>>>>>> %s\n", tmp->so_path); */
-		/* printf("TMP String >>>>>>> %s\n", tmp->ea_path); */
-		/* printf("TMP String >>>>>>> %s\n", tmp->we_path); */
-		/* printf("TMP String >>>>>>> %s\n", tmp->f_val); */
-		/* printf("TMP String >>>>>>> %s\n", tmp->c_val); */
-		/* printf("IN String >>>>>>> %s\n", line[0]); */
-		/* printf("TMP String >>>>>>> %s\n", tmp->no_path); */
-		/* printf("WORKS!!!!!!\n"); */
-		/* printf("IN!!!!!!\n"); */
-
 void	ft_headers(t_tmp *tmp)
 {
 	int		i;
@@ -125,5 +108,3 @@ void	ft_headers(t_tmp *tmp)
 	}
 	ft_check_paths(tmp);
 }
-			/* printf("String >>>>>>> %s\n", line[j]); */
-			/* printf("J >>>>>>>>>>>> %d\n", j); */

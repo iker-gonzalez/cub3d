@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/02 18:01:28 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/03 19:06:00 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,6 @@ void	ft_change_struct(t_tmp *tmp, t_map *map)
 	map->columns = (int)tmp->max_x - 1;
 	map->rows = tmp->map_y + 1;
 }
-
-	/* printf("Rows -> %d\n", map->rows); */
-	/* printf("Columns -> %d\n", map->columns); */
-	/* printf("map.F[0] -> %d\n", map->f_color[0][0]); */
-	/* printf("map.F[1] -> %d\n", map->f_color[1][0]); */
-	/* printf("map.F[2] -> %d\n", map->f_color[2][0]); */
-	/* printf("map.C[0] -> %d\n", map->c_color[0][0]); */
-	/* printf("map.C[1] -> %d\n", map->c_color[1][0]); */
-	/* printf("map.C[2] -> %d\n", map->c_color[2][0]); */
-	/* /1* printf(">>> %s\n", map->no_texture); *1/ */
-	/* printf(">>> %s\n", map->so_texture); */
-	/* printf(">>> %s\n", map->ea_texture); */
-	/* printf(">>> %s\n", map->we_texture); */
-	/* printf("Player - > %c\n", map->player); */
 
 void	ft_premap(char *map, t_tmp *tmp)
 {
@@ -71,11 +57,6 @@ void	ft_premap(char *map, t_tmp *tmp)
 	close(tmp->fd);
 }
 
-		/* printf("Max_X -> %zu\n", tmp->max_x); */
-		/* printf("J ------ %d\n", j); */
-	/* ft_print_premap(tmp); */
-		/* ft_sizelines(tmp); */
-
 void	ft_init_int(t_tmp *tmp)
 {
 	int	i;
@@ -90,15 +71,6 @@ void	ft_init_int(t_tmp *tmp)
 		tmp->c_int[i] = (int *)malloc(sizeof(int));
 }
 
-	/* i = -1; */
-	/* map->f_color = (int **)malloc(3 * sizeof(int *)); */
-	/* while (++i < 3) */
-	/* 	map->f_color[i] = (int *)malloc(sizeof(int)); */
-	/* i = -1; */
-	/* map->c_color = (int **)malloc(3 * sizeof(int *)); */
-	/* while (++i < 3) */
-	/* 	map->c_color[i] = (int *)malloc(sizeof(int)); */
-
 void	ft_init_tmp(t_tmp *tmp, t_map *map)
 {
 	tmp->premap = NULL;
@@ -109,6 +81,7 @@ void	ft_init_tmp(t_tmp *tmp, t_map *map)
 	tmp->max_x = 0;
 	tmp->map_y = 0;
 	tmp->pos = 0;
+	tmp->err = 0;
 	tmp->ln = " ";
 	map->no_texture = NULL;
 	map->so_texture = NULL;
@@ -137,4 +110,3 @@ int	main(int argc, char **argv)
 	ft_free_all(&tmp, &map);
 	return (1);
 }
-	/* printf("MAX---%zu\n", tmp.max_x); */

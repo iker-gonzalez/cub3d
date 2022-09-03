@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 20:34:02 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/01 18:02:20 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/03 19:05:25 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,6 @@ void	ft_free_all(t_tmp *tmp, t_map *map)
 		ft_free_int(map->c_color);
 }
 
-	/* if (tmp->f_int != NULL) */
-	/* 	ft_free_int(tmp->f_int); */
-	/* if (tmp->c_int != NULL) */
-	/* 	ft_free_int(tmp->c_int); */
-
 static int	ft_player_pos(t_tmp *tmp, int i, int j)
 {
 	static int	o;
@@ -48,28 +43,6 @@ static int	ft_player_pos(t_tmp *tmp, int i, int j)
 	o += 1;
 	return (o);
 }
-
-/* static int ft_player_pos(t_tmp *tmp, char player, int i, int j) */
-/* { */
-/* 	char		*set; */
-/* 	static int	o; */
-/* 	int			k; */
-/* 	k = 0; */
-/* 	set = "NSWE"; */
-/* 	while (set[k]) */
-/* 	{ */
-/* 		if (set[k] == player) */
-/* 		{ */
-/* 			tmp->player = player; */
-/* 			tmp->player_y = i; */
-/* 			tmp->player_x = j; */
-/* 			tmp->map[i][j] = '0'; */
-/* 			o += 1; */
-/* 		} */
-/* 		k++; */
-/* 	} */
-/* 	return (o); */
-/* } */
 
 void	ft_check_player(t_tmp *tmp)
 {
@@ -98,11 +71,6 @@ void	ft_check_player(t_tmp *tmp)
 	if (o != 1)
 		ft_print_error(6, tmp);
 }
-
-			/* o = ft_player_pos(tmp, tmp->map[i][j], i, j); */
-					/* tmp->player = tmp->map[i][j]; */
-					/* o += 1; */
-					/* tmp->map[i][j] = '0'; */
 
 size_t	ft_fill_blanks(size_t x, int i, t_tmp *tmp)
 {

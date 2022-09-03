@@ -6,13 +6,12 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:06:42 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/02 18:21:46 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/03 19:07:01 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "libft/libft.h"
-/* #include <stdio.h> */
 
 void	ft_free_int(int **array)
 {
@@ -30,8 +29,6 @@ void	ft_free_int(int **array)
 	array = NULL;
 }	
 
-		/* printf(">>>>%d\n", array[i][0]); */
-
 void	ft_free(char **premap)
 {
 	int	i;
@@ -45,32 +42,6 @@ void	ft_free(char **premap)
 	free(premap);
 	premap = NULL;
 }	
-	/* printf("FreeLine >>> %d\n", i); */
-	/* printf("FreeLine >>> %d\n", i); */
-
-int	ft_check_extension(char *file)
-{
-	int		i;
-	int		j;
-	char	*ext;
-
-	i = ft_strlen(file);
-	j = 4;
-	while (j != 0)
-	{
-		i--;
-		j--;
-	}
-	ext = ft_substr(file, i, ft_strlen(file));
-	if (ft_strncmp(ext, ".cub", 4) != 0)
-	{
-		printf("Error:\nInvalid map extension\n");
-		free(ext);
-		return (0);
-	}
-	free(ext);
-	return (1);
-}
 
 void	ft_free_errors(t_tmp *tmp)
 {
@@ -118,5 +89,3 @@ int	ft_print_error(int errno, t_tmp *tmp)
 	ft_free_errors(tmp);
 	exit (1);
 }
-		/* printf("FREE:\nPREMAP\n"); */
-		/* printf("FREE:\nMAP\n"); */

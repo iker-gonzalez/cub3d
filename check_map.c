@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:13:56 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/31 21:01:10 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/03 19:07:49 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,6 @@ void	ft_walls_cases(t_tmp *tmp, int i, int j)
 		ft_print_error(5, tmp);
 }	
 
-		/* printf("%s\n", tmp->map[tmp->map_y]); */
-		/* printf("%d\n", tmp->map_y); */
-
 void	ft_check_walls(t_tmp *tmp)
 {
 	int	i;
@@ -57,13 +54,6 @@ void	ft_check_walls(t_tmp *tmp)
 		i++;
 	}
 }
-				/* printf(">>>>>>>> %d\n", tmp->y); */
-				/* printf("> ->%c\n", tmp->map[i][j]); */
-				/* printf("j+1 ->%c\n", tmp->map[i][j+1]); */
-				/* printf("i+1 ->%c\n", tmp->map[i+1][j]); */
-				/* printf("elsei+1 ->%c\n", tmp->map[i+1][j]); */
-				/* printf("else> ->%c\n", tmp->map[i][j]); */
-				/* printf("elsej+1 ->%c\n", tmp->map[i][j+1]); */
 
 void	ft_check_mapchars(t_tmp *tmp)
 {
@@ -92,5 +82,3 @@ void	ft_check_mapchars(t_tmp *tmp)
 	ft_check_player(tmp);
 	ft_check_walls(tmp);
 }
-
-				/* printf("%d\n", k); */

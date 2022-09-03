@@ -6,20 +6,12 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/31 20:38:11 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/03 18:40:58 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
-
-#include "libft/libft.h"
-#include "gnl/get_next_line.h"
-#include <unistd.h>
-#include <math.h>
-#include "mlx/mlx.h"
-#include <stdio.h>
-#include <fcntl.h>
 
 # define GAME_TITLE "🤬 WOLPAPASTEIN 🤬"
 # define FOV 66
@@ -51,7 +43,13 @@
 # define TURN_RIGHT_COS 0.995
 # define TURN_RIGHT_SIN -0.0998
 
-
+#include "libft/libft.h"
+#include "gnl/get_next_line.h"
+#include <unistd.h>
+#include <math.h>
+#include "mlx/mlx.h"
+#include <stdio.h>
+#include <fcntl.h>
 
 //info for each texture xpm
 typedef	struct s_text
@@ -183,6 +181,7 @@ typedef struct s_tmp{
 	char	rgb;
 	int		player_x;
 	int		player_y;
+	int		err;
 }	t_tmp;
 
 //initial config
