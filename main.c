@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/03 19:06:00 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/03 20:04:59 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int	main(int argc, char **argv)
 	ft_premap(argv[1], &tmp);
 	ft_headers(&tmp);
 	ft_change_struct(&tmp, &map);
-	ft_print_map(tmp.premap);
+	ft_print_map(map.map_content);
 	ft_free_all(&tmp, &map);
 	return (1);
 }
