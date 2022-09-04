@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/03 20:04:59 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/04 17:22:56 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,10 @@ void	ft_init_tmp(t_tmp *tmp, t_map *map)
 	tmp->pos = 0;
 	tmp->err = 0;
 	tmp->ln = " ";
+	tmp->no_path = NULL;
+	tmp->so_path = NULL;
+	tmp->ea_path = NULL;
+	tmp->we_path = NULL;
 	map->no_texture = NULL;
 	map->so_texture = NULL;
 	map->ea_texture = NULL;

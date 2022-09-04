@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 19:28:12 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/03 19:07:31 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/04 17:41:19 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int	ft_check_fchars(t_tmp *tmp)
 		tmp->err = 2;
 	return (1);
 }
+
 int	ft_check_extension(char *file)
 {
 	int		i;

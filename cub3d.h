@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/03 18:40:58 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/04 17:38:57 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -249,5 +249,8 @@ void	ft_headers(t_tmp *tmp);
 void	ft_change_struct(t_tmp *tmp, t_map *map);
 void	ft_free_int(int **array);
 void	ft_free_all(t_tmp *tmp, t_map *map);
+void	ft_free_texture(t_tmp *tmp);
+void	ft_free_int_errors(t_tmp *tmp);
+void	ft_free_errors(t_tmp *tmp);
 
 #endif
