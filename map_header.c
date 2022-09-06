@@ -6,13 +6,21 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 19:36:08 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/20 21:22:58 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/04 15:21:29 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "libft/libft.h"
 #include "stdio.h"
+
+void	ft_color_int(int rgb, int i, t_tmp *tmp)
+{
+	if (tmp->rgb == 'F')
+		tmp->f_int[i][0] = rgb;
+	if (tmp->rgb == 'C')
+		tmp->c_int[i][0] = rgb;
+}
 
 void	ft_check_values(char *val, t_tmp *tmp)
 {
@@ -26,12 +34,12 @@ void	ft_check_values(char *val, t_tmp *tmp)
 	while (line[++i] != NULL)
 	{
 		rgb[i] = ft_atoi(line[i]);
-		j = 0;
-		while (ft_isprint(line[i][j]))
+		ft_color_int(rgb[i], i, tmp);
+		j = -1;
+		while (ft_isprint(line[i][++j]))
 		{
 			if (!ft_isdigit(line[i][j]))
 				ft_print_error(7, tmp);
-			j++;
 		}
 	}
 	if (i != 3 || rgb[0] > 255 || rgb[1] > 255 || rgb[2] > 255
@@ -43,9 +51,6 @@ void	ft_check_values(char *val, t_tmp *tmp)
 	ft_free(line);
 }
 
-			/* printf("String >>>>>>> %c\n", line[i][j]); */
-			/* printf("String >>>>>>> %s\n", line[j]); */
-			/* printf("J >>>>>>>>>>>> %d\n", j); */
 void	ft_check_paths(t_tmp *tmp)
 {
 	if (tmp->no_path == NULL || tmp->so_path == NULL || tmp->ea_path == NULL
@@ -56,36 +61,27 @@ void	ft_check_paths(t_tmp *tmp)
 void	ft_select_texture(char **line, t_tmp *tmp)
 {
 	if (ft_strncmp(line[0], "NO", 2) == 0)
-		tmp->no_path = line[1];
+		tmp->no_path = ft_strdup(line[1]);
 	if (ft_strncmp(line[0], "SO", 2) == 0)
-		tmp->so_path = line[1];
+		tmp->so_path = ft_strdup(line[1]);
 	if (ft_strncmp(line[0], "EA", 2) == 0)
-		tmp->ea_path = line[1];
+		tmp->ea_path = ft_strdup(line[1]);
 	if (ft_strncmp(line[0], "WE", 2) == 0)
-		tmp->we_path = line[1];
+		tmp->we_path = ft_strdup(line[1]);
 	if (ft_strncmp(line[0], "F", 2) == 0)
 	{
 		tmp->f_val = line[1];
+		tmp->rgb = 'F';
 		ft_check_values(tmp->f_val, tmp);
 	}
 	if (ft_strncmp(line[0], "C", 2) == 0)
 	{
 		tmp->c_val = line[1];
+		tmp->rgb = 'C';
 		ft_check_values(tmp->c_val, tmp);
 	}
 	ft_free(line);
 }
-
-		/* printf("TMP String >>>>>>> %s\n", tmp->no_path); */
-		/* printf("TMP String >>>>>>> %s\n", tmp->so_path); */
-		/* printf("TMP String >>>>>>> %s\n", tmp->ea_path); */
-		/* printf("TMP String >>>>>>> %s\n", tmp->we_path); */
-		/* printf("TMP String >>>>>>> %s\n", tmp->f_val); */
-		/* printf("TMP String >>>>>>> %s\n", tmp->c_val); */
-		/* printf("IN String >>>>>>> %s\n", line[0]); */
-		/* printf("TMP String >>>>>>> %s\n", tmp->no_path); */
-		/* printf("WORKS!!!!!!\n"); */
-		/* printf("IN!!!!!!\n"); */
 
 void	ft_headers(t_tmp *tmp)
 {
@@ -102,7 +98,8 @@ void	ft_headers(t_tmp *tmp)
 			j++;
 		if (j > 2)
 		{
-			ft_free(line);
+			if (line != NULL)
+				ft_free(line);
 			ft_print_error(7, tmp);
 		}
 		else
@@ -111,6 +108,3 @@ void	ft_headers(t_tmp *tmp)
 	}
 	ft_check_paths(tmp);
 }
-
-			/* printf("String >>>>>>> %s\n", line[j]); */
-			/* printf("J >>>>>>>>>>>> %d\n", j); */

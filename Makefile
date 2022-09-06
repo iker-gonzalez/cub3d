@@ -6,7 +6,7 @@
 #    By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 16:17:30 by ikgonzal          #+#    #+#              #
-#    Updated: 2022/08/31 18:01:53 by ikgonzal         ###   ########.fr        #
+#    Updated: 2022/09/06 18:28:24 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,13 @@ NAME =	cub3D
 
 MLX_FLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit 
 
-CC = gcc -O2
+CC = gcc
 
 FLAGS =	-Wall -Wextra -Werror -g3
 
 S = -fsanitize=address
 
-SRC  =	ikermain.c \
+SRC  =	main.c \
 		error.c \
 		gets.c \
 		checkutils.c \
@@ -41,11 +41,24 @@ SRC  =	ikermain.c \
 		moves.c \
 		free.c \
 
+SRC2  =	main.c \
+		error.c \
+		gets.c \
+		checkutils.c \
+		print_utils.c \
+		map_utils.c \
+		map_header.c \
+		check_map.c \
+		gnl/get_next_line.c \
+		gnl/get_next_line_utils.c \
+
 LIB = Libft/libft.a
 
 LIBFT = -Llibft -lft
 
 OBJ = $(SRC:.c=.o)
+
+OBJ2 = $(SRC2:.c=.o)
 
 .c.o: $(SRC)
 	@$(CC) $(FLAGS) -c -o $@ $<
@@ -58,7 +71,7 @@ $(NAME) : $(OBJ)
 	@ echo "libft compiled 🔋"
 	@$(MAKE) -Wno -C ./mlx
 	@ echo "mlx compiled 📇"
-	$(CC) $(FLAGS) $(LIB) $(OBJ) $(MLX_FLAGS) -o $(NAME)
+	$(CC) $(OBJ) $(FLAGS) $(LIB) $(MLX_FLAGS) -o $(NAME)
 	@ echo "cub3d compiled 🧊"
 
 san : $(OBJ)
@@ -67,7 +80,25 @@ san : $(OBJ)
 	@ echo "libft compiled 🔋"
 	@$(MAKE) -Wno -C ./mlx
 	@ echo "minilibx compiled 📇"
-	$(CC) $(FLAGS) $(LIB) $(S) $(OBJ) $(MLX_FLAGS) -o $(NAME)
+	$(CC) $(OBJ) $(FLAGS) $(LIB) $(S) $(MLX_FLAGS) -o $(NAME)
+	@ echo "cub3d sanitized 🧊"
+
+docsan : $(OBJ2)
+	@$(MAKE) -C ./libft
+	@$(MAKE) -C ./libft bonus
+	@ echo "libft compiled 🔋"
+	# @$(MAKE) -Wno -C ./mlx
+	# @ echo "minilibx compiled 📇"
+	$(CC) $(OBJ2) $(FLAGS) $(LIB) $(S)  -o $(NAME)
+	@ echo "cub3d sanitized 🧊"
+
+doc : $(OBJ2)
+	@$(MAKE) -C ./libft
+	@$(MAKE) -C ./libft bonus
+	@ echo "libft compiled 🔋"
+	# @$(MAKE) -Wno -C ./mlx
+	# @ echo "minilibx compiled 📇"
+	$(CC) $(OBJ2) $(FLAGS) $(LIB) -o $(NAME)
 	@ echo "cub3d sanitized 🧊"
 
 clean:

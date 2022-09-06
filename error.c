@@ -6,64 +6,69 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:06:42 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/22 20:33:25 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/04 17:37:20 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "libft/libft.h"
-/* #include <stdio.h> */
 
-int	ft_check_extension(char *file)
+void	ft_free_int(int **array)
 {
-	int		i;
-	int		j;
-	char	*ext;
+	int	i;
+	int	*tmp;
 
-	i = ft_strlen(file);
-	j = 4;
-	while (j != 0)
+	i = 0;
+	while (i < 3)
 	{
-		i--;
-		j--;
+		tmp = &array[i][0];
+		free(tmp);
+		i++;
 	}
-	ext = ft_substr(file, i, ft_strlen(file));
-	if (ft_strncmp(ext, ".cub", 4) != 0)
+	free(array);
+	array = NULL;
+}	
+
+void	ft_free(char **premap)
+{
+	int	i;
+
+	i = 0;
+	while (premap[i])
 	{
-		printf("Error: invalid map extension\n");
-		free(ext);
-		return (0);
+		free(premap[i]);
+		i++;
 	}
-	free(ext);
-	return (1);
+	free(premap);
+	premap = NULL;
+}	
+
+void	ft_free_texture(t_tmp *tmp)
+{
+	if (tmp->no_path != NULL)
+		free(tmp->no_path);
+	if (tmp->so_path != NULL)
+		free(tmp->so_path);
+	if (tmp->ea_path != NULL)
+		free(tmp->ea_path);
+	if (tmp->we_path != NULL)
+		free(tmp->we_path);
 }
 
-int	ft_print_error(int errno, t_tmp *tmp)
+void	ft_free_errors(t_tmp *tmp)
 {
-	if (errno == 1)
-	{
-		printf("Error:\nWrong number of arguments\n");
-		exit (1);
-	}
-	if (errno == 2)
-		printf("Error:\nNot Allowed Line First Char or Map Position\n");
-	if (errno == 3)
-		printf("Error:\nWrong newline or Char position\n");
-	if (errno == 4)
-		printf("Error:\nNot Allowed Char Map\n");
-	if (errno == 5)
-		printf("Error:\nMap not properly closed\n");
-	if (errno == 6)
-		printf("Error:\nWrong number of players\n");
-	if (errno == 7)
-		printf("Error:\nBad formatted headers\n");
-	if (tmp->ln)
+	if (tmp->ln != NULL)
 		free(tmp->ln);
-	if (tmp->premap)
+	if (tmp->premap != NULL)
 		ft_free(tmp->premap);
-	if (tmp->map)
+	if (tmp->map != NULL)
 		ft_free(tmp->map);
-	exit (1);
 }
-		/* printf("FREE:\nPREMAP\n"); */
-		/* printf("FREE:\nMAP\n"); */
+
+void	ft_free_int_errors(t_tmp *tmp)
+{
+	if (tmp->f_int != NULL)
+		ft_free_int(tmp->f_int);
+	if (tmp->c_int != NULL)
+		ft_free_int(tmp->c_int);
+}

@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 19:28:12 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/08/21 20:56:36 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/04 17:41:19 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ int	ft_isstrspace(t_tmp *tmp)
 		return (1);
 	return (0);
 }
-	/* printf("I >>>>>>>>>> %d\n", i); */
-	/* printf("J >>>>>>>>>> %d\n", j); */
 
 int	ft_isspace(char *line)
 {
@@ -66,25 +64,6 @@ int	ft_isspace(char *line)
 		return (1);
 	return (0);
 }
-	/* printf("I >>>>>>>>>> %d\n", i); */
-	/* printf("J >>>>>>>>>> %d\n", j); */
-
-/* void	ft_lchar(char *line, t_tmp *tmp) */
-/* { */
-/* 	int len; */
-
-/* 	len = ft_strlen(line); */
-/* 	if (line[0] != '\n' && line[len - 2] != '1' && line[len - 2] != ' ') */
-/* 	{ */
-/* 		free(line); */
-/* 		ft_print_error(5, tmp); */
-/* 	} */
-/* } */
-	/* printf("ln[i]>>>>>>>>>> %c\n", line[len - 2]); */
-	/* printf("I >>>>>>>>>> %d\n", len); */
-	/* printf("I >>>>>>>>>> %d\n", i); */
-	/* printf("ln[i]>>>>>>>>>> %c\n", ln[i]); */
-	/* printf("AQUI\n"); */
 
 int	ft_check_fchars(t_tmp *tmp)
 {
@@ -108,11 +87,30 @@ int	ft_check_fchars(t_tmp *tmp)
 	}
 	tmp->pos = order;
 	if (j >= 7 || (tmp->y < 6 && tmp->pos != 0))
-		ft_print_error(2, tmp);
+		tmp->err = 2;
 	return (1);
 }
-	/* if (order == 1) */
-	/* 	ft_lchar(tmp->ln, tmp); */
-		/* printf("J => %d\n", j); */
-		/* printf("Y => %d\n", tmp->y); */
-		/* printf("Pos => %d\n", tmp->pos); */
+
+int	ft_check_extension(char *file)
+{
+	int		i;
+	int		j;
+	char	*ext;
+
+	i = ft_strlen(file);
+	j = 4;
+	while (j != 0)
+	{
+		i--;
+		j--;
+	}
+	ext = ft_substr(file, i, ft_strlen(file));
+	if (ft_strncmp(ext, ".cub", 4) != 0)
+	{
+		printf("Error:\nInvalid map extension\n");
+		free(ext);
+		return (0);
+	}
+	free(ext);
+	return (1);
+}

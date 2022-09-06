@@ -6,20 +6,12 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/04 21:13:25 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/09/06 18:27:08 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
-
-#include "libft/libft.h"
-#include "gnl/get_next_line.h"
-#include <unistd.h>
-#include <math.h>
-#include "mlx/mlx.h"
-#include <stdio.h>
-#include <fcntl.h>
 
 # define GAME_TITLE "🤬 WOLPAPASTEIN 🤬"
 # define FOV 66
@@ -51,7 +43,13 @@
 # define TURN_RIGHT_COS 0.995
 # define TURN_RIGHT_SIN -0.0998
 
-
+#include "libft/libft.h"
+#include "gnl/get_next_line.h"
+#include <unistd.h>
+#include <math.h>
+#include "mlx/mlx.h"
+#include <stdio.h>
+#include <fcntl.h>
 
 //info for each texture xpm
 typedef	struct s_text
@@ -123,15 +121,18 @@ typedef struct s_ray {
 }				t_ray;
 
 typedef struct s_map {
-	char *no_texture;
-	char *ea_texture;
-	char *so_texture;
-	char *we_texture;
-	char *f_color;
-	char *c_color;
-	int columns;
-	int rows;
-	char** map_content;
+	char	*no_texture;
+	char	*ea_texture;
+	char	*so_texture;
+	char	*we_texture;
+	int		**f_color;
+	int		**c_color;
+	int		columns;
+	int		rows;
+	char	player;
+	int		player_x;
+	int		player_y;
+	char	** map_content;
 	//the time difference between these two can be used to determinate how much you should move when a certain key is pressed (to move a
 	//constant speed no matter how long the calculation of the frames takes), and for the frames per second (FPS) counter.
 	double	time; // time of current frame
@@ -176,7 +177,13 @@ typedef struct s_tmp{
 	char	*we_path;
 	char	*f_val;
 	char	*c_val;
+	int		**f_int;
+	int		**c_int;
 	char	player;
+	char	rgb;
+	int		player_x;
+	int		player_y;
+	int		err;
 }	t_tmp;
 
 //initial config
@@ -251,5 +258,11 @@ void	ft_check_walls(t_tmp *tmp);
 void	ft_walls_cases(t_tmp *tmp, int i, int j);
 void	ft_check_player(t_tmp *tmp);
 void	ft_headers(t_tmp *tmp);
+void	ft_change_struct(t_tmp *tmp, t_map *map);
+void	ft_free_int(int **array);
+void	ft_free_all(t_tmp *tmp, t_map *map);
+void	ft_free_texture(t_tmp *tmp);
+void	ft_free_int_errors(t_tmp *tmp);
+void	ft_free_errors(t_tmp *tmp);
 
 #endif
