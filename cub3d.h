@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/04 17:38:57 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/06 18:11:50 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,8 @@ typedef struct s_map {
 	int		columns;
 	int		rows;
 	char	player;
+	int		player_x;
+	int		player_y;
 	char	** map_content;
 	//the time difference between these two can be used to determinate how much you should move when a certain key is pressed (to move a
 	//constant speed no matter how long the calculation of the frames takes), and for the frames per second (FPS) counter.

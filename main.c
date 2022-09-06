@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/04 17:22:56 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/06 18:15:31 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	ft_change_struct(t_tmp *tmp, t_map *map)
 	map->map_content = tmp->map;
 	map->columns = (int)tmp->max_x - 1;
 	map->rows = tmp->map_y + 1;
+	map->player_x = tmp->player_x;
+	map->player_y = tmp->player_y;
 }
 
 void	ft_premap(char *map, t_tmp *tmp)
