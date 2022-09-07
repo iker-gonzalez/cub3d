@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 20:34:02 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/03 19:38:20 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/06 21:19:14 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	ft_free_all(t_tmp *tmp, t_map *map)
 		ft_free_int(map->f_color);
 	if (map->c_color != NULL)
 		ft_free_int(map->c_color);
+	ft_free_texture(tmp);
 }
 
 static int	ft_player_pos(t_tmp *tmp, int i, int j)

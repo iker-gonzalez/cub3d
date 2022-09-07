@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/06 18:15:31 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/07 14:12:14 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 
 void	ft_change_struct(t_tmp *tmp, t_map *map)
 {
-	map->no_texture = tmp->no_path;
-	map->so_texture = tmp->so_path;
-	map->ea_texture = tmp->ea_path;
-	map->we_texture = tmp->we_path;
+	map->no_texture = ft_substr(tmp->no_path, 0, ft_strlen(tmp->no_path) - 1);
+	map->so_texture = ft_substr(tmp->so_path, 0, ft_strlen(tmp->so_path) - 1);
+	map->ea_texture = ft_substr(tmp->ea_path, 0, ft_strlen(tmp->ea_path) - 1);
+	map->we_texture = ft_substr(tmp->we_path, 0, ft_strlen(tmp->we_path) - 1);
 	map->f_color = tmp->f_int;
 	map->c_color = tmp->c_int;
 	map->player = tmp->player;
@@ -100,14 +100,15 @@ int	main(int argc, char **argv)
 	t_tmp	tmp;
 	t_map	map;
 
+	if (argc != 2)
+		ft_print_error(1, &tmp);
 	if (!ft_check_extension(argv[1]))
 		return (0);
 	ft_init_tmp(&tmp, &map);
 	tmp.fd = open(argv[1], O_RDONLY);
-	if (argc != 2 || tmp.fd == -1)
+	if (tmp.fd == -1)
 		ft_print_error(1, &tmp);
-	else
-		ft_get_y(&tmp);
+	ft_get_y(&tmp);
 	ft_init_int(&tmp);
 	ft_premap(argv[1], &tmp);
 	ft_headers(&tmp);

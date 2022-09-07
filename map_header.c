@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 19:36:08 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/04 15:21:29 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/07 14:05:04 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,17 @@ void	ft_headers(t_tmp *tmp)
 	int		j;
 	char	**line;
 
-	i = 0;
-	while (i < 6 && tmp->premap[i] != NULL)
+	i = -1;
+	while (++i < 6 && tmp->premap[i] != NULL)
 	{
 		line = ft_split(tmp->premap[i], ' ');
 		j = 0;
 		while (line[j] != NULL)
+		{
+			if (line[j][0] == '\n')
+				break ;
 			j++;
+		}
 		if (j > 2)
 		{
 			if (line != NULL)
@@ -104,7 +108,6 @@ void	ft_headers(t_tmp *tmp)
 		}
 		else
 			ft_select_texture(line, tmp);
-		i++;
 	}
 	ft_check_paths(tmp);
 }
