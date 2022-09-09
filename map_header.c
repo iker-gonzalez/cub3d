@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 19:36:08 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/07 14:05:04 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/08 17:31:18 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_color_int(int rgb, int i, t_tmp *tmp)
 		tmp->c_int[i][0] = rgb;
 }
 
-void	ft_check_values(char *val, t_tmp *tmp)
+void	ft_check_values(char *val, t_tmp *tmp, char **str)
 {
 	int		rgb[3];
 	int		i;
@@ -31,23 +31,23 @@ void	ft_check_values(char *val, t_tmp *tmp)
 
 	i = -1 ;
 	line = ft_split(val, ',');
+	free(val);
 	while (line[++i] != NULL)
 	{
+		if (i > 2)
+			ft_free_value(line, tmp, str);
 		rgb[i] = ft_atoi(line[i]);
 		ft_color_int(rgb[i], i, tmp);
 		j = -1;
 		while (ft_isprint(line[i][++j]))
 		{
 			if (!ft_isdigit(line[i][j]))
-				ft_print_error(7, tmp);
+				ft_free_value(line, tmp, str);
 		}
 	}
 	if (i != 3 || rgb[0] > 255 || rgb[1] > 255 || rgb[2] > 255
 		|| rgb[0] < 0 || rgb[1] < 0 || rgb[2] < 0)
-	{
-		ft_free(line);
-		ft_print_error(7, tmp);
-	}
+		ft_free_value(line, tmp, str);
 	ft_free(line);
 }
 
@@ -68,17 +68,17 @@ void	ft_select_texture(char **line, t_tmp *tmp)
 		tmp->ea_path = ft_strdup(line[1]);
 	if (ft_strncmp(line[0], "WE", 2) == 0)
 		tmp->we_path = ft_strdup(line[1]);
-	if (ft_strncmp(line[0], "F", 2) == 0)
+	if (ft_strncmp(line[0], "F", 1) == 0)
 	{
-		tmp->f_val = line[1];
+		tmp->f_val = ft_strdup(line[1]);
 		tmp->rgb = 'F';
-		ft_check_values(tmp->f_val, tmp);
+		ft_check_values(tmp->f_val, tmp, line);
 	}
-	if (ft_strncmp(line[0], "C", 2) == 0)
+	if (ft_strncmp(line[0], "C", 1) == 0)
 	{
-		tmp->c_val = line[1];
+		tmp->c_val = ft_strdup(line[1]);
 		tmp->rgb = 'C';
-		ft_check_values(tmp->c_val, tmp);
+		ft_check_values(tmp->c_val, tmp, line);
 	}
 	ft_free(line);
 }

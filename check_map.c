@@ -6,12 +6,19 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:13:56 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/03 19:07:49 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/08 17:32:55 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <stdio.h>
+
+void	ft_free_value(char **line, t_tmp *tmp, char **str)
+{
+	ft_free(line);
+	ft_free(str);
+	ft_print_error(7, tmp);
+}
 
 void	ft_walls_cases(t_tmp *tmp, int i, int j)
 {

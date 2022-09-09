@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/06 18:11:50 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/08 17:31:36 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -254,5 +254,6 @@ void	ft_free_all(t_tmp *tmp, t_map *map);
 void	ft_free_texture(t_tmp *tmp);
 void	ft_free_int_errors(t_tmp *tmp);
 void	ft_free_errors(t_tmp *tmp);
+void	ft_free_value(char **line, t_tmp *tmp, char **str);
 
 #endif
