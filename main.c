@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/10 16:36:52 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/09/10 17:19:25 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,13 @@ void	ft_init_structs(t_player *p)
 	p->ray = malloc(sizeof(t_ray));
 	p->draw = malloc(sizeof(t_draw));
 	p->text = malloc(sizeof(t_text));
+	p->map = malloc(sizeof(t_map));
 	ft_memset(p->ray, 0, sizeof(t_ray));
 	ft_memset(p->mlx, 0, sizeof(t_mlx));
 	ft_memset(p->text, 0, sizeof(t_text));
 	ft_memset(p->img, 0, sizeof(t_img));
 	ft_memset(p->draw, 0, sizeof(t_draw));
+	ft_memset(p->map, 0, sizeof(t_map));
 	p->map->render_2 = 0;
 }
 
@@ -127,40 +129,65 @@ void	set_player_values(t_player *player)
 	player->planeY = 0.00;
 }
 
+void	ft_get_all(t_tmp *tmp, t_player *p, char *argv)
+{
+	ft_get_y(tmp);
+	ft_init_int(tmp);
+	ft_premap(argv, tmp);
+	ft_headers(tmp);
+	ft_change_struct(tmp, p->map);
+	ft_print_map(p->map->map_content);
+}
+
+void	ft_init_player_dir(t_player *player)
+{
+	player->posY = player->map->player_x;
+	player->posX = player->map->player_y;
+	/*player->dirX = -1;
+	player->dirY = 0;
+	player->planeX = 0.0;
+	player->planeY = 0.66;*/
+	if (player->map->player == 'N')
+	{
+		player->dirX = -1.0;
+		player->planeY = 0.66;
+	}
+	else if (player->map->player == 'S')
+	{
+		player->dirX = 1.0;
+		player->planeY = -0.66;
+	}
+	else if (player->map->player == 'W')
+	{
+		player->dirY = -1.0;
+		player->planeX = 0.66;
+	}
+	else if (player->map->player == 'E')
+	{
+		player->dirY = 1.0;
+		player->planeX = -0.66;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_tmp	tmp;
 	t_player p;
-	t_map map;
 
 	if (argc != 2)
 		ft_print_error(1, &tmp);
 	if (!ft_check_extension(argv[1]))
 		return (0);
-	ft_memset(&p.map, 0, sizeof(t_ray));
-	p.map = &map;
-	ft_init_tmp(&tmp, &map);
 	ft_init_structs(&p);
+	ft_init_tmp(&tmp, p.map);
 	tmp.fd = open(argv[1], O_RDONLY);
 	if (tmp.fd == -1)
  		ft_print_error(1, &tmp);
-	ft_get_y(&tmp);
-	ft_init_int(&tmp);
-	ft_premap(argv[1], &tmp);
-	//set_player_values(&p);
-	ft_headers(&tmp);
-	ft_change_struct(&tmp, p.map);
-	ft_print_map(p.map->map_content);
-	p.posX = map.player_x;
-	p.posY = map.player_y;
-	p.dirX = -1;
-	p.dirY = 0;
-	p.planeX = 0.0;
-	p.planeY = 0.66;
+	ft_get_all(&tmp, &p, argv[1]);
+	ft_init_player_dir(&p);
 	ft_raycasting(&p);
 	raycasting_loop(&p);
 	ft_hook(&p);
-	printf("mlx: %p\n", p.mlx->mlx);
 	mlx_loop_hook(p.mlx->mlx, raycasting_loop, &p);
 	mlx_loop(p.mlx->mlx);
 	//ft_free_all(&tmp, p.map);

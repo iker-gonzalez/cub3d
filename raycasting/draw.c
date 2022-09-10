@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 12:17:38 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/10 16:31:49 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/09/10 16:46:49 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,6 @@ void	ft_paint_pixels(t_player *p)
 
 int	raycasting_loop(t_player *p)
 {
-	static int images;
-
 	p->map->current_col = 0;
 	mlx_clear_window(p->mlx->mlx, p->mlx->mlx_win);
 	while (p->map->current_col < WIN_WIDTH)
@@ -111,7 +109,6 @@ int	raycasting_loop(t_player *p)
 		ft_paint_pixels(p);
 		p->map->current_col++;
 	}
-	printf("images: %d\n", images++);
 	mlx_put_image_to_window(p->mlx->mlx, p->mlx->mlx_win, p->img->img, 0, 0);
 	return (0);
 }

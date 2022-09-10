@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:53:28 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/10 16:24:02 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/09/10 17:21:10 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_move_down(t_player *player)
 	}
 }
 
-void	ft_move_right(t_player *p)
+void	ft_move_left(t_player *p)
 {
 	double	old_dir_x;
 	double	old_plane_x;
@@ -67,7 +67,7 @@ void	ft_move_right(t_player *p)
 	p->planeY = old_plane_x * TURN_RIGHT_SIN + p->planeY * TURN_RIGHT_COS;
 }
 
-void	ft_move_left(t_player *p)
+void	ft_move_right(t_player *p)
 {
 	double	old_dir_x;
 	double	old_plane_x;
