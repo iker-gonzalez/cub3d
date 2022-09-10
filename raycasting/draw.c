@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 12:17:38 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/06 18:24:08 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/10 16:30:11 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	ft_calculate_draw_values(t_player *p)
 	p->draw->drawEnd = p->draw->lineHeight / 2 + WIN_HEIGHT / 2;
 	if (p->draw->drawEnd >= WIN_HEIGHT)
 		p->draw->drawEnd = WIN_HEIGHT - 1;
+	//printf("drawStart: %d\n", p->draw->drawStart);
+	//printf("drawEnd: %d\n", p->draw->drawEnd);
 }
 
 void	ft_calculate_texture_x_coordinate(t_player *p)
@@ -87,11 +89,13 @@ void	ft_paint_pixels(t_player *p)
 	}
 	while (y < WIN_HEIGHT)
 		my_img_pixel_put(p, p->map->current_col, y++,
-			create_trgb(NO_TRANSPARENCY, 96, 96, 96));
+			create_trgb(NO_TRANSPARENCY, 255, 255, 255));
 }
 
 int	raycasting_loop(t_player *p)
 {
+	static int images;
+
 	p->map->current_col = 0;
 	mlx_clear_window(p->mlx->mlx, p->mlx->mlx_win);
 	while (p->map->current_col < WIN_WIDTH)
@@ -107,6 +111,7 @@ int	raycasting_loop(t_player *p)
 		ft_paint_pixels(p);
 		p->map->current_col++;
 	}
+	printf("images: %d\n", images++);
 	mlx_put_image_to_window(p->mlx->mlx, p->mlx->mlx_win, p->img->img, 0, 0);
 	return (0);
 }

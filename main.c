@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingonzal <ingonzal@student.42urduliz.co    +#+  +:+       +#+        */
+/*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/06 18:15:31 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/10 16:28:50 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 
 void	ft_change_struct(t_tmp *tmp, t_map *map)
 {
-	map->no_texture = tmp->no_path;
-	map->so_texture = tmp->so_path;
-	map->ea_texture = tmp->ea_path;
-	map->we_texture = tmp->we_path;
+	map->no_texture = ft_substr(tmp->no_path, 0, ft_strlen(tmp->no_path) - 1);
+	map->so_texture = ft_substr(tmp->so_path, 0, ft_strlen(tmp->so_path) - 1);
+	map->ea_texture = ft_substr(tmp->ea_path, 0, ft_strlen(tmp->ea_path) - 1);
+	map->we_texture = ft_substr(tmp->we_path, 0, ft_strlen(tmp->we_path) - 1);
 	map->f_color = tmp->f_int;
 	map->c_color = tmp->c_int;
 	map->player = tmp->player;
@@ -72,6 +72,20 @@ void	ft_init_int(t_tmp *tmp)
 	while (++i < 3)
 		tmp->c_int[i] = (int *)malloc(sizeof(int));
 }
+void	ft_init_structs(t_player *p)
+{
+	p->mlx = malloc(sizeof(t_mlx));
+	p->img = malloc(sizeof(t_img));
+	p->ray = malloc(sizeof(t_ray));
+	p->draw = malloc(sizeof(t_draw));
+	p->text = malloc(sizeof(t_text));
+	ft_memset(p->ray, 0, sizeof(t_ray));
+	ft_memset(p->mlx, 0, sizeof(t_mlx));
+	ft_memset(p->text, 0, sizeof(t_text));
+	ft_memset(p->img, 0, sizeof(t_img));
+	ft_memset(p->draw, 0, sizeof(t_draw));
+	p->map->render_2 = 0;
+}
 
 void	ft_init_tmp(t_tmp *tmp, t_map *map)
 {
@@ -95,24 +109,86 @@ void	ft_init_tmp(t_tmp *tmp, t_map *map)
 	map->we_texture = NULL;
 }
 
+void ft_raycasting(t_player *p)
+{
+	p->mlx->mlx = mlx_init();
+	if (xpm_parser(p->mlx, p->map, p->text))
+		exit (1);
+	p->mlx->mlx_win = mlx_new_window(p->mlx->mlx, WIN_WIDTH, WIN_HEIGHT, GAME_TITLE);
+	p->map->current_col = -1;
+	init_new_img(p);
+}
+
+void	set_player_values(t_player *player)
+{
+	player->dirX = 0;
+	player->dirY = 1;
+	player->planeX = 0.66;
+	player->planeY = 0.00;
+}
+
 int	main(int argc, char **argv)
 {
 	t_tmp	tmp;
-	t_map	map;
+	t_map map;
+	t_player p;
+	t_ray	ray;
+	t_mlx	mlx;
+	t_text	text;
+	t_img img;
+	t_draw draw;
 
+	if (argc != 2)
+		ft_print_error(1, &tmp);
 	if (!ft_check_extension(argv[1]))
 		return (0);
+	//ft_memset(&p.map, 0, sizeof(t_ray));
+	//p.map = &map;
 	ft_init_tmp(&tmp, &map);
+	ft_memset(&map, 0, sizeof(t_map));
+	ft_memset(&p, 0, sizeof(t_player));
+	ft_memset(&ray, 0, sizeof(t_ray));
+	ft_memset(&mlx, 0, sizeof(t_mlx));
+	ft_memset(&text, 0, sizeof(t_text));
+	ft_memset(&img, 0, sizeof(t_img));
+	ft_memset(&draw, 0, sizeof(t_draw));
+	map.render_2 = 0;
+	p.mlx = &mlx;
+	p.map = &map;
+	p.img = &img;
+	p.ray = &ray;
+	p.draw = &draw;
+	p.text = &text;
+	//ft_init_structs(&p);
 	tmp.fd = open(argv[1], O_RDONLY);
-	if (argc != 2 || tmp.fd == -1)
-		ft_print_error(1, &tmp);
-	else
-		ft_get_y(&tmp);
+	if (tmp.fd == -1)
+ 		ft_print_error(1, &tmp);
+	ft_get_y(&tmp);
 	ft_init_int(&tmp);
 	ft_premap(argv[1], &tmp);
+	//set_player_values(&p);
 	ft_headers(&tmp);
-	ft_change_struct(&tmp, &map);
-	ft_print_map(map.map_content);
-	ft_free_all(&tmp, &map);
+	ft_change_struct(&tmp, p.map);
+	ft_print_map(p.map->map_content);
+	//p.posX = map.player_x;
+	//p.posY = map.player_y;
+	p.posX = 3;
+	p.posY = 15.5;
+	p.dirX = -1;
+	p.dirY = 0;
+	p.planeX = 0.0;
+	p.planeY = 0.66;
+	mlx.mlx = mlx_init();
+	if (xpm_parser(&mlx, &map, &text))
+		return (1);
+	mlx.mlx_win = mlx_new_window(mlx.mlx, WIN_WIDTH, WIN_HEIGHT, GAME_TITLE);
+	map.current_col = -1;
+	init_new_img(&p);
+	//ft_raycasting(&p);
+	raycasting_loop(&p);
+	ft_hook(&p);
+	mlx_loop_hook(mlx.mlx, raycasting_loop, &p);
+	mlx_loop(mlx.mlx);
+	//ft_free_all(&tmp, p.map);
 	return (1);
 }

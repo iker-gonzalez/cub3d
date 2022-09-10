@@ -6,7 +6,7 @@
 #    By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 16:17:30 by ikgonzal          #+#    #+#              #
-#    Updated: 2022/09/06 18:28:24 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/09/06 19:36:28 by ikgonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,6 @@ SRC  =	main.c \
 		check_map.c \
 		gnl/get_next_line.c \
 		gnl/get_next_line_utils.c \
-		config.c \
 		mlx_functions.c \
 		textures/parsing/parse_texture_1.c \
 		textures/parsing/parse_texture_2.c \
@@ -40,6 +39,7 @@ SRC  =	main.c \
 		ft_hook.c \
 		moves.c \
 		free.c \
+		print_utils.c \
 
 SRC2  =	main.c \
 		error.c \

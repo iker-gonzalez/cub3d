@@ -12,40 +12,16 @@ int clear_window(t_mlx *mlx, t_img *img)
 	return (0);
 }
 
-int main()
+void ft_raycasting(t_player *p)
 {
-	t_map map;
-	t_player p;
-	t_ray	ray;
-	t_mlx	mlx;
-	t_text	text;
-	t_img img;
-	t_draw draw;
-	
-	ft_memset(&map, 0, sizeof(t_map));
-	ft_memset(&p, 0, sizeof(t_player));
-	ft_memset(&ray, 0, sizeof(t_ray));
-	ft_memset(&mlx, 0, sizeof(t_mlx));
-	ft_memset(&text, 0, sizeof(t_text));
-	ft_memset(&img, 0, sizeof(t_img));
-	ft_memset(&draw, 0, sizeof(t_draw));
-	file_config(&map, &p);
-	map.render_2 = 0;
-	p.mlx = &mlx;
-	p.map = &map;
-	p.img = &img;
-	p.ray = &ray;
-	p.draw = &draw;
-	p.text = &text;
-	mlx.mlx = mlx_init();
-	if (xpm_parser(&mlx, &map, &text))
-		return (1);
-	mlx.mlx_win = mlx_new_window(mlx.mlx, WIN_WIDTH, WIN_HEIGHT, GAME_TITLE);
-	map.current_col = -1;
+	p->mlx->mlx = mlx_init();
+	if (xpm_parser(&p->mlx, &p->map, &p->text))
+		exit (1);
+	p->mlx->mlx_win = mlx_new_window(p->mlx->mlx, WIN_WIDTH, WIN_HEIGHT, GAME_TITLE);
+	p->map->current_col = -1;
 	init_new_img(&p);
 	raycasting_loop(&p);
 	ft_hook(&p);
-	mlx_loop_hook(mlx.mlx, raycasting_loop, &p);
-	mlx_loop(mlx.mlx);
-	return (0);
+	mlx_loop_hook(p->mlx->mlx, raycasting_loop, &p);
+	mlx_loop(p->mlx->mlx);
 }

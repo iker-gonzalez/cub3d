@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:25:58 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/06 18:25:51 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/10 14:31:59 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	key_hook(int key, t_player *player)
 	}
 	else if (key == UP_ARR_MAC)
 	{
+		printf("pepe\n");
 		ft_move_up(player);
 	}
 	else if (key == DOWN_ARR_MAC)

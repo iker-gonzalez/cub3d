@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 17:23:26 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/06 18:24:00 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/10 16:29:57 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	ft_calculate_delta_distance(t_player *p)
 
 void	ft_calculate_side_distance(t_player *p)
 {
+	//printf("map->posX: %f\n", p->map->player_x);
+	//printf("map->posY: %f\n", p->map->player_y);
 	if (p->ray->rayDirX < 0)
 	{
 		p->ray->stepX = -1;
@@ -78,6 +80,9 @@ void	dda_algorithm(t_player *p)
 			p->ray->mapY += p->ray->stepY;
 			p->ray->side = 1;
 		}
+		//printf("map.conten: %d\n", p->map->map_content[11][24]);
+		//printf("mapX: %d\n", p->ray->mapX);
+		//printf("mapY: %d\n", p->ray->mapY);
 		if (p->map->map_content[p->ray->mapX][p->ray->mapY] == 49)
 			p->ray->hit = 1;
 	}

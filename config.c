@@ -6,12 +6,12 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 18:05:30 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/06 18:27:33 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/10 14:24:11 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
+/*
 void	set_map_values(t_map *map)
 {
 	int fd;
@@ -62,17 +62,17 @@ void	set_map_values(t_map *map)
 	map->time = 0;
 	map->oldTime = 0;
 }
+*/
+
 
 void	set_player_values(t_player *player)
 {
-	player->posX = 2;
-	player->posY = 2;
 	player->dirX = 0;
 	player->dirY = 1;
 	player->planeX = 0.66;
 	player->planeY = 0.00;
 }
-
+/*
 void	set_texture_paths(t_map	*map)
 {
 	map->no_texture = "textures/wall_1.xpm";
@@ -80,7 +80,7 @@ void	set_texture_paths(t_map	*map)
 	map->so_texture = "textures/wall_3.xpm";
 	map->we_texture = "textures/wall_4.xpm";
 }
-
+*/
 void	file_config(t_map *map, t_player *player)
 {
 	set_map_values(map);
@@ -117,7 +117,7 @@ void	ft_init_player_dir(t_player *player)
 {
 	if (player->map == 'N')
 	{
-		player->dirX = -1.0;
+		player-> = -1.0;
 		player->planeY = 0.66;
 	}
 	else if (player->map == 'S')
@@ -135,5 +135,5 @@ void	ft_init_player_dir(t_player *player)
 		player->dirY = 1.0;
 		player->planeX = 0.66;
 	}
-}*/
-
+}
+*/

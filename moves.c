@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:53:28 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/06 18:25:14 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/10 16:24:02 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	ft_move_up(t_player *player)
 	double	value;
 
 	move_speed = 0.3;
-	player->map->render = 0;
 	value = player->posX + player->dirX * move_speed;
+	player->map->render = 0;
 	if (player->map->map_content[(int)(value)][(int)(player->posY)] == 48)
 	{
 		player->map->render += 1;

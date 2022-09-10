@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/06 18:27:08 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/10 12:43:50 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,8 +130,8 @@ typedef struct s_map {
 	int		columns;
 	int		rows;
 	char	player;
-	int		player_x;
-	int		player_y;
+	double	player_x;
+	double	player_y;
 	char	** map_content;
 	//the time difference between these two can be used to determinate how much you should move when a certain key is pressed (to move a
 	//constant speed no matter how long the calculation of the frames takes), and for the frames per second (FPS) counter.
@@ -228,6 +228,8 @@ void		parse_xpm(char *texture_path, t_text *text, int text_nb);
 
 int		ft_hook(t_player *player);
 int		raycasting_loop(t_player *p);
+void 	ft_raycasting(t_player *p);
+
 
 void	set_structs(t_player *p, t_img *img, t_ray *ray, t_draw *draw);
 void	ft_free_colors(t_text *text, int nb_colors);
@@ -264,5 +266,7 @@ void	ft_free_all(t_tmp *tmp, t_map *map);
 void	ft_free_texture(t_tmp *tmp);
 void	ft_free_int_errors(t_tmp *tmp);
 void	ft_free_errors(t_tmp *tmp);
+
+void	ft_free_value(char **line, t_tmp *tmp, char **str);
 
 #endif
