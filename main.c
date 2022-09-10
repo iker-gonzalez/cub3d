@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/10 17:19:25 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/09/10 19:23:45 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,14 +121,6 @@ void ft_raycasting(t_player *p)
 	init_new_img(p);
 }
 
-void	set_player_values(t_player *player)
-{
-	player->dirX = 0;
-	player->dirY = 1;
-	player->planeX = 0.66;
-	player->planeY = 0.00;
-}
-
 void	ft_get_all(t_tmp *tmp, t_player *p, char *argv)
 {
 	ft_get_y(tmp);
@@ -143,10 +135,6 @@ void	ft_init_player_dir(t_player *player)
 {
 	player->posY = player->map->player_x;
 	player->posX = player->map->player_y;
-	/*player->dirX = -1;
-	player->dirY = 0;
-	player->planeX = 0.0;
-	player->planeY = 0.66;*/
 	if (player->map->player == 'N')
 	{
 		player->dirX = -1.0;
@@ -159,12 +147,12 @@ void	ft_init_player_dir(t_player *player)
 	}
 	else if (player->map->player == 'W')
 	{
-		player->dirY = -1.0;
+		player->dirY = 1.0;
 		player->planeX = 0.66;
 	}
 	else if (player->map->player == 'E')
 	{
-		player->dirY = 1.0;
+		player->dirY = -1.0;
 		player->planeX = -0.66;
 	}
 }

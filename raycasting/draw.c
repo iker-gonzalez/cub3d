@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 12:17:38 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/10 16:46:49 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/09/10 19:26:18 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ void	ft_draw_wall(t_player *p, int *y, double *step, double *tex_pos)
 	{
 		if (p->ray->rayDirX < 0)
 			my_img_pixel_put(p, p->map->current_col, (*y),
-				p->text->pixels[NO_TEXTURE][p->ray->texX][p->ray->texY]);
+				p->text->pixels[SO_TEXTURE][p->ray->texX][p->ray->texY]);
 		else
 			my_img_pixel_put(p, p->map->current_col, (*y),
-				p->text->pixels[SO_TEXTURE][p->ray->texX][p->ray->texY]);
+				p->text->pixels[NO_TEXTURE][p->ray->texX][p->ray->texY]);
 	}
 	else
 	{
@@ -79,7 +79,8 @@ void	ft_paint_pixels(t_player *p)
 	while (y < p->draw->drawStart)
 	{
 		my_img_pixel_put(p, p->map->current_col, y,
-			create_trgb(NO_TRANSPARENCY, 0, 255, 255));
+			create_trgb(NO_TRANSPARENCY, p->map->c_color[0][0],
+				p->map->c_color[1][0], p->map->c_color[2][0]));
 		y++;
 	}
 	while (y < p->draw->drawEnd)
@@ -89,7 +90,8 @@ void	ft_paint_pixels(t_player *p)
 	}
 	while (y < WIN_HEIGHT)
 		my_img_pixel_put(p, p->map->current_col, y++,
-			create_trgb(NO_TRANSPARENCY, 255, 255, 255));
+			create_trgb(NO_TRANSPARENCY, p->map->f_color[0][0],
+				p->map->f_color[1][0], p->map->f_color[2][0]));
 }
 
 int	raycasting_loop(t_player *p)

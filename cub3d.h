@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/10 12:43:50 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/09/10 18:27:37 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,12 @@
 # define WE_TEXTURE 3
 
 # define ESC_KEY_MAC 53
-# define LEFT_ARR_MAC 123
-# define UP_ARR_MAC 126
-# define RIGHT_ARR_MAC 124
-# define DOWN_ARR_MAC 125
+# define TURN_LEFT_ARR_MAC 123
+# define UP_ARR_MAC 13
+# define LEFT_ARR_MAC 0
+# define TURN_RIGHT_ARR_MAC 124
+# define RIGHT_ARR_MAC 2
+# define DOWN_ARR_MAC 1
 # define A_KEY_MAC 0
 # define W_KEY_MAC 13
 # define D_KEY_MAC 2
@@ -142,24 +144,6 @@ typedef struct s_map {
 	int		render_2;
 }				t_map;
 
-typedef struct s_player {
-	// represent the position vector of the player
-	double	posX;
-	double	posY;
-	// initial direction vector (-1 left; 0 straight; 1 right)
-	double	dirX;
-	double	dirY;
-	// plane vector determines the FOV of the player
-	double	planeX;
-	double	planeY;
-	t_mlx	*mlx;
-	t_map	*map;
-	t_img	*img;
-	t_ray	*ray;
-	t_draw	*draw;
-	t_text	*text;
-}				t_player;
-
 typedef struct s_tmp{
 	int		y;
 	size_t	x;
@@ -185,6 +169,25 @@ typedef struct s_tmp{
 	int		player_y;
 	int		err;
 }	t_tmp;
+
+typedef struct s_player {
+	// represent the position vector of the player
+	double	posX;
+	double	posY;
+	// initial direction vector (-1 left; 0 straight; 1 right)
+	double	dirX;
+	double	dirY;
+	// plane vector determines the FOV of the player
+	double	planeX;
+	double	planeY;
+	t_mlx	*mlx;
+	t_map	*map;
+	t_img	*img;
+	t_ray	*ray;
+	t_draw	*draw;
+	t_text	*text;
+}				t_player;
+
 
 //initial config
 void	set_map_values(t_map *map); //fictional values
@@ -239,8 +242,10 @@ void	ft_free_pixels(t_text *text, int text_columns);
 //moves
 void	ft_move_up(t_player *player);
 void	ft_move_down(t_player *player);
-void	ft_move_right(t_player *p);
-void	ft_move_left(t_player *p);
+void	ft_move_right(t_player *player);
+void	ft_move_left(t_player *player);
+void	ft_turn_right(t_player *p);
+void	ft_turn_left(t_player *p);
 
 /* check errors */
 void	ft_get_x(t_tmp *tmp);
