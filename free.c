@@ -6,11 +6,12 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 17:09:50 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/31 18:01:11 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/09/10 20:15:14 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include <stdlib.h>
 
 void	ft_free_colors(t_text *text, int nb_colors)
 {

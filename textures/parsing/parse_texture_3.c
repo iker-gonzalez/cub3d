@@ -6,11 +6,13 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 17:43:49 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/31 17:50:59 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/09/10 20:13:47 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
+#include "../../libft/libft.h"
+#include "../../gnl/get_next_line.h"
 
 void	ft_parse_pixel_column(t_text *text, int col, int text_nb)
 {

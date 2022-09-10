@@ -6,11 +6,12 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 17:43:27 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/10 12:51:46 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/09/10 20:10:42 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
+#include "../../libft/libft.h"
 
 void	ft_extract_colors_nb(char *line, t_text *text, int end)
 {

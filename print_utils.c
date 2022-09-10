@@ -6,12 +6,13 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 19:37:35 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/06 18:24:50 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/10 20:15:58 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 void	ft_print_map(char **map)
 {

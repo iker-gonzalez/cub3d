@@ -6,11 +6,13 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:25:58 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/10 18:27:08 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/09/10 20:20:29 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include <stdlib.h>
+#include "mlx/mlx.h"
 
 int	close_window(t_mlx *mlx)
 {
@@ -41,9 +43,9 @@ int	key_hook(int key, t_player *player)
 	return (0);
 }
 
-int	ft_hook(t_player *player)
+int	ft_hook(t_player *p)
 {
-	mlx_hook(player->mlx->mlx_win, 2, (1L << 0), key_hook, player);
-	mlx_hook(player->mlx->mlx_win, 17, (1L << 8), close_window, player->mlx->mlx);
+	mlx_hook(p->mlx->mlx_win, 2, (1L << 0), key_hook, p);
+	mlx_hook(p->mlx->mlx_win, 17, (1L << 8), close_window, p->mlx->mlx);
 	return (0);
 }

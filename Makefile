@@ -6,7 +6,7 @@
 #    By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 16:17:30 by ikgonzal          #+#    #+#              #
-#    Updated: 2022/09/06 19:36:28 by ikgonzal         ###   ########.fr        #
+#    Updated: 2022/09/10 19:52:08 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,8 @@ SRC  =	main.c \
 		moves.c \
 		free.c \
 		print_utils.c \
+		turns.c \
+		inits.c
 
 SRC2  =	main.c \
 		error.c \

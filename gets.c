@@ -6,11 +6,13 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 16:58:06 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/06 19:22:09 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/09/10 20:08:56 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "gnl/get_next_line.h"
+#include "libft/libft.h"
 
 void	ft_get_x(t_tmp *tmp)
 {

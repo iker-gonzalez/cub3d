@@ -6,12 +6,13 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 12:44:17 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/06 18:29:13 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/10 20:18:52 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <stdio.h>
+#include "mlx/mlx.h"
 
 void	my_img_pixel_put(t_player *p, int x, int y, int color)
 {

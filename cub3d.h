@@ -6,12 +6,13 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/10 18:27:37 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/09/10 20:34:49 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
+# include <unistd.h>
 
 # define GAME_TITLE "🤬 WOLPAPASTEIN 🤬"
 # define FOV 66
@@ -45,16 +46,8 @@
 # define TURN_RIGHT_COS 0.995
 # define TURN_RIGHT_SIN -0.0998
 
-#include "libft/libft.h"
-#include "gnl/get_next_line.h"
-#include <unistd.h>
-#include <math.h>
-#include "mlx/mlx.h"
-#include <stdio.h>
-#include <fcntl.h>
-
 //info for each texture xpm
-typedef	struct s_text
+typedef struct s_text
 {
 	int		columns;
 	int		rows;
@@ -85,41 +78,29 @@ typedef struct s_mlx
 //struct for drawing pixels
 typedef struct s_draw
 {
-	int		lineHeight;
-	int		drawStart;
-	int		drawEnd;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
 }				t_draw;
 
 typedef struct s_ray {
-	//cameraX is the x-coordinate on the camera plane that the current x-coordinate of the screen represents (-1 left, 0 front, 1 right).
-	double	cameraX;
-	//direction vector on both coordinates x and y.
-	double	rayDirX;
-	double	rayDirY;
-	//mapX and mapY represent the current square of the map the ray is in.
-	int		mapX;
-	int		mapY;
-	//the distance the ray has to travel from its start position to the first x-side and the first y-side.
-	double	sideDistX;
-	double	sideDistY;
-	//the distance the ray has to travel to go from 1 x-side to the next x-side, or from 1 y-side to the next y-side intersection.
-	double	deltaDistX;
-	double	deltaDistY;
-	//used to calculate the lenght of the ray
-	double	perpWallDist;
-	//determined by the ray's direction x component (either +1 or -1)
-	int stepX;
-	int stepY;
-	//was there a wall hit? (0, 1)
-	int hit;
-	//was a NS (0) or a EW (1) wall hit?
-	int side;
-	//represents the exact value where the wall was hit, not just the integer coordinates of the wall. 
-	double wallX;
-	//x-coordinate of the texture we have to use
-	int texX;
-	//y-coordinate of the texture we have to use
-	int texY;
+	double	camera_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	int		map_x;
+	int		map_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	perp_wall_dist;
+	int		step_x;
+	int		step_y;
+	int		hit;
+	int		side;
+	double	wall_x;
+	int		tex_x;
+	int		tex_y;
 }				t_ray;
 
 typedef struct s_map {
@@ -134,11 +115,9 @@ typedef struct s_map {
 	char	player;
 	double	player_x;
 	double	player_y;
-	char	** map_content;
-	//the time difference between these two can be used to determinate how much you should move when a certain key is pressed (to move a
-	//constant speed no matter how long the calculation of the frames takes), and for the frames per second (FPS) counter.
-	double	time; // time of current frame
-	double	oldTime; // time of previous frame
+	char	**map_content;
+	double	time;
+	double	old_time;
 	int		current_col;
 	int		render;
 	int		render_2;
@@ -171,15 +150,12 @@ typedef struct s_tmp{
 }	t_tmp;
 
 typedef struct s_player {
-	// represent the position vector of the player
-	double	posX;
-	double	posY;
-	// initial direction vector (-1 left; 0 straight; 1 right)
-	double	dirX;
-	double	dirY;
-	// plane vector determines the FOV of the player
-	double	planeX;
-	double	planeY;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
 	t_mlx	*mlx;
 	t_map	*map;
 	t_img	*img;
@@ -188,9 +164,8 @@ typedef struct s_player {
 	t_text	*text;
 }				t_player;
 
-
 //initial config
-void	set_map_values(t_map *map); //fictional values
+void	set_map_values(t_map *map);
 void	set_player_values(t_player *player);
 void	file_config(t_map *map, t_player *player);
 
@@ -203,7 +178,6 @@ void	dda_algorithm(t_player *p);
 void	ft_calculate_perp_distance(t_player *p);
 void	ft_calculate_texture_x_coordinate(t_player *p);
 
-
 //drawing functions
 void	ft_calculate_draw_values(t_player *p);
 void	init_new_img(t_player *p);
@@ -214,25 +188,22 @@ void	ft_draw_floor_ceil(t_player *p);
 //mlx functions
 void	mlx_config(t_mlx *mlx);
 
-
 //textures
-int			ft_validate_xpm(char *path, void *mlx, t_text *text);
-int			create_trgb(int t, int r, int g, int b);
-int			xpm_parser(t_mlx *mlx, t_map *map, t_text *text);
-void		ft_extract_colors_nb(char *line, t_text *text, int end);
-void		ft_skip_to_color_nb(char *line, t_text *text);
-uint32_t	hex2int(char *hex);
-int			ft_hex_to_int(char *color);
-void		ft_parse_pixel_column(t_text *text, int col, int text_nb);
-void		ft_fill_pixels(t_text *text, int text_nb);
-void		ft_create_pixels_array(t_text *text, int fd);
-void		ft_fill_colors(t_text *text, int text_nb, int fd);
-void		parse_xpm(char *texture_path, t_text *text, int text_nb);
+int		ft_validate_xpm(char *path, void *mlx, t_text *text);
+int		create_trgb(int t, int r, int g, int b);
+int		xpm_parser(t_mlx *mlx, t_map *map, t_text *text);
+void	ft_extract_colors_nb(char *line, t_text *text, int end);
+void	ft_skip_to_color_nb(char *line, t_text *text);
+int		ft_hex_to_int(char *color);
+void	ft_parse_pixel_column(t_text *text, int col, int text_nb);
+void	ft_fill_pixels(t_text *text, int text_nb);
+void	ft_create_pixels_array(t_text *text, int fd);
+void	ft_fill_colors(t_text *text, int text_nb, int fd);
+void	parse_xpm(char *texture_path, t_text *text, int text_nb);
 
 int		ft_hook(t_player *player);
 int		raycasting_loop(t_player *p);
-void 	ft_raycasting(t_player *p);
-
+void	ft_raycasting(t_player *p);
 
 void	set_structs(t_player *p, t_img *img, t_ray *ray, t_draw *draw);
 void	ft_free_colors(t_text *text, int nb_colors);
@@ -246,6 +217,12 @@ void	ft_move_right(t_player *player);
 void	ft_move_left(t_player *player);
 void	ft_turn_right(t_player *p);
 void	ft_turn_left(t_player *p);
+
+/* initialiatations */
+void	ft_init_int(t_tmp *tmp);
+void	ft_init_structs(t_player *p);
+void	ft_init_tmp(t_tmp *tmp, t_map *map);
+void	ft_init_player_dir(t_player *player);
 
 /* check errors */
 void	ft_get_x(t_tmp *tmp);
@@ -271,7 +248,8 @@ void	ft_free_all(t_tmp *tmp, t_map *map);
 void	ft_free_texture(t_tmp *tmp);
 void	ft_free_int_errors(t_tmp *tmp);
 void	ft_free_errors(t_tmp *tmp);
-
 void	ft_free_value(char **line, t_tmp *tmp, char **str);
+
+/* uint32_t	hex2int(char *hex); */
 
 #endif

@@ -6,23 +6,23 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 12:17:38 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/10 19:26:18 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/09/10 20:56:13 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+#include <math.h>
+#include "../mlx/mlx.h"
 
 void	ft_calculate_draw_values(t_player *p)
 {
-	p->draw->lineHeight = (int)(WIN_HEIGHT / p->ray->perpWallDist);
-	p->draw->drawStart = -p->draw->lineHeight / 2 + WIN_HEIGHT / 2;
-	if (p->draw->drawStart < 0)
-		p->draw->drawStart = 0;
-	p->draw->drawEnd = p->draw->lineHeight / 2 + WIN_HEIGHT / 2;
-	if (p->draw->drawEnd >= WIN_HEIGHT)
-		p->draw->drawEnd = WIN_HEIGHT - 1;
-	//printf("drawStart: %d\n", p->draw->drawStart);
-	//printf("drawEnd: %d\n", p->draw->drawEnd);
+	p->draw->line_height = (int)(WIN_HEIGHT / p->ray->perp_wall_dist);
+	p->draw->draw_start = -p->draw->line_height / 2 + WIN_HEIGHT / 2;
+	if (p->draw->draw_start < 0)
+		p->draw->draw_start = 0;
+	p->draw->draw_end = p->draw->line_height / 2 + WIN_HEIGHT / 2;
+	if (p->draw->draw_end >= WIN_HEIGHT)
+		p->draw->draw_end = WIN_HEIGHT - 1;
 }
 
 void	ft_calculate_texture_x_coordinate(t_player *p)
@@ -30,39 +30,39 @@ void	ft_calculate_texture_x_coordinate(t_player *p)
 	int	x;
 
 	if (p->ray->side == 0)
-		p->ray->wallX = p->posY + p->ray->perpWallDist * p->ray->rayDirY;
+		p->ray->wall_x = p->pos_y + p->ray->perp_wall_dist * p->ray->ray_dir_y;
 	else
-		p->ray->wallX = p->posX + p->ray->perpWallDist * p->ray->rayDirX;
-	p->ray->wallX -= floor((p->ray->wallX));
-	x = p->ray->wallX * (double)(TEXTURE_WIDTH);
-	p->ray->texX = (int)x;
-	if (p->ray->side == 0 && p->ray->rayDirX > 0)
-		p->ray->texX = TEXTURE_WIDTH - p->ray->texX - 1;
-	if (p->ray->side == 1 && p->ray->rayDirY < 0)
-		p->ray->texX = TEXTURE_WIDTH - p->ray->texX - 1;
+		p->ray->wall_x = p->pos_x + p->ray->perp_wall_dist * p->ray->ray_dir_x;
+	p->ray->wall_x -= floor((p->ray->wall_x));
+	x = p->ray->wall_x * (double)(TEXTURE_WIDTH);
+	p->ray->tex_x = (int)x;
+	if (p->ray->side == 0 && p->ray->ray_dir_x > 0)
+		p->ray->tex_x = TEXTURE_WIDTH - p->ray->tex_x - 1;
+	if (p->ray->side == 1 && p->ray->ray_dir_y < 0)
+		p->ray->tex_x = TEXTURE_WIDTH - p->ray->tex_x - 1;
 }
 
 void	ft_draw_wall(t_player *p, int *y, double *step, double *tex_pos)
 {
-	p->ray->texY = (int)(*tex_pos) & (TEXTURE_HEIGHT - 1);
+	p->ray->tex_y = (int)(*tex_pos) & (TEXTURE_HEIGHT - 1);
 	(*tex_pos) += (*step);
 	if (p->ray->side == 0)
 	{
-		if (p->ray->rayDirX < 0)
+		if (p->ray->ray_dir_x < 0)
 			my_img_pixel_put(p, p->map->current_col, (*y),
-				p->text->pixels[SO_TEXTURE][p->ray->texX][p->ray->texY]);
+				p->text->pixels[SO_TEXTURE][p->ray->tex_x][p->ray->tex_y]);
 		else
 			my_img_pixel_put(p, p->map->current_col, (*y),
-				p->text->pixels[NO_TEXTURE][p->ray->texX][p->ray->texY]);
+				p->text->pixels[NO_TEXTURE][p->ray->tex_x][p->ray->tex_y]);
 	}
 	else
 	{
-		if (p->ray->rayDirY < 0)
+		if (p->ray->ray_dir_y < 0)
 			my_img_pixel_put(p, p->map->current_col, (*y),
-				p->text->pixels[WE_TEXTURE][p->ray->texX][p->ray->texY]);
+				p->text->pixels[WE_TEXTURE][p->ray->tex_x][p->ray->tex_y]);
 		else
 			my_img_pixel_put(p, p->map->current_col, (*y),
-				p->text->pixels[EA_TEXTURE][p->ray->texX][p->ray->texY]);
+				p->text->pixels[EA_TEXTURE][p->ray->tex_x][p->ray->tex_y]);
 	}
 }
 
@@ -72,18 +72,18 @@ void	ft_paint_pixels(t_player *p)
 	int		y;
 	double	tex_pos;
 
-	step = 1.0 * TEXTURE_HEIGHT / p->draw->lineHeight;
-	tex_pos = (p->draw->drawStart - WIN_HEIGHT / 2
-			+ p->draw->lineHeight / 2) * step;
+	step = 1.0 * TEXTURE_HEIGHT / p->draw->line_height;
+	tex_pos = (p->draw->draw_start - WIN_HEIGHT / 2
+			+ p->draw->line_height / 2) * step;
 	y = 0;
-	while (y < p->draw->drawStart)
+	while (y < p->draw->draw_start)
 	{
 		my_img_pixel_put(p, p->map->current_col, y,
 			create_trgb(NO_TRANSPARENCY, p->map->c_color[0][0],
 				p->map->c_color[1][0], p->map->c_color[2][0]));
 		y++;
 	}
-	while (y < p->draw->drawEnd)
+	while (y < p->draw->draw_end)
 	{
 		ft_draw_wall(p, &y, &step, &tex_pos);
 		y++;

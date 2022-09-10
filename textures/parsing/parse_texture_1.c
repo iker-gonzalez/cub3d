@@ -6,11 +6,14 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 18:18:41 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/10 13:12:48 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/09/10 20:19:41 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
+#include "../../libft/libft.h"
+#include "../../gnl/get_next_line.h"
+#include "../../mlx/mlx.h"
 
 void	ft_fill_colors(t_text *text, int text_nb, int fd)
 {

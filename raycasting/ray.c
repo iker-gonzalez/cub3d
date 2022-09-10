@@ -6,60 +6,61 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 17:23:26 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/10 17:07:30 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/09/10 21:09:53 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+#include <math.h>
 
 void	ft_ray_position_direction(t_player *p)
 {
-	p->ray->cameraX = 2 * p->map->current_col / (double)WIN_WIDTH - 1;
-	p->ray->rayDirX = p->dirX + p->planeX * p->ray->cameraX;
-	p->ray->rayDirY = p->dirY + p->planeY * p->ray->cameraX;
+	p->ray->camera_x = 2 * p->map->current_col / (double)WIN_WIDTH - 1;
+	p->ray->ray_dir_x = p->dir_x + p->plane_x * p->ray->camera_x;
+	p->ray->ray_dir_y = p->dir_y + p->plane_y * p->ray->camera_x;
 }
 
 void	ray_map_coordinates(t_player *p)
 {
-	p->ray->mapX = (int)p->posX;
-	p->ray->mapY = (int)p->posY;
+	p->ray->map_x = (int)p->pos_x;
+	p->ray->map_y = (int)p->pos_y;
 }
 
 void	ft_calculate_delta_distance(t_player *p)
 {
-	if (p->ray->rayDirX == 0)
-		p->ray->deltaDistX = INFINITY;
+	if (p->ray->ray_dir_x == 0)
+		p->ray->delta_dist_x = INFINITY;
 	else
-		p->ray->deltaDistX = fabs(1 / p->ray->rayDirX);
-	if (p->ray->rayDirY == 0)
-		p->ray->deltaDistY = INFINITY;
+		p->ray->delta_dist_x = fabs(1 / p->ray->ray_dir_x);
+	if (p->ray->ray_dir_y == 0)
+		p->ray->delta_dist_y = INFINITY;
 	else
-		p->ray->deltaDistY = fabs(1 / p->ray->rayDirY);
+		p->ray->delta_dist_y = fabs(1 / p->ray->ray_dir_y);
 }
 
 void	ft_calculate_side_distance(t_player *p)
 {
-	//printf("map->posX: %f\n", p->map->player_x);
-	//printf("map->posY: %f\n", p->map->player_y);
-	if (p->ray->rayDirX < 0)
+	if (p->ray->ray_dir_x < 0)
 	{
-		p->ray->stepX = -1;
-		p->ray->sideDistX = (p->posX - p->ray->mapX) * p->ray->deltaDistX;
+		p->ray->step_x = -1;
+		p->ray->side_dist_x = (p->pos_x - p->ray->map_x) * p->ray->delta_dist_x;
 	}
 	else
 	{
-		p->ray->stepX = 1;
-		p->ray->sideDistX = (p->ray->mapX + 1.0 - p->posX) * p->ray->deltaDistX;
+		p->ray->step_x = 1;
+		p->ray->side_dist_x = (p->ray->map_x + 1.0 - p->pos_x)
+			* p->ray->delta_dist_x;
 	}
-	if (p->ray->rayDirY < 0)
+	if (p->ray->ray_dir_y < 0)
 	{
-		p->ray->stepY = -1;
-		p->ray->sideDistY = (p->posY - p->ray->mapY) * p->ray->deltaDistY;
+		p->ray->step_y = -1;
+		p->ray->side_dist_y = (p->pos_y - p->ray->map_y) * p->ray->delta_dist_y;
 	}
 	else
 	{
-		p->ray->stepY = 1;
-		p->ray->sideDistY = (p->ray->mapY + 1.0 - p->posY) * p->ray->deltaDistY;
+		p->ray->step_y = 1;
+		p->ray->side_dist_y = (p->ray->map_y + 1.0 - p->pos_y)
+			* p->ray->delta_dist_y;
 	}
 }
 
@@ -68,22 +69,19 @@ void	dda_algorithm(t_player *p)
 	p->ray->hit = 0;
 	while (p->ray->hit == 0)
 	{
-		if (p->ray->sideDistX < p->ray->sideDistY)
+		if (p->ray->side_dist_x < p->ray->side_dist_y)
 		{
-			p->ray->sideDistX += p->ray->deltaDistX;
-			p->ray->mapX += p->ray->stepX;
+			p->ray->side_dist_x += p->ray->delta_dist_x;
+			p->ray->map_x += p->ray->step_x;
 			p->ray->side = 0;
 		}
 		else
 		{
-			p->ray->sideDistY += p->ray->deltaDistY;
-			p->ray->mapY += p->ray->stepY;
+			p->ray->side_dist_y += p->ray->delta_dist_y;
+			p->ray->map_y += p->ray->step_y;
 			p->ray->side = 1;
 		}
-		//printf("map.conten: %d\n", p->map->map_content[11][24]);
-		//printf("mapX: %d\n", p->ray->mapX);
-		//printf("mapY: %d\n", p->ray->mapY);
-		if (p->map->map_content[p->ray->mapX][p->ray->mapY] == 49)
+		if (p->map->map_content[p->ray->map_x][p->ray->map_y] == 49)
 			p->ray->hit = 1;
 	}
 }
