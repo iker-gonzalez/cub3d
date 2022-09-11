@@ -6,13 +6,15 @@
 #    By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 16:17:30 by ikgonzal          #+#    #+#              #
-#    Updated: 2022/09/10 19:52:08 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/09/11 13:32:28 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =	cub3D
 
 MLX_FLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit 
+
+LMLX_FLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 CC = gcc
 
@@ -75,6 +77,17 @@ $(NAME) : $(OBJ)
 	@ echo "mlx compiled 📇"
 	$(CC) $(OBJ) $(FLAGS) $(LIB) $(MLX_FLAGS) -o $(NAME)
 	@ echo "cub3d compiled 🧊"
+
+
+disp : $(OBJ)
+	@$(MAKE) -C ./libft
+	@$(MAKE) -C ./libft bonus
+	@ echo "libft compiled 🔋"
+	@$(MAKE) -Wno -C ./mlx_linux
+	@ echo "mlx linux compiled 📇"
+	$(CC) $(OBJ) $(FLAGS) $(LIB) $(LMLX_FLAGS) -o $(NAME)
+	@ echo "cub3d linux compiled 🧊"
+
 
 san : $(OBJ)
 	@$(MAKE) -C ./libft
