@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 18:18:41 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/11 16:45:19 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/09/11 18:15:29 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	ft_fill_colors(t_text *text, int text_nb, int fd)
 		i++;
 		row++;
 	}
+	if (line)
+		free(line);
 	ft_create_pixels_array(text, fd);
 	ft_fill_pixels(text, text_nb);
 	ft_free_colors(text, text->nb_colors);
