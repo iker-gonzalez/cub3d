@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 19:49:10 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/11 19:16:32 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/09/11 20:34:01 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,6 @@ void	ft_init_structs(t_player *p)
 	ft_memset(p->img, 0, sizeof(t_img));
 	ft_memset(p->draw, 0, sizeof(t_draw));
 	ft_memset(p->map, 0, sizeof(t_map));
-	p->ray->map_x = 0;
-	p->ray->map_y = 0;
-	p->pos_x = 0;
 }
 
 void	ft_init_tmp(t_tmp *tmp, t_map *map)
