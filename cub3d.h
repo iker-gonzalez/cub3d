@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/11 14:19:35 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/11 14:32:14 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,17 @@
 # define SO_TEXTURE 2
 # define WE_TEXTURE 3
 
+# define ESC_KEY_LINUX 65307
+# define LEFT_ARR_LINUX 65361
+# define RIGHT_ARR_LINUX 65363
+# define A_KEY_LINUX 97
+# define W_KEY_LINUX 119
+# define D_KEY_LINUX 100
+# define S_KEY_LINUX 115
+
 # define ESC_KEY_MAC 53
-# define TURN_LEFT_ARR_MAC 123
-# define UP_ARR_MAC 13
-# define LEFT_ARR_MAC 0
-# define TURN_RIGHT_ARR_MAC 124
-# define RIGHT_ARR_MAC 2
-# define DOWN_ARR_MAC 1
+# define LEFT_ARR_MAC 123
+# define RIGHT_ARR_MAC 124
 # define A_KEY_MAC 0
 # define W_KEY_MAC 13
 # define D_KEY_MAC 2
