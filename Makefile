@@ -6,7 +6,7 @@
 #    By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 16:17:30 by ikgonzal          #+#    #+#              #
-#    Updated: 2022/09/11 13:32:28 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/09/11 13:02:35 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,6 +88,14 @@ disp : $(OBJ)
 	$(CC) $(OBJ) $(FLAGS) $(LIB) $(LMLX_FLAGS) -o $(NAME)
 	@ echo "cub3d linux compiled 🧊"
 
+sandisp : $(OBJ)
+	@$(MAKE) -C ./libft
+	@$(MAKE) -C ./libft bonus
+	@ echo "libft compiled 🔋"
+	@$(MAKE) -Wno -C ./mlx_linux
+	@ echo "mlx linux compiled 📇"
+	$(CC) $(OBJ) $(FLAGS) $(LIB) $(S) $(LMLX_FLAGS) -o $(NAME)
+	@ echo "cub3d linux sanitized 🧊"
 
 san : $(OBJ)
 	@$(MAKE) -C ./libft

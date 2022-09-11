@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 17:43:27 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/11 13:46:41 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/11 14:43:58 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ int	create_trgb(int t, int r, int g, int b)
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-uint32_t	hex2int(char *hex)
+u_int32_t	hex2int(char *hex)
 {
-	uint32_t	val;
+	u_int32_t	val;
 	int			i;
 
 	val = 0;
