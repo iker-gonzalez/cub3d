@@ -6,12 +6,13 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 17:43:27 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/11 14:43:58 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/11 18:09:12 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 #include "../../libft/libft.h"
+#include <stdio.h>
 
 void	ft_extract_colors_nb(char *line, t_text *text, int end)
 {
@@ -82,7 +83,7 @@ int	ft_hex_to_int(char *color)
 	int		hex_int;
 
 	i = 0;
-	while (color[i] != '#' || i < 2)
+	while ((color[i] != '#' && i < 5) || (color[i] == '#' && i == 1))
 		i++;
 	i++;
 	hex = ft_substr(color, i, 6);

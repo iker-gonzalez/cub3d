@@ -2,7 +2,7 @@
 static char *_c214b8fa90d4f4e9fb611bea45445c9gLyq4sYPwi7WrEND[] = {
 /* columns rows colors chars-per-pixel */
 "64 64 26 1 ",
-"  c black",
+"  c #000000",
 ". c #044C00",
 "X c #045800",
 "o c #046400",
@@ -22,12 +22,12 @@ static char *_c214b8fa90d4f4e9fb611bea45445c9gLyq4sYPwi7WrEND[] = {
 ", c #00FC00",
 "< c #80FC7C",
 "1 c #FCFC54",
-"2 c gray55",
+"2 c #8c8c8c",
 "3 c #BCFCB8",
 "4 c #FCFC9C",
 "5 c #FCFCB8",
 "6 c #D8FCD8",
-"7 c gray99",
+"7 c #fcfcfc",
 /* pixels */
 "                               @ @                              ",
 "                               #2#                              ",

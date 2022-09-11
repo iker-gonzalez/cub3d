@@ -1,7 +1,7 @@
-NO textures/barrel.xpm
-SO textures/eagle.xpm
-WE textures/pillar.xpm
-EA textures/greenlight.xpm
+NO textures/greenlight.xpm
+SO textures/pillar.xpm
+WE textures/barrel.xpm
+EA textures/eagle.xpm
 
 F    220,100,0
 C    225,30,0

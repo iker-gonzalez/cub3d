@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 17:43:49 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/10 20:13:47 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/11 17:25:22 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	ft_parse_pixel_column(t_text *text, int col, int text_nb)
 		k = 0;
 		while (text->pixels_map[row][col] != text->colors[k][1])
 			k++;
-		color = ft_hex_to_int(text->colors[k]);
+		if (text->colors[k])
+			color = ft_hex_to_int(text->colors[k]);
 		text->pixels[text_nb][col][row] = color;
 		row++;
 	}
@@ -61,5 +62,7 @@ void	ft_create_pixels_array(t_text *text, int fd)
 		line = get_next_line(fd);
 		row++;
 	}
+	//if (line)
+	//	free(line);
 	text->pixels_map[row] = NULL;
 }
