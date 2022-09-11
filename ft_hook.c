@@ -6,19 +6,20 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:25:58 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/11 20:30:11 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/11 21:42:49 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <stdlib.h>
-#include "mlx/mlx.h"
+#include "mlx_linux/mlx.h"
 
 int	close_window(t_player *p)
 {
 	ft_free_pixels(p->text, p->text->columns);
 	ft_free_all(p);
 	mlx_destroy_window(p->mlx->mlx, p->mlx->mlx_win);
+	mlx_destroy_display(p->mlx->mlx);
 	exit(0);
 }
 
@@ -29,6 +30,7 @@ int	key_hook(int key, t_player *player)
 		ft_free_pixels(player->text, player->text->columns);
 		ft_free_all(player);
 		mlx_destroy_window(player->mlx->mlx, player->mlx->mlx_win);
+		mlx_destroy_display(player->mlx->mlx);
 		exit(0);
 	}
 	else if (key == W_KEY_MAC || key == W_KEY_LINUX)
