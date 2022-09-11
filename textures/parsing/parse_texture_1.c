@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 18:18:41 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/10 20:19:41 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/11 15:13:01 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int	ft_validate_xpm(char *path, void *mlx, t_text *text)
 		printf("Error: invalid xpm\n");
 		return (1);
 	}
+	mlx_destroy_image(mlx, img);
 	return (0);
 }
 
