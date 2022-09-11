@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/10 20:18:12 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/11 14:11:07 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int	main(int argc, char **argv)
 		return (0);
 	ft_init_structs(&p);
 	ft_init_tmp(&tmp, p.map);
+	p.tmp = &tmp;
 	tmp.fd = open(argv[1], O_RDONLY);
 	if (tmp.fd == -1)
 		ft_print_error(1, &tmp);
@@ -104,6 +105,7 @@ int	main(int argc, char **argv)
 	ft_hook(&p);
 	mlx_loop_hook(p.mlx->mlx, raycasting_loop, &p);
 	mlx_loop(p.mlx->mlx);
-	ft_free_all(&tmp, p.map);
+	/* ft_free_all(&tmp, p.map); */
+	ft_free_all(&p);
 	return (1);
 }

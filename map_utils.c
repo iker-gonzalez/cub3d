@@ -6,32 +6,32 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 20:34:02 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/10 20:13:08 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/11 14:16:32 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <stdlib.h>
 
-void	ft_free_all(t_tmp *tmp, t_map *map)
+void	ft_free_all(t_player *p)
 {
-	if (tmp->premap != NULL)
-		ft_free(tmp->premap);
-	if (tmp->map != NULL)
-		ft_free(tmp->map);
-	if (map->no_texture != NULL)
-		free(map->no_texture);
-	if (map->so_texture != NULL)
-		free(map->so_texture);
-	if (map->ea_texture != NULL)
-		free(map->ea_texture);
-	if (map->we_texture != NULL)
-		free(map->we_texture);
-	if (map->f_color != NULL)
-		ft_free_int(map->f_color);
-	if (map->c_color != NULL)
-		ft_free_int(map->c_color);
-	ft_free_texture(tmp);
+	if (p->tmp->premap != NULL)
+		ft_free(p->tmp->premap);
+	if (p->tmp->map != NULL)
+		ft_free(p->tmp->map);
+	if (p->map->no_texture != NULL)
+		free(p->map->no_texture);
+	if (p->map->so_texture != NULL)
+		free(p->map->so_texture);
+	if (p->map->ea_texture != NULL)
+		free(p->map->ea_texture);
+	if (p->map->we_texture != NULL)
+		free(p->map->we_texture);
+	if (p->map->f_color != NULL)
+		ft_free_int(p->map->f_color);
+	if (p->map->c_color != NULL)
+		ft_free_int(p->map->c_color);
+	ft_free_texture(p->tmp);
 }
 
 static int	ft_player_pos(t_tmp *tmp, int i, int j)
