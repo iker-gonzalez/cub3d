@@ -56,7 +56,7 @@ SRC2  =	main.c \
 		gnl/get_next_line.c \
 		gnl/get_next_line_utils.c \
 
-LIB = Libft/libft.a
+LIB = libft/libft.a
 
 LIBFT = -Llibft -lft
 
