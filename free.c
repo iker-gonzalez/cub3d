@@ -32,7 +32,7 @@ void	ft_free_pixels_map(t_text *text, int text_rows)
 	if (!text->pixels_map)
 		return ;
 	i = -1;
-	while (++i < text_rows)
+	while (++i <= text_rows)
 		free(text->pixels_map[i]);
 	free(text->pixels_map);
 }

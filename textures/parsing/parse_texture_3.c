@@ -52,10 +52,10 @@ void	ft_create_pixels_array(t_text *text, int fd)
 	char	*line;
 	int		row;
 
-	text->pixels_map = (char **)malloc(sizeof(char *) * (text->rows + 1));
+	text->pixels_map = (char **)malloc(sizeof(char *) * (text->rows + 2));
 	line = get_next_line(fd);
 	row = 0;
-	while (row < text->rows)
+	while (row <= text->rows)
 	{
 		text->pixels_map[row] = ft_substr(line, 1, 64);
 		free(line);

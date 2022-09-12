@@ -88,6 +88,7 @@ int	main(int argc, char **argv)
 	t_tmp		tmp;
 	t_player	p;
 
+	ft_memset(&p, 0, sizeof(t_player));
 	if (argc != 2)
 		ft_print_error(1, &tmp);
 	if (!ft_check_extension(argv[1]))
