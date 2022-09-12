@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:25:58 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/12 18:21:18 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/09/12 18:35:33 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	close_window(t_player *p)
 	ft_free_all(p);
 	mlx_destroy_window(p->mlx->mlx, p->mlx->mlx_win);
 	mlx_destroy_display(p->mlx->mlx);
-	ft_free_structs(p);
+	//ft_free_structs(p);
 	exit(0);
 }
 
@@ -32,7 +32,7 @@ int	key_hook(int key, t_player *player)
 		ft_free_all(player);
 		mlx_destroy_window(player->mlx->mlx, player->mlx->mlx_win);
 		mlx_destroy_display(player->mlx->mlx);
-		ft_free_structs(player);
+		//ft_free_structs(player);
 		exit(0);
 	}
 	else if (key == W_KEY_MAC || key == W_KEY_LINUX)
