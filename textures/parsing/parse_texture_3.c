@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 17:43:49 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/12 19:05:26 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/09/12 19:32:20 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,14 @@ void	ft_create_pixels_array(t_text *text, int fd)
 	text->pixels_map = (char **)malloc(sizeof(char *) * (text->rows + 1));
 	line = get_next_line(fd);
 	row = 0;
-	while (line)
+	while (row < text->rows)
 	{
 		text->pixels_map[row] = ft_substr(line, 1, 64);
 		free(line);
 		line = get_next_line(fd);
 		row++;
 	}
-	free(line);
+	if (line)
+		free(line);
 	text->pixels_map[row] = NULL;
 }
