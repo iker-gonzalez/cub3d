@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 17:43:49 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/11 18:14:25 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/12 18:44:19 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	ft_create_pixels_array(t_text *text, int fd)
 		line = get_next_line(fd);
 		row++;
 	}
-	if (line)
-		free(line);
+	free(line);
 	text->pixels_map[row] = NULL;
 }

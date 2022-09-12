@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 20:34:02 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/11 20:15:29 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/12 18:41:10 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	ft_free_all(t_player *p)
 		ft_free_int(p->map->f_color);
 	if (p->map->c_color != NULL)
 		ft_free_int(p->map->c_color);
+	if (p->img->img)
+		mlx_destroy_image(p->img->img);
 	ft_free_texture(p->tmp);
 }
 

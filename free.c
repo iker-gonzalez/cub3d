@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 17:09:50 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/12 18:18:34 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/09/12 18:46:54 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,16 @@ void	ft_free_pixels(t_text *text, int text_columns)
 
 void	ft_free_structs(t_player *p)
 {
-	if (p->img)
+	//if (p->img)
 		free(p->img);
-	if (p->map)
+	//if (p->map)
 		free(p->map);
-	if (p->ray)
+	//if (p->ray)
 		free(p->ray);
-	if (p->ray)
+	//if (p->ray)
 		free(p->text);
-	if (p->mlx)
+	//if (p->mlx)
 		free(p->mlx);
-	if (p->draw)
+	//if (p->draw)
 		free(p->draw);
 }
