@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 17:09:50 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/10 20:15:14 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/12 18:18:34 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,20 @@ void	ft_free_pixels(t_text *text, int text_columns)
 		text_nb++;
 	}
 	free(text->pixels);
+}
+
+void	ft_free_structs(t_player *p)
+{
+	if (p->img)
+		free(p->img);
+	if (p->map)
+		free(p->map);
+	if (p->ray)
+		free(p->ray);
+	if (p->ray)
+		free(p->text);
+	if (p->mlx)
+		free(p->mlx);
+	if (p->draw)
+		free(p->draw);
 }
