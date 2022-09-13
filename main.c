@@ -65,7 +65,7 @@ void	ft_raycasting(t_player *p)
 	void	*a;
 
 	p->mlx->mlx = mlx_init();
-	if (xpm_parser(p->mlx, p->map, p->text, p))
+	if (xpm_parser(p->mlx, p->map, p->text))
 		exit (1);
 	a = mlx_new_window(p->mlx->mlx, WIN_WIDTH, WIN_HEIGHT, GAME_TITLE);
 	p->mlx->mlx_win = a;

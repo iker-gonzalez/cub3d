@@ -68,7 +68,7 @@ void	parse_xpm(char *texture_path, t_text *text, int text_nb)
 	ft_fill_colors(text, text_nb, fd);
 }
 
-int	ft_validate_xpm(char *path, void *mlx, t_text *text, t_player *p)
+int	ft_validate_xpm(char *path, void *mlx, t_text *text)
 {
 	void	*img;
 
@@ -76,31 +76,28 @@ int	ft_validate_xpm(char *path, void *mlx, t_text *text, t_player *p)
 	if (img == NULL)
 	{
 		printf("Error: invalid xpm\n");
-		ft_free_all(p);
-		free(p->mlx->mlx);
-		ft_free_structs(p);
 		return (1);
 	}
 	mlx_destroy_image(mlx, img);
 	return (0);
 }
 
-int	xpm_parser(t_mlx *mlx, t_map *map, t_text *text, t_player *p)
+int	xpm_parser(t_mlx *mlx, t_map *map, t_text *text)
 {
 	text->pixels = (int ***)malloc(sizeof(int **) * (NB_TEXTURES));
-	if (ft_validate_xpm(map->no_texture, mlx->mlx, text, p))
+	if (ft_validate_xpm(map->no_texture, mlx->mlx, text))
 		return (1);
 	else
 		parse_xpm(map->no_texture, text, NO_TEXTURE);
-	if (ft_validate_xpm(map->ea_texture, mlx->mlx, text, p))
+	if (ft_validate_xpm(map->ea_texture, mlx->mlx, text))
 		return (1);
 	else
 		parse_xpm(map->ea_texture, text, EA_TEXTURE);
-	if (ft_validate_xpm(map->so_texture, mlx->mlx, text, p))
+	if (ft_validate_xpm(map->so_texture, mlx->mlx, text))
 		return (1);
 	else
 		parse_xpm(map->so_texture, text, SO_TEXTURE);
-	if (ft_validate_xpm(map->we_texture, mlx->mlx, text, p))
+	if (ft_validate_xpm(map->we_texture, mlx->mlx, text))
 		return (1);
 	else
 		parse_xpm(map->we_texture, text, WE_TEXTURE);
