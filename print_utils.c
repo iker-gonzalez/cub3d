@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 19:37:35 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/10 20:15:58 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/13 11:14:31 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_print_map(char **map)
 	}
 }
 
-int	ft_print_error(int errno, t_tmp *tmp)
+int	ft_print_error(int errno, t_player *p)
 {
 	if (errno == 1)
 	{
@@ -53,10 +53,11 @@ int	ft_print_error(int errno, t_tmp *tmp)
 	if (errno == 7)
 	{
 		printf("Error:\nBad formatted headers\n");
-		ft_free_texture(tmp);
+		ft_free_texture(p);
 	}
 	if (errno > 4)
-		ft_free_int_errors(tmp);
-	ft_free_errors(tmp);
+		ft_free_int_errors(p);
+	ft_free_errors(p);
+	ft_free_structs(p);
 	exit (1);
 }

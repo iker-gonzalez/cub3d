@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/12 18:18:45 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/09/13 11:13:45 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,30 +231,30 @@ void	ft_init_tmp(t_tmp *tmp, t_map *map);
 void	ft_init_player_dir(t_player *player);
 
 /* check errors */
-void	ft_get_x(t_tmp *tmp);
-void	ft_get_y(t_tmp *tmp);
+void	ft_get_x(t_player *p);
+void	ft_get_y(t_player *p);
 int		ft_isstrprint(t_tmp *tmp);
 int		ft_isstrspace(t_tmp *tmp);
 int		ft_check_fchars(t_tmp *tmp);
 void	ft_print_map(char **map);
-void	ft_extract_map(t_tmp *tmp);
+void	ft_extract_map(t_player *p);
 int		ft_fchar(char *line);
 int		ft_isspace(char *line);
 int		ft_check_extension(char *file);
-int		ft_print_error(int errno, t_tmp *tmp);
+int		ft_print_error(int errno, t_player *p);
 void	ft_free(char **premap);
-void	ft_check_mapchars(t_tmp *tmp);
-void	ft_check_walls(t_tmp *tmp);
-void	ft_walls_cases(t_tmp *tmp, int i, int j);
-void	ft_check_player(t_tmp *tmp);
-void	ft_headers(t_tmp *tmp);
+void	ft_check_mapchars(t_player *p);
+void	ft_check_walls(t_player *p);
+void	ft_walls_cases(t_player *p, int i, int j);
+void	ft_check_player(t_player *p);
+void	ft_headers(t_player *p);
 void	ft_change_struct(t_tmp *tmp, t_map *map);
 void	ft_free_int(int **array);
 void	ft_free_all(t_player *p);
-void	ft_free_texture(t_tmp *tmp);
-void	ft_free_int_errors(t_tmp *tmp);
-void	ft_free_errors(t_tmp *tmp);
-void	ft_free_value(char **line, t_tmp *tmp, char **str);
+void	ft_free_texture(t_player *p);
+void	ft_free_int_errors(t_player *p);
+void	ft_free_errors(t_player *p);
+void	ft_free_value(char **line, t_player *p, char **str);
 
 /* uint32_t	hex2int(char *hex); */
 

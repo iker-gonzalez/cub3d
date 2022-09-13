@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/11 15:08:19 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/09/13 11:06:03 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,33 +31,33 @@ void	ft_change_struct(t_tmp *tmp, t_map *map)
 	map->player_y = tmp->player_y;
 }
 
-void	ft_premap(char *map, t_tmp *tmp)
+void	ft_premap(char *map, t_player *p)
 {
 	int		j;
 
-	tmp->fd = open(map, O_RDONLY);
-	tmp->premap = (char **)malloc((tmp->y + 1) * sizeof(char *));
+	p->tmp->fd = open(map, O_RDONLY);
+	p->tmp->premap = (char **)malloc((p->tmp->y + 1) * sizeof(char *));
 	j = 0;
-	while (j <= (tmp->y))
+	while (j <= (p->tmp->y))
 	{
-		tmp->ln = get_next_line(tmp->fd);
-		if (tmp->ln == NULL)
+		p->tmp->ln = get_next_line(p->tmp->fd);
+		if (p->tmp->ln == NULL)
 			break ;
-		if ((tmp->ln[0] == '\n') || (tmp->ln && ft_isspace(tmp->ln)))
+		if ((p->tmp->ln[0] == '\n') || (p->tmp->ln && ft_isspace(p->tmp->ln)))
 		{
-			free(tmp->ln);
+			free(p->tmp->ln);
 			continue ;
 		}
-		if (tmp->max_x < ft_strlen(tmp->ln))
-			tmp->max_x = ft_strlen(tmp->ln);
-		tmp->premap[j] = ft_strdup(tmp->ln);
+		if (p->tmp->max_x < ft_strlen(p->tmp->ln))
+			p->tmp->max_x = ft_strlen(p->tmp->ln);
+		p->tmp->premap[j] = ft_strdup(p->tmp->ln);
 		j++;
-		free(tmp->ln);
+		free(p->tmp->ln);
 	}
-	tmp->premap[j] = NULL;
-	tmp->ln = NULL;
-	ft_extract_map(tmp);
-	close(tmp->fd);
+	p->tmp->premap[j] = NULL;
+	p->tmp->ln = NULL;
+	ft_extract_map(p);
+	close(p->tmp->fd);
 }
 
 void	ft_raycasting(t_player *p)
@@ -73,13 +73,13 @@ void	ft_raycasting(t_player *p)
 	init_new_img(p);
 }
 
-void	ft_get_all(t_tmp *tmp, t_player *p, char *argv)
+void	ft_get_all(t_player *p, char *argv)
 {
-	ft_get_y(tmp);
-	ft_init_int(tmp);
-	ft_premap(argv, tmp);
-	ft_headers(tmp);
-	ft_change_struct(tmp, p->map);
+	ft_get_y(p);
+	ft_init_int(p->tmp);
+	ft_premap(argv, p);
+	ft_headers(p);
+	ft_change_struct(p->tmp, p->map);
 	ft_print_map(p->map->map_content);
 }
 
@@ -90,7 +90,7 @@ int	main(int argc, char **argv)
 
 	ft_memset(&p, 0, sizeof(t_player));
 	if (argc != 2)
-		ft_print_error(1, &tmp);
+		ft_print_error(1, &p);
 	if (!ft_check_extension(argv[1]))
 		return (0);
 	ft_init_structs(&p);
@@ -98,8 +98,8 @@ int	main(int argc, char **argv)
 	p.tmp = &tmp;
 	tmp.fd = open(argv[1], O_RDONLY);
 	if (tmp.fd == -1)
-		ft_print_error(1, &tmp);
-	ft_get_all(&tmp, &p, argv[1]);
+		ft_print_error(1, &p);
+	ft_get_all(&p, argv[1]);
 	ft_init_player_dir(&p);
 	ft_raycasting(&p);
 	raycasting_loop(&p);

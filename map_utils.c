@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 20:34:02 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/12 18:49:04 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/09/13 11:11:16 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_free_all(t_player *p)
 		ft_free_int(p->map->c_color);
 	if (p->img->img)
 		mlx_destroy_image(p->mlx->mlx, p->img->img);
-	ft_free_texture(p->tmp);
+	ft_free_texture(p);
 }
 
 static int	ft_player_pos(t_tmp *tmp, int i, int j)
@@ -49,7 +49,7 @@ static int	ft_player_pos(t_tmp *tmp, int i, int j)
 	return (o);
 }
 
-void	ft_check_player(t_tmp *tmp)
+void	ft_check_player(t_player *p)
 {
 	char		*set;
 	int			i;
@@ -59,22 +59,22 @@ void	ft_check_player(t_tmp *tmp)
 
 	set = "NSWE";
 	i = 0;
-	while (tmp->map[i] != NULL)
+	while (p->tmp->map[i] != NULL)
 	{
 		j = -1;
-		while (tmp->map[i][++j])
+		while (p->tmp->map[i][++j])
 		{
 			k = -1;
 			while (set[++k])
 			{
-				if (set[k] == tmp->map[i][j])
-					o = ft_player_pos(tmp, i, j);
+				if (set[k] == p->tmp->map[i][j])
+					o = ft_player_pos(p->tmp, i, j);
 			}
 		}
 		i++;
 	}
 	if (o != 1)
-		ft_print_error(6, tmp);
+		ft_print_error(6, p);
 }
 
 size_t	ft_fill_blanks(size_t x, int i, t_tmp *tmp)
@@ -87,7 +87,7 @@ size_t	ft_fill_blanks(size_t x, int i, t_tmp *tmp)
 	return (x);
 }
 
-void	ft_extract_map(t_tmp *tmp)
+void	ft_extract_map(t_player *p)
 {
 	int		y;
 	int		i;
@@ -95,23 +95,23 @@ void	ft_extract_map(t_tmp *tmp)
 
 	y = 5;
 	i = 0;
-	tmp->map = (char **)malloc((tmp->y - 5) * sizeof(char *));
-	while (tmp->premap[++y] != NULL)
+	p->tmp->map = (char **)malloc((p->tmp->y - 5) * sizeof(char *));
+	while (p->tmp->premap[++y] != NULL)
 	{
-		tmp->map[i] = (char *)malloc((tmp->max_x + 1) * sizeof(char));
+		p->tmp->map[i] = (char *)malloc((p->tmp->max_x + 1) * sizeof(char));
 		x = -1;
-		while (++x < tmp->max_x)
+		while (++x < p->tmp->max_x)
 		{
-			tmp->map[i][x] = tmp->premap[y][x];
-			if ((tmp->premap[y][x] == '\n' || tmp->premap[y][x] == '\0')
-				&& x < tmp->max_x)
-				x = ft_fill_blanks(x, i, tmp);
+			p->tmp->map[i][x] = p->tmp->premap[y][x];
+			if ((p->tmp->premap[y][x] == '\n' || p->tmp->premap[y][x] == '\0')
+				&& x < p->tmp->max_x)
+				x = ft_fill_blanks(x, i, p->tmp);
 		}
-		tmp->map[i][x - 1] = '\n';
-		tmp->map[i][x] = '\0';
+		p->tmp->map[i][x - 1] = '\n';
+		p->tmp->map[i][x] = '\0';
 		i++;
 	}
-	tmp->map[i] = NULL;
-	tmp->map_y = i - 1;
-	ft_check_mapchars(tmp);
+	p->tmp->map[i] = NULL;
+	p->tmp->map_y = i - 1;
+	ft_check_mapchars(p);
 }

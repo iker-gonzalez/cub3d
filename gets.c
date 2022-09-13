@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 16:58:06 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/10 20:08:56 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/13 11:09:48 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,40 @@
 #include "gnl/get_next_line.h"
 #include "libft/libft.h"
 
-void	ft_get_x(t_tmp *tmp)
+void	ft_get_x(t_player *p)
 {
-	if (tmp->ln != NULL)
+	if (p->tmp->ln != NULL)
 	{
-		if (tmp->x < ft_strlen(tmp->ln))
-			tmp->x = ft_strlen(tmp->ln);
+		if (p->tmp->x < ft_strlen(p->tmp->ln))
+			p->tmp->x = ft_strlen(p->tmp->ln);
 	}
 }
 
-void	ft_get_y(t_tmp *tmp)
+void	ft_get_y(t_player *p)
 {
 	int	i;
 
 	i = 0;
-	if (!tmp->fd || tmp->fd != -1)
+	if (!p->tmp->fd || p->tmp->fd != -1)
 	{
-		while (tmp->ln)
+		while (p->tmp->ln)
 		{
-			tmp->ln = get_next_line(tmp->fd);
-			ft_get_x(tmp);
-			if (tmp->ln == NULL || !ft_check_fchars(tmp))
+			p->tmp->ln = get_next_line(p->tmp->fd);
+			ft_get_x(p);
+			if (p->tmp->ln == NULL || !ft_check_fchars(p->tmp))
 				break ;
-			if ((tmp->ln[0] != '\n') && (!ft_isspace(tmp->ln)))
-				tmp->y++;
-			if (tmp->ln[0] == '\n' && tmp->pos != 0)
+			if ((p->tmp->ln[0] != '\n') && (!ft_isspace(p->tmp->ln)))
+				p->tmp->y++;
+			if (p->tmp->ln[0] == '\n' && p->tmp->pos != 0)
 				i = 1;
-			if ((i && tmp->ln[0] != '\n') || (tmp->pos && ft_isspace(tmp->ln)))
-				tmp->err = 3;
-			free(tmp->ln);
+			if ((i && p->tmp->ln[0] != '\n') || (p->tmp->pos && ft_isspace(p->tmp->ln)))
+				p->tmp->err = 3;
+			free(p->tmp->ln);
 		}
-		if (tmp->err != 0)
-			ft_print_error(tmp->err, tmp);
+		if (p->tmp->err != 0)
+			ft_print_error(p->tmp->err, p);
 	}
 	else
 		printf("Error:\nFile\n");
-	close(tmp->fd);
+	close(p->tmp->fd);
 }

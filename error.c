@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:06:42 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/04 17:37:20 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/13 11:07:18 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,32 +43,32 @@ void	ft_free(char **premap)
 	premap = NULL;
 }	
 
-void	ft_free_texture(t_tmp *tmp)
+void	ft_free_texture(t_player *p)
 {
-	if (tmp->no_path != NULL)
-		free(tmp->no_path);
-	if (tmp->so_path != NULL)
-		free(tmp->so_path);
-	if (tmp->ea_path != NULL)
-		free(tmp->ea_path);
-	if (tmp->we_path != NULL)
-		free(tmp->we_path);
+	if (p->tmp->no_path != NULL)
+		free(p->tmp->no_path);
+	if (p->tmp->so_path != NULL)
+		free(p->tmp->so_path);
+	if (p->tmp->ea_path != NULL)
+		free(p->tmp->ea_path);
+	if (p->tmp->we_path != NULL)
+		free(p->tmp->we_path);
 }
 
-void	ft_free_errors(t_tmp *tmp)
+void	ft_free_errors(t_player *p)
 {
-	if (tmp->ln != NULL)
-		free(tmp->ln);
-	if (tmp->premap != NULL)
-		ft_free(tmp->premap);
-	if (tmp->map != NULL)
-		ft_free(tmp->map);
+	if (p->tmp->ln != NULL)
+		free(p->tmp->ln);
+	if (p->tmp->premap != NULL)
+		ft_free(p->tmp->premap);
+	if (p->tmp->map != NULL)
+		ft_free(p->tmp->map);
 }
 
-void	ft_free_int_errors(t_tmp *tmp)
+void	ft_free_int_errors(t_player *p)
 {
-	if (tmp->f_int != NULL)
-		ft_free_int(tmp->f_int);
-	if (tmp->c_int != NULL)
-		ft_free_int(tmp->c_int);
+	if (p->tmp->f_int != NULL)
+		ft_free_int(p->tmp->f_int);
+	if (p->tmp->c_int != NULL)
+		ft_free_int(p->tmp->c_int);
 }
