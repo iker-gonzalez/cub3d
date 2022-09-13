@@ -6,12 +6,13 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 17:09:50 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/13 18:21:52 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/09/13 18:41:38 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 void	ft_free_colors(t_text *text, int nb_colors)
 {
@@ -42,8 +43,13 @@ void	ft_free_pixels(t_text *text, int text_columns)
 	int	text_nb;
 	int	k;
 
+	if (!text->valid_text)
+	{
+		free(text->pixels);
+		return ;
+	}
 	text_nb = 0;
-	while (text_nb < NB_TEXTURES)
+	while (text_nb < text->valid_text)
 	{
 		k = 0;
 		while (k < text_columns)

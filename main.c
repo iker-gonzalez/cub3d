@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/13 18:21:47 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/09/13 18:27:06 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ void	ft_raycasting(t_player *p)
 	{
 		ft_free_pixels(p->text, p->text->columns);
 		ft_free_all(p);
+		//mlx_destroy_display(p->mlx->mlx);
+		free(p->mlx->mlx);
 		ft_free_structs(p);
 		exit (1);
 	}

@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/13 11:13:45 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/13 18:35:50 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_text
 	char	**pixels_map;
 	char	**colors;
 	int		***pixels;
+	int		valid_text;
 }				t_text;
 
 //struct for img
