@@ -13,7 +13,7 @@
 #include "cub3d.h"
 #include "gnl/get_next_line.h"
 #include "libft/libft.h"
-#include "mlx/mlx.h"
+#include "mlx_linux/mlx.h"
 
 void	ft_change_struct(t_tmp *tmp, t_map *map)
 {
@@ -69,7 +69,7 @@ void	ft_raycasting(t_player *p)
 	{
 		ft_free_pixels(p->text, p->text->columns);
 		ft_free_all(p);
-		//mlx_destroy_display(p->mlx->mlx);
+		mlx_destroy_display(p->mlx->mlx);
 		free(p->mlx->mlx);
 		ft_free_structs(p);
 		exit (1);

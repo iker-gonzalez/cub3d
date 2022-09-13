@@ -1,0 +1,247 @@
+NO textures/greenlight.xpm
+SO textures/pillar.xpm
+WE textures/barrel.xpm
+EA textures/eagle.xpm
+F    220,100,255
+C    225,30,0
+11111
+10E01
+10001
+10001
+11111
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==5821==ERROR: AddressSanitizer: SEGV on unknown address 0x7f24cfa00e04 (pc 0x55ae0b129f66 bp 0x7ffd2115dda0 sp 0x7ffd2115dda0 T0)
+==5821==The signal is caused by a WRITE memory access.
+    #0 0x55ae0b129f66 in my_img_pixel_put /home/ingonzal/cub3d/mlx_functions.c:23
+    #1 0x55ae0b12b432 in ft_paint_pixels raycasting/draw.c:81
+    #2 0x55ae0b12b5bc in raycasting_loop raycasting/draw.c:111
+    #3 0x55ae0b127fc2 in main /home/ingonzal/cub3d/main.c:112
+    #4 0x7f24d2daed8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #5 0x7f24d2daee3f in __libc_start_main_impl ../csu/libc-start.c:392
+    #6 0x55ae0b1278c4 in _start (/home/ingonzal/cub3d/cub3D+0x78c4)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/ingonzal/cub3d/mlx_functions.c:23 in my_img_pixel_put
+==5821==ABORTING
+
+
+NO textures/greenlight.xpm
+SO textures/pillar.xpm
+WE textures/barrel.xpm
+EA textures/eagle.xpm
+F    220,100,255
+C    225,30,0
+11111
+100W1
+10001
+10001
+11111
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==5809==ERROR: AddressSanitizer: SEGV on unknown address 0x7efcf0500400 (pc 0x55e5646b4f66 bp 0x7ffdc1a15910 sp 0x7ffdc1a15910 T0)
+==5809==The signal is caused by a WRITE memory access.
+    #0 0x55e5646b4f66 in my_img_pixel_put /home/ingonzal/cub3d/mlx_functions.c:23
+    #1 0x55e5646b6432 in ft_paint_pixels raycasting/draw.c:81
+    #2 0x55e5646b65bc in raycasting_loop raycasting/draw.c:111
+    #3 0x55e5646b2fc2 in main /home/ingonzal/cub3d/main.c:112
+    #4 0x7efcf3817d8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #5 0x7efcf3817e3f in __libc_start_main_impl ../csu/libc-start.c:392
+    #6 0x55e5646b28c4 in _start (/home/ingonzal/cub3d/cub3D+0x78c4)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/ingonzal/cub3d/mlx_functions.c:23 in my_img_pixel_put
+==5809==ABORTING
+
+
+NO textures/greenlight.xpm
+SO textures/pillar.xpm
+WE textures/barrel.xpm
+EA textures/eagle.xpm
+F    220,100,255
+C    225,30,0
+S
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==5806==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x55eb7297be45 bp 0x7ffce73f2ad0 sp 0x7ffce73f2ad0 T0)
+==5806==The signal is caused by a READ memory access.
+==5806==Hint: address points to the zero page.
+    #0 0x55eb7297be45 in dda_algorithm raycasting/ray.c:84
+    #1 0x55eb7297c58c in raycasting_loop raycasting/draw.c:107
+    #2 0x55eb72978fc2 in main /home/ingonzal/cub3d/main.c:112
+    #3 0x7f6f808edd8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #4 0x7f6f808ede3f in __libc_start_main_impl ../csu/libc-start.c:392
+    #5 0x55eb729788c4 in _start (/home/ingonzal/cub3d/cub3D+0x78c4)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV raycasting/ray.c:84 in dda_algorithm
+==5806==ABORTING
+
+NO textures/greenlight.xpm
+SO textures/pillar.xpm
+WE textures/barrel.xpm
+EA textures/eagle.xpm
+F    220,100,0
+C    225,30,0
+11S11
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==5776==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000002 (pc 0x55ea6e063e45 bp 0x7fff91f62740 sp 0x7fff91f62740 T0)
+==5776==The signal is caused by a READ memory access.
+==5776==Hint: address points to the zero page.
+    #0 0x55ea6e063e45 in dda_algorithm raycasting/ray.c:84
+    #1 0x55ea6e06458c in raycasting_loop raycasting/draw.c:107
+    #2 0x55ea6e060fc2 in main /home/ingonzal/cub3d/main.c:112
+    #3 0x7f96a1090d8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #4 0x7f96a1090e3f in __libc_start_main_impl ../csu/libc-start.c:392
+    #5 0x55ea6e0608c4 in _start (/home/ingonzal/cub3d/cub3D+0x78c4)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV raycasting/ray.c:84 in dda_algorithm
+==5776==ABORTING
+
+
+NO textures/greenlight.xpm
+SO textures/pillar.xpm
+WE textures/barrel.xpm
+EA textures/eagle.xpm
+F    220,100,0
+C    225,30,0
+11111
+1001
+11001
+10N01
+11111
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==5754==ERROR: AddressSanitizer: SEGV on unknown address 0x7f0807800400 (pc 0x5620ee10ef66 bp 0x7ffff9556610 sp 0x7ffff9556610 T0)
+==5754==The signal is caused by a WRITE memory access.
+    #0 0x5620ee10ef66 in my_img_pixel_put /home/ingonzal/cub3d/mlx_functions.c:23
+    #1 0x5620ee110432 in ft_paint_pixels raycasting/draw.c:81
+    #2 0x5620ee1105bc in raycasting_loop raycasting/draw.c:111
+    #3 0x5620ee10cfc2 in main /home/ingonzal/cub3d/main.c:112
+    #4 0x7f080abf6d8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #5 0x7f080abf6e3f in __libc_start_main_impl ../csu/libc-start.c:392
+    #6 0x5620ee10c8c4 in _start (/home/ingonzal/cub3d/cub3D+0x78c4)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/ingonzal/cub3d/mlx_functions.c:23 in my_img_pixel_put
+==5754==ABORTING
+
+
+NO textures/greenlight.xpm
+SO textures/pillar.xpm
+WE textures/barrel.xpm
+EA textures/eagle.xpm
+F    220,100,0
+C    225,30,0
+11111
+10N01
+11001
+10001
+11111
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==5738==ERROR: AddressSanitizer: SEGV on unknown address 0x7f5229100400 (pc 0x559c7a17df66 bp 0x7ffcd86784d0 sp 0x7ffcd86784d0 T0)
+==5738==The signal is caused by a WRITE memory access.
+    #0 0x559c7a17df66 in my_img_pixel_put /home/ingonzal/cub3d/mlx_functions.c:23
+    #1 0x559c7a17f432 in ft_paint_pixels raycasting/draw.c:81
+    #2 0x559c7a17f5bc in raycasting_loop raycasting/draw.c:111
+    #3 0x559c7a17bfc2 in main /home/ingonzal/cub3d/main.c:112
+    #4 0x7f522c493d8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #5 0x7f522c493e3f in __libc_start_main_impl ../csu/libc-start.c:392
+    #6 0x559c7a17b8c4 in _start (/home/ingonzal/cub3d/cub3D+0x78c4)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/ingonzal/cub3d/mlx_functions.c:23 in my_img_pixel_put
+==5738==ABORTING
+
+
+NO textures/greenlight.xpm
+SO textures/pillar.xpm
+WE textures/barrel.xpm
+EA textures/eagle.xpm
+F    220,100,0
+C    225,30,0
+11111
+100N1
+11001
+10001
+11111
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==5735==ERROR: AddressSanitizer: SEGV on unknown address 0x7f5a9c900400 (pc 0x555ecf7cdf66 bp 0x7ffced42d990 sp 0x7ffced42d990 T0)
+==5735==The signal is caused by a WRITE memory access.
+    #0 0x555ecf7cdf66 in my_img_pixel_put /home/ingonzal/cub3d/mlx_functions.c:23
+    #1 0x555ecf7cf432 in ft_paint_pixels raycasting/draw.c:81
+    #2 0x555ecf7cf5bc in raycasting_loop raycasting/draw.c:111
+    #3 0x555ecf7cbfc2 in main /home/ingonzal/cub3d/main.c:112
+    #4 0x7f5a9fcecd8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #5 0x7f5a9fcece3f in __libc_start_main_impl ../csu/libc-start.c:392
+    #6 0x555ecf7cb8c4 in _start (/home/ingonzal/cub3d/cub3D+0x78c4)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/ingonzal/cub3d/mlx_functions.c:23 in my_img_pixel_put
+==5735==ABORTING
+
+
+NO textures/greenlight.xpm
+SO textures/pillar.xpm
+WE textures/barrel.xpm
+EA textures/eagle.xpm
+F    220,100,0
+C    225,30,0
+11111
+100W1
+11001
+10001
+11111
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==5723==ERROR: AddressSanitizer: SEGV on unknown address 0x7f581a600400 (pc 0x5628a19faf66 bp 0x7ffcde94ef20 sp 0x7ffcde94ef20 T0)
+==5723==The signal is caused by a WRITE memory access.
+    #0 0x5628a19faf66 in my_img_pixel_put /home/ingonzal/cub3d/mlx_functions.c:23
+    #1 0x5628a19fc432 in ft_paint_pixels raycasting/draw.c:81
+    #2 0x5628a19fc5bc in raycasting_loop raycasting/draw.c:111
+    #3 0x5628a19f8fc2 in main /home/ingonzal/cub3d/main.c:112
+    #4 0x7f581d943d8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #5 0x7f581d943e3f in __libc_start_main_impl ../csu/libc-start.c:392
+    #6 0x5628a19f88c4 in _start (/home/ingonzal/cub3d/cub3D+0x78c4)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /home/ingonzal/cub3d/mlx_functions.c:23 in my_img_pixel_put
+==5723==ABORTING
+
+
+NO textures/greenlight.xpm
+SO textures/pillar.xpm
+WE textures/barrel.xpm
+EA textures/eagle.xpm
+F    220,100,0
+C    225,30,0
+1111
+1W01
+1111
+Segmentation fault (core dumped)
+
+
+NO textures/greenlight.xpm
+SO textures/pillar.xpm
+WE textures/barrel.xpm
+EA textures/eagle.xpm
+F    220,100,0
+C    225,30,0
+111
+1W1
+111
+Segmentation fault (core dumped)
+
+
+NO textures/greenlight.xpm
+SO textures/pillar.xpm
+WE textures/barrel.xpm
+EA textures/eagle.xpm
+F    220,100,0
+C    225,30,0
+1111W11111111111111111
+
