@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 16:58:06 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/13 11:09:48 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/13 12:25:21 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@ void	ft_get_x(t_player *p)
 		if (p->tmp->x < ft_strlen(p->tmp->ln))
 			p->tmp->x = ft_strlen(p->tmp->ln);
 	}
+}
+
+int	check_pos(t_player *p)
+{
+	if (p->tmp->ln[0] == '\n' && p->tmp->pos != 0)
+		return (1);
+	return (0);
 }
 
 void	ft_get_y(t_player *p)
@@ -38,9 +45,9 @@ void	ft_get_y(t_player *p)
 				break ;
 			if ((p->tmp->ln[0] != '\n') && (!ft_isspace(p->tmp->ln)))
 				p->tmp->y++;
-			if (p->tmp->ln[0] == '\n' && p->tmp->pos != 0)
-				i = 1;
-			if ((i && p->tmp->ln[0] != '\n') || (p->tmp->pos && ft_isspace(p->tmp->ln)))
+				i = check_pos(p);
+			if ((i && p->tmp->ln[0] != '\n')
+				|| (p->tmp->pos && ft_isspace(p->tmp->ln)))
 				p->tmp->err = 3;
 			free(p->tmp->ln);
 		}
@@ -51,3 +58,5 @@ void	ft_get_y(t_player *p)
 		printf("Error:\nFile\n");
 	close(p->tmp->fd);
 }
+
+			/* if (p->tmp->ln[0] == '\n' && p->tmp->pos != 0) */

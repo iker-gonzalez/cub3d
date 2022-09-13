@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/13 11:06:03 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/13 11:43:13 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	ft_get_all(t_player *p, char *argv)
 	ft_premap(argv, p);
 	ft_headers(p);
 	ft_change_struct(p->tmp, p->map);
-	ft_print_map(p->map->map_content);
+	ft_print_map(p->tmp->premap);
 }
 
 int	main(int argc, char **argv)

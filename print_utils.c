@@ -6,7 +6,7 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 19:37:35 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/13 11:14:31 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/13 11:40:30 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_print_map(char **map)
 		i = 0;
 		while (map[j][i] != '\n')
 		{
-			printf("[%c]", map[j][i]);
+			printf("%c", map[j][i]);
 			i++;
 		}
 		printf("\n");

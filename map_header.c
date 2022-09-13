@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 19:36:08 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/13 11:01:52 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/13 11:50:10 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,9 @@ void	ft_check_values(char *val, t_player *p, char **str)
 
 void	ft_check_paths(t_player *p)
 {
-	if (p->tmp->no_path == NULL || p->tmp->so_path == NULL || p->tmp->ea_path == NULL
-		|| p->tmp->we_path == NULL || p->tmp->f_val == NULL || p->tmp->c_val == NULL)
+	if (p->tmp->no_path == NULL || p->tmp->so_path == NULL
+		|| p->tmp->ea_path == NULL || p->tmp->we_path == NULL
+		|| p->tmp->f_val == NULL || p->tmp->c_val == NULL)
 		ft_print_error(7, p);
 }
 
