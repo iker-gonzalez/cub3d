@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
+/*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 19:37:35 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/13 11:40:30 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/13 18:21:38 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

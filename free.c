@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 17:09:50 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/13 10:33:29 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/13 18:21:52 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,16 @@ void	ft_free_pixels(t_text *text, int text_columns)
 		k = 0;
 		while (k < text_columns)
 		{
-			free(text->pixels[text_nb][k]);
+			if (text->pixels[text_nb][k])
+				free(text->pixels[text_nb][k]);
 			k++;
 		}
-		free(text->pixels[text_nb]);
+		if (text->pixels[text_nb])
+			free(text->pixels[text_nb]);
 		text_nb++;
 	}
-	free(text->pixels);
+	if (text->pixels)
+		free(text->pixels);
 }
 
 void	ft_free_structs(t_player *p)

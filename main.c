@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/13 11:43:13 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/13 18:21:47 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,12 @@ void	ft_raycasting(t_player *p)
 
 	p->mlx->mlx = mlx_init();
 	if (xpm_parser(p->mlx, p->map, p->text))
+	{
+		ft_free_pixels(p->text, p->text->columns);
+		ft_free_all(p);
+		ft_free_structs(p);
 		exit (1);
+	}
 	a = mlx_new_window(p->mlx->mlx, WIN_WIDTH, WIN_HEIGHT, GAME_TITLE);
 	p->mlx->mlx_win = a;
 	p->map->current_col = -1;
