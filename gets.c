@@ -45,7 +45,7 @@ void	ft_get_y(t_player *p)
 				break ;
 			if ((p->tmp->ln[0] != '\n') && (!ft_isspace(p->tmp->ln)))
 				p->tmp->y++;
-				i = check_pos(p);
+			i = check_pos(p);
 			if ((i && p->tmp->ln[0] != '\n')
 				|| (p->tmp->pos && ft_isspace(p->tmp->ln)))
 				p->tmp->err = 3;

@@ -24,10 +24,11 @@ int	close_window(t_player *p)
 	exit(0);
 }
 
-	/* UP - Close Window*/
 	/* Destroy display for mlx_linux after destroy window*/
+	/* UP - Close Window*/
 	/* mlx_destroy_display(p->mlx->mlx); */
 	/* DOWN - Esc Key Hook*/
+	/* mlx_destroy_display(player->mlx->mlx); */
 
 int	key_hook(int key, t_player *player)
 {
