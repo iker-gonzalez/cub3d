@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 19:37:35 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/13 18:21:38 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/09/13 20:32:27 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_print_error(int errno, t_player *p)
 {
 	if (errno == 1)
 	{
-		printf("Error:\nWrong number of arguments\n");
+		printf("Error:\nWrong number of arguments or invalid map\n");
 		exit (1);
 	}
 	if (errno == 2)

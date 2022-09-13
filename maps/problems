@@ -54,51 +54,51 @@ SUMMARY: AddressSanitizer: SEGV /home/ingonzal/cub3d/mlx_functions.c:23 in my_im
 ==5809==ABORTING
 
 
-NO textures/greenlight.xpm
-SO textures/pillar.xpm
-WE textures/barrel.xpm
-EA textures/eagle.xpm
-F    220,100,255
-C    225,30,0
-S
-AddressSanitizer:DEADLYSIGNAL
-=================================================================
-==5806==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x55eb7297be45 bp 0x7ffce73f2ad0 sp 0x7ffce73f2ad0 T0)
-==5806==The signal is caused by a READ memory access.
-==5806==Hint: address points to the zero page.
-    #0 0x55eb7297be45 in dda_algorithm raycasting/ray.c:84
-    #1 0x55eb7297c58c in raycasting_loop raycasting/draw.c:107
-    #2 0x55eb72978fc2 in main /home/ingonzal/cub3d/main.c:112
-    #3 0x7f6f808edd8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #4 0x7f6f808ede3f in __libc_start_main_impl ../csu/libc-start.c:392
-    #5 0x55eb729788c4 in _start (/home/ingonzal/cub3d/cub3D+0x78c4)
+/* NO textures/greenlight.xpm */
+/* SO textures/pillar.xpm */
+/* WE textures/barrel.xpm */
+/* EA textures/eagle.xpm */
+/* F    220,100,255 */
+/* C    225,30,0 */
+/* S */
+/* AddressSanitizer:DEADLYSIGNAL */
+/* ================================================================= */
+/* ==5806==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x55eb7297be45 bp 0x7ffce73f2ad0 sp 0x7ffce73f2ad0 T0) */
+/* ==5806==The signal is caused by a READ memory access. */
+/* ==5806==Hint: address points to the zero page. */
+/*     #0 0x55eb7297be45 in dda_algorithm raycasting/ray.c:84 */
+/*     #1 0x55eb7297c58c in raycasting_loop raycasting/draw.c:107 */
+/*     #2 0x55eb72978fc2 in main /home/ingonzal/cub3d/main.c:112 */
+/*     #3 0x7f6f808edd8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58 */
+/*     #4 0x7f6f808ede3f in __libc_start_main_impl ../csu/libc-start.c:392 */
+/*     #5 0x55eb729788c4 in _start (/home/ingonzal/cub3d/cub3D+0x78c4) */
 
-AddressSanitizer can not provide additional info.
-SUMMARY: AddressSanitizer: SEGV raycasting/ray.c:84 in dda_algorithm
-==5806==ABORTING
+/* AddressSanitizer can not provide additional info. */
+/* SUMMARY: AddressSanitizer: SEGV raycasting/ray.c:84 in dda_algorithm */
+/* ==5806==ABORTING */
 
-NO textures/greenlight.xpm
-SO textures/pillar.xpm
-WE textures/barrel.xpm
-EA textures/eagle.xpm
-F    220,100,0
-C    225,30,0
-11S11
-AddressSanitizer:DEADLYSIGNAL
-=================================================================
-==5776==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000002 (pc 0x55ea6e063e45 bp 0x7fff91f62740 sp 0x7fff91f62740 T0)
-==5776==The signal is caused by a READ memory access.
-==5776==Hint: address points to the zero page.
-    #0 0x55ea6e063e45 in dda_algorithm raycasting/ray.c:84
-    #1 0x55ea6e06458c in raycasting_loop raycasting/draw.c:107
-    #2 0x55ea6e060fc2 in main /home/ingonzal/cub3d/main.c:112
-    #3 0x7f96a1090d8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #4 0x7f96a1090e3f in __libc_start_main_impl ../csu/libc-start.c:392
-    #5 0x55ea6e0608c4 in _start (/home/ingonzal/cub3d/cub3D+0x78c4)
+/* NO textures/greenlight.xpm */
+/* SO textures/pillar.xpm */
+/* WE textures/barrel.xpm */
+/* EA textures/eagle.xpm */
+/* F    220,100,0 */
+/* C    225,30,0 */
+/* 11S11 */
+/* AddressSanitizer:DEADLYSIGNAL */
+/* ================================================================= */
+/* ==5776==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000002 (pc 0x55ea6e063e45 bp 0x7fff91f62740 sp 0x7fff91f62740 T0) */
+/* ==5776==The signal is caused by a READ memory access. */
+/* ==5776==Hint: address points to the zero page. */
+/*     #0 0x55ea6e063e45 in dda_algorithm raycasting/ray.c:84 */
+/*     #1 0x55ea6e06458c in raycasting_loop raycasting/draw.c:107 */
+/*     #2 0x55ea6e060fc2 in main /home/ingonzal/cub3d/main.c:112 */
+/*     #3 0x7f96a1090d8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58 */
+/*     #4 0x7f96a1090e3f in __libc_start_main_impl ../csu/libc-start.c:392 */
+/*     #5 0x55ea6e0608c4 in _start (/home/ingonzal/cub3d/cub3D+0x78c4) */
 
-AddressSanitizer can not provide additional info.
-SUMMARY: AddressSanitizer: SEGV raycasting/ray.c:84 in dda_algorithm
-==5776==ABORTING
+/* AddressSanitizer can not provide additional info. */
+/* SUMMARY: AddressSanitizer: SEGV raycasting/ray.c:84 in dda_algorithm */
+/* ==5776==ABORTING */
 
 
 NO textures/greenlight.xpm
@@ -237,11 +237,11 @@ C    225,30,0
 Segmentation fault (core dumped)
 
 
-NO textures/greenlight.xpm
-SO textures/pillar.xpm
-WE textures/barrel.xpm
-EA textures/eagle.xpm
-F    220,100,0
-C    225,30,0
-1111W11111111111111111
+/* NO textures/greenlight.xpm */
+/* SO textures/pillar.xpm */
+/* WE textures/barrel.xpm */
+/* EA textures/eagle.xpm */
+/* F    220,100,0 */
+/* C    225,30,0 */
+/* 1111W11111111111111111 */
 
