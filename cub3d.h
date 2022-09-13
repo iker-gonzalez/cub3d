@@ -194,9 +194,9 @@ void	ft_draw_floor_ceil(t_player *p);
 void	mlx_config(t_mlx *mlx);
 
 //textures
-int		ft_validate_xpm(char *path, void *mlx, t_text *text);
+int		ft_validate_xpm(char *path, void *mlx, t_text *text, t_player *p);
 int		create_trgb(int t, int r, int g, int b);
-int		xpm_parser(t_mlx *mlx, t_map *map, t_text *text);
+int		xpm_parser(t_mlx *mlx, t_map *map, t_text *text, t_player *p);
 void	ft_extract_colors_nb(char *line, t_text *text, int end);
 void	ft_skip_to_color_nb(char *line, t_text *text);
 int		ft_hex_to_int(char *color);
