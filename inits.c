@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 19:49:10 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/14 18:51:05 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/09/14 20:14:57 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,26 +67,29 @@ void	ft_init_tmp(t_tmp *tmp, t_map *map)
 
 void	ft_init_player_dir(t_player *player)
 {
-	player->pos_y = player->map->player_x + 0.5;
-	player->pos_x = player->map->player_y + 0.5;
+	double	adjust;
+
+	adjust = 0.5;
+	player->pos_y = player->map->player_x + adjust;
+	player->pos_x = player->map->player_y + adjust;
 	if (player->map->player == 'N')
 	{
-		player->dir_x = -1.0;
+		player->dir_x = -1.0 - adjust;
 		player->plane_y = 0.66;
 	}
 	else if (player->map->player == 'S')
 	{
-		player->dir_x = 1.0;
+		player->dir_x = 1.0 + adjust;
 		player->plane_y = -0.66;
 	}
 	else if (player->map->player == 'W')
 	{
-		player->dir_y = 1.0;
+		player->dir_y = 1.0 + adjust;
 		player->plane_x = 0.66;
 	}
 	else if (player->map->player == 'E')
 	{
-		player->dir_y = -1.0;
+		player->dir_y = -1.0 - adjust;
 		player->plane_x = -0.66;
 	}
 }
