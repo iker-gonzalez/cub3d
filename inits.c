@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 19:49:10 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/11 20:34:01 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/14 18:51:05 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ void	ft_init_tmp(t_tmp *tmp, t_map *map)
 
 void	ft_init_player_dir(t_player *player)
 {
-	player->pos_y = player->map->player_x;
-	player->pos_x = player->map->player_y;
+	player->pos_y = player->map->player_x + 0.5;
+	player->pos_x = player->map->player_y + 0.5;
 	if (player->map->player == 'N')
 	{
 		player->dir_x = -1.0;

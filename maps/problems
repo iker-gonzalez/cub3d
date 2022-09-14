@@ -1,4 +1,4 @@
-NO textures/greenlight.xpm
+/*NO textures/greenlight.xpm
 SO textures/pillar.xpm
 WE textures/barrel.xpm
 EA textures/eagle.xpm
@@ -51,7 +51,7 @@ AddressSanitizer:DEADLYSIGNAL
 
 AddressSanitizer can not provide additional info.
 SUMMARY: AddressSanitizer: SEGV /home/ingonzal/cub3d/mlx_functions.c:23 in my_img_pixel_put
-==5809==ABORTING
+==5809==ABORTING*/
 
 
 /* NO textures/greenlight.xpm */
@@ -100,7 +100,7 @@ SUMMARY: AddressSanitizer: SEGV /home/ingonzal/cub3d/mlx_functions.c:23 in my_im
 /* SUMMARY: AddressSanitizer: SEGV raycasting/ray.c:84 in dda_algorithm */
 /* ==5776==ABORTING */
 
-
+/*
 NO textures/greenlight.xpm
 SO textures/pillar.xpm
 WE textures/barrel.xpm
@@ -126,9 +126,9 @@ AddressSanitizer:DEADLYSIGNAL
 
 AddressSanitizer can not provide additional info.
 SUMMARY: AddressSanitizer: SEGV /home/ingonzal/cub3d/mlx_functions.c:23 in my_img_pixel_put
-==5754==ABORTING
+==5754==ABORTING*/
 
-
+/*
 NO textures/greenlight.xpm
 SO textures/pillar.xpm
 WE textures/barrel.xpm
@@ -155,8 +155,8 @@ AddressSanitizer:DEADLYSIGNAL
 AddressSanitizer can not provide additional info.
 SUMMARY: AddressSanitizer: SEGV /home/ingonzal/cub3d/mlx_functions.c:23 in my_img_pixel_put
 ==5738==ABORTING
-
-
+*/
+/*
 NO textures/greenlight.xpm
 SO textures/pillar.xpm
 WE textures/barrel.xpm
@@ -183,8 +183,8 @@ AddressSanitizer:DEADLYSIGNAL
 AddressSanitizer can not provide additional info.
 SUMMARY: AddressSanitizer: SEGV /home/ingonzal/cub3d/mlx_functions.c:23 in my_img_pixel_put
 ==5735==ABORTING
-
-
+*/
+/*
 NO textures/greenlight.xpm
 SO textures/pillar.xpm
 WE textures/barrel.xpm
@@ -211,8 +211,8 @@ AddressSanitizer:DEADLYSIGNAL
 AddressSanitizer can not provide additional info.
 SUMMARY: AddressSanitizer: SEGV /home/ingonzal/cub3d/mlx_functions.c:23 in my_img_pixel_put
 ==5723==ABORTING
-
-
+*/
+/*
 NO textures/greenlight.xpm
 SO textures/pillar.xpm
 WE textures/barrel.xpm
@@ -223,7 +223,7 @@ C    225,30,0
 1W01
 1111
 Segmentation fault (core dumped)
-
+*/
 
 NO textures/greenlight.xpm
 SO textures/pillar.xpm
