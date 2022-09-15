@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 19:36:08 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/15 20:09:00 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/15 21:32:33 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void	ft_check_paths(t_player *p)
 
 void	ft_select_texture(char **line, t_player *p)
 {
+	if (ft_check_l(line[1]))
+		ft_print_error(7, p);
 	if (ft_strncmp(line[0], "NO", 2) == 0)
 		p->tmp->no_path = ft_strdup(line[1]);
 	if (ft_strncmp(line[0], "SO", 2) == 0)

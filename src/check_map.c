@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:13:56 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/13 11:37:59 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/15 21:45:05 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,29 @@ void	ft_check_mapchars(t_player *p)
 	}
 	ft_check_player(p);
 	ft_check_walls(p);
+}
+
+int	ft_check_l(char *l)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	if (l)
+	{
+		while (l[i])
+		{
+			if (l[i] == '\t')
+				return (1);
+			if (l[i] == ',')
+				j++;
+			i++;
+		}
+		if (j > 2)
+			return (1);
+	}
+	else
+		return (1);
+	return(0);
 }
