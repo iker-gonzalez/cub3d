@@ -6,7 +6,7 @@
 #    By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 16:17:30 by ikgonzal          #+#    #+#              #
-#    Updated: 2022/09/15 17:15:55 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/09/15 17:27:31 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -168,5 +168,7 @@ fclean: clean
 	@ rm -rf $(NAME_B)
 
 re: fclean all
+
+re_bonus: fclean bonus
 
 .PHONY : all bonus clean fclean re
