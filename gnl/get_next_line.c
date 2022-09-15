@@ -6,11 +6,12 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 20:13:25 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/02 17:34:20 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/15 19:59:58 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <unistd.h>
 
 char	*get_next_line(int fd)
 {

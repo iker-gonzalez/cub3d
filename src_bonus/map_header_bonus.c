@@ -6,12 +6,13 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 19:36:08 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/15 15:47:52 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/15 20:09:00 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "../libft/libft.h"
+#include <stdlib.h>
 
 void	ft_color_int(int rgb, int i, t_tmp *tmp)
 {

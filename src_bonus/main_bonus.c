@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/15 15:48:26 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/15 20:08:50 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "../gnl/get_next_line.h"
 #include "../libft/libft.h"
 #include "../mlx_linux/mlx.h"
+#include <fcntl.h>
 
 void	ft_change_struct(t_tmp *tmp, t_map *map)
 {

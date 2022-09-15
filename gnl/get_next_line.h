@@ -6,15 +6,12 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 19:55:38 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/08/22 19:45:15 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/15 20:17:07 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# include <unistd.h>
-# include <stdio.h>
-# include <fcntl.h>
 # include <stdlib.h>
 
 size_t	ft_strlen_gnl(char *str, int c);

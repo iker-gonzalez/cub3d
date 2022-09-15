@@ -6,12 +6,13 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:06:42 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/15 15:45:52 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/15 20:08:00 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "../libft/libft.h"
+#include <stdlib.h>
 
 void	ft_free_int(int **array)
 {

@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 18:18:41 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/15 16:00:12 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/15 19:59:34 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "../../../libft/libft.h"
 #include "../../../gnl/get_next_line.h"
 #include "../../../mlx/mlx.h"
+#include <stdio.h>
+#include <fcntl.h>
 
 void	ft_fill_colors(t_text *text, int text_nb, int fd)
 {

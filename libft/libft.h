@@ -6,14 +6,12 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 17:33:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/07/19 21:27:37 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/15 20:06:02 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include <stddef.h>
-# include <unistd.h>
 # include <stdlib.h>
 
 void	ft_bzero(void *s, size_t n);

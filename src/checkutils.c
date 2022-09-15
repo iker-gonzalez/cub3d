@@ -6,13 +6,14 @@
 /*   By: ingonzal <ingonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 19:28:12 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/15 15:47:02 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/15 20:01:43 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "../libft/libft.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 int	ft_isstrprint(t_tmp *tmp)
 {

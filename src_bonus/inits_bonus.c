@@ -6,12 +6,13 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 19:49:10 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/15 16:01:59 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/15 20:08:37 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "../libft/libft.h"
+#include <stdlib.h>
 
 void	ft_init_int(t_tmp *tmp)
 {
