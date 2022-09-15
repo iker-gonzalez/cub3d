@@ -1,0 +1,13 @@
+NO src/textures/greenlight.xpm
+SO src/textures/pillar.xpm
+WE src/textures/barrel.xpm
+EA src/textures/eagle.xpm
+
+F    220,100,255
+C    225,30,0
+
+111111
+100001
+100N01
+10001
+11111

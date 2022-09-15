@@ -1,10 +1,10 @@
-    NO textures/wall.xpm
-      SO textures/wall_2.xpm
-          WE         textures/wall3.xpm
+    NO src/textures/wall_1.xpm
+      SO src/textures/wall_2.xpm
+          WE         src/textures/wall_3.xpm
 
 
 
-               EA textures/eagle.xpm
+               EA src/textures/eagle.xpm
 
        F       220,100,0
    C 225,30,0
