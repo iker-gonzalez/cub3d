@@ -6,13 +6,21 @@
 #    By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 16:17:30 by ikgonzal          #+#    #+#              #
-#    Updated: 2022/09/15 17:27:31 by ingonzal         ###   ########.fr        #
+#    Updated: 2022/09/15 17:55:55 by ingonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =	cub3D
 
+NAME_S = cub3D_Sanitized
+
 NAME_B = cub3D_bonus
+
+NAME_BS = cub3D_bonus_Sanitized
+
+NAME_D = cub3D_disp
+
+NAME_DS = cub3D_disp_san
 
 MLX_FLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit 
 
@@ -48,38 +56,27 @@ SRC  =	src/main.c \
 		src/inits.c
 
 SRC_B  =	src_bonus/main_bonus.c \
-		src_bonus/error_bonus.c \
-		src_bonus//gets_bonus.c \
-		src_bonus//checkutils_bonus.c \
-		src_bonus//map_utils_bonus.c \
-		src_bonus//map_header_bonus.c \
-		src_bonus//check_map_bonus.c \
-		gnl/get_next_line.c \
-		gnl/get_next_line_utils.c \
-		src_bonus//mlx_functions_bonus.c \
-		src_bonus//textures/parsing/parse_texture_1_bonus.c \
-		src_bonus//textures/parsing/parse_texture_2_bonus.c \
-		src_bonus//textures/parsing/parse_texture_3_bonus.c \
-		src_bonus//raycasting/ray_bonus.c \
-		src_bonus//raycasting/ray_2_bonus.c \
-		src_bonus//raycasting/draw_bonus.c \
-		src_bonus//ft_hook_bonus.c \
-		src_bonus//moves_bonus.c \
-		src_bonus//free_bonus.c \
-		src_bonus//print_utils_bonus.c \
-		src_bonus//turns_bonus.c \
-		src_bonus//inits_bonus.c
-
-SRC2  =	src/main.c \
-		src/error.c \
-		src/gets.c \
-		src/checkutils.c \
-		src/print_utils.c \
-		src/map_utils.c \
-		src/map_header.c \
-		src/check_map.c \
-		gnl/get_next_line.c \
-		gnl/get_next_line_utils.c \
+			src_bonus/error_bonus.c \
+			src_bonus//gets_bonus.c \
+			src_bonus//checkutils_bonus.c \
+			src_bonus//map_utils_bonus.c \
+			src_bonus//map_header_bonus.c \
+			src_bonus//check_map_bonus.c \
+			gnl/get_next_line.c \
+			gnl/get_next_line_utils.c \
+			src_bonus//mlx_functions_bonus.c \
+			src_bonus//textures/parsing/parse_texture_1_bonus.c \
+			src_bonus//textures/parsing/parse_texture_2_bonus.c \
+			src_bonus//textures/parsing/parse_texture_3_bonus.c \
+			src_bonus//raycasting/ray_bonus.c \
+			src_bonus//raycasting/ray_2_bonus.c \
+			src_bonus//raycasting/draw_bonus.c \
+			src_bonus//ft_hook_bonus.c \
+			src_bonus//moves_bonus.c \
+			src_bonus//free_bonus.c \
+			src_bonus//print_utils_bonus.c \
+			src_bonus//turns_bonus.c \
+			src_bonus//inits_bonus.c
 
 LIB = libft/libft.a
 
@@ -114,44 +111,44 @@ $(NAME_B) : $(OBJ_B)
 	$(CC) $(OBJ_B) $(FLAGS) $(LIB) $(MLX_FLAGS) -o $(NAME_B)
 	@ echo "cub3d compiled 🧊"
 
-disp : $(OBJ)
+disp : $(NAME_D)
+
+$(NAME_D) : $(OBJ)
 	@$(MAKE) -C ./libft
 	@ echo "libft compiled 🔋"
 	@$(MAKE) -Wno -C ./mlx_linux
 	@ echo "mlx linux compiled 📇"
-	$(CC) $(OBJ) $(FLAGS) $(LIB) $(LMLX_FLAGS) -o $(NAME)
+	$(CC) $(OBJ) $(FLAGS) $(LIB) $(LMLX_FLAGS) -o $(NAME_D)
 	@ echo "cub3d linux compiled 🧊"
 
-sandisp : $(OBJ)
+sandisp : $(NAME_DS)
+
+$(NAME_DS) : $(OBJ)
 	@$(MAKE) -C ./libft
 	@ echo "libft compiled 🔋"
 	@$(MAKE) -Wno -C ./mlx_linux
 	@ echo "mlx linux compiled 📇"
-	$(CC) $(OBJ) $(FLAGS) $(LIB) $(S) $(LMLX_FLAGS) -o $(NAME)
+	$(CC) $(OBJ) $(FLAGS) $(LIB) $(S) $(LMLX_FLAGS) -o $(NAME_DS)
 	@ echo "cub3d linux sanitized 🧊"
 
-san : $(OBJ)
+san : $(NAME_S)
+
+$(NAME_S) : $(OBJ)
 	@$(MAKE) -C ./libft
 	@ echo "libft compiled 🔋"
 	@$(MAKE) -Wno -C ./mlx
 	@ echo "minilibx compiled 📇"
-	$(CC) $(OBJ) $(FLAGS) $(S) $(LIB) $(MLX_FLAGS) -o $(NAME)
+	$(CC) $(OBJ) $(FLAGS) $(S) $(LIB) $(MLX_FLAGS) -o $(NAME_S)
 	@ echo "cub3d sanitized 🧊"
 
-docsan : $(OBJ2)
-	@$(MAKE) -C ./libft
-	@ echo "libft compiled 🔋"
-	# @$(MAKE) -Wno -C ./mlx
-	# @ echo "minilibx compiled 📇"
-	$(CC) $(OBJ2) $(FLAGS) $(LIB) $(S)  -o $(NAME)
-	@ echo "cub3d sanitized 🧊"
+bonsan : $(NAME_BS)
 
-doc : $(OBJ2)
+$(NAME_BS) : $(OBJ_B)
 	@$(MAKE) -C ./libft
 	@ echo "libft compiled 🔋"
-	# @$(MAKE) -Wno -C ./mlx
-	# @ echo "minilibx compiled 📇"
-	$(CC) $(OBJ2) $(FLAGS) $(LIB) -o $(NAME)
+	@$(MAKE) -Wno -C ./mlx
+	@ echo "minilibx compiled 📇"
+	$(CC) $(OBJ_B) $(FLAGS) $(S) $(LIB) $(MLX_FLAGS) -o $(NAME_BS)
 	@ echo "cub3d sanitized 🧊"
 
 clean:
@@ -166,9 +163,13 @@ clean:
 fclean: clean
 	@ rm -rf $(NAME)
 	@ rm -rf $(NAME_B)
+	@ rm -rf $(NAME_S)
+	@ rm -rf $(NAME_D)
+	@ rm -rf $(NAME_DS)
+	@ rm -rf $(NAME_BS)
 
 re: fclean all
 
 re_bonus: fclean bonus
 
-.PHONY : all bonus clean fclean re
+.PHONY : all bonus clean fclean re re_bonus san disp sandisp bonsan
