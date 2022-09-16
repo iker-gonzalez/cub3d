@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:13:56 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/15 21:45:05 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/16 19:44:19 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,8 @@ void	ft_check_mapchars(t_player *p)
 
 int	ft_check_l(char *l)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -114,5 +114,5 @@ int	ft_check_l(char *l)
 	}
 	else
 		return (1);
-	return(0);
+	return (0);
 }
