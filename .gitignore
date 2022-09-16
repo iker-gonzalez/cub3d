@@ -60,5 +60,6 @@ a.out
 *.o
 *.replace
 cub3D
+cub3D_*
 prueba*
 ikermain.c
