@@ -64,7 +64,7 @@ void	ft_select_texture(char **line, t_player *p)
 	if (ft_check_l(line[1]) || ft_strlen(line[0]) > 2
 		|| (ft_strncmp(line[0], "F", 1) == 0 && ft_strlen(line[0]) != 1)
 		|| (ft_strncmp(line[0], "C", 1) == 0 && ft_strlen(line[0]) != 1))
-		ft_print_error(7, p);
+		ft_free_last(line, p);
 	if (ft_strncmp(line[0], "NO", 2) == 0)
 		p->tmp->no_path = ft_strdup(line[1]);
 	if (ft_strncmp(line[0], "SO", 2) == 0)

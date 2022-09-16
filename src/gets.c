@@ -44,3 +44,9 @@ void	ft_get_y(t_player *p)
 		ft_print_error(p->tmp->err, p);
 	close(p->tmp->fd);
 }
+
+void	ft_free_last(char **line, t_player *p)
+{
+	ft_free(line);
+	ft_print_error(7, p);
+}

@@ -257,5 +257,6 @@ void	ft_free_int_errors(t_player *p);
 void	ft_free_errors(t_player *p);
 void	ft_free_value(char **line, t_player *p, char **str);
 int		ft_check_l(char *l);
+void	ft_free_last(char **line, t_player *p);
 
 #endif
