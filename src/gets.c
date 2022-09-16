@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 16:58:06 by ingonzal          #+#    #+#             */
-/*   Updated: 2022/09/16 19:19:54 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/16 21:11:45 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,16 @@ void	ft_free_last(char **line, t_player *p)
 {
 	ft_free(line);
 	ft_print_error(7, p);
+}
+
+void	ft_free_tmp(char *no, char *so, char *ea, char *we);
+{
+	if (no)
+		free(no);
+	if (so)
+		free(so);
+	if (we)
+		free(we);
+	if (ea)
+		free(ea);
 }

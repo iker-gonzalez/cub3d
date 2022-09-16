@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:08 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/15 20:08:50 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/16 21:11:47 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,22 @@
 
 void	ft_change_struct(t_tmp *tmp, t_map *map)
 {
-	map->no_texture = ft_substr(tmp->no_path, 0, ft_strlen(tmp->no_path) - 1);
-	map->so_texture = ft_substr(tmp->so_path, 0, ft_strlen(tmp->so_path) - 1);
-	map->ea_texture = ft_substr(tmp->ea_path, 0, ft_strlen(tmp->ea_path) - 1);
-	map->we_texture = ft_substr(tmp->we_path, 0, ft_strlen(tmp->we_path) - 1);
+	char	*no;
+	char	*so;
+	char	*ea;
+	char	*we;
+	char	set[2];
+
+	set[0] = ' ';
+	set[1] = '\n';
+	no = ft_strtrim(tmp->no_path, set);
+	so = ft_strtrim(tmp->so_path, set);
+	ea = ft_strtrim(tmp->ea_path, set);
+	we = ft_strtrim(tmp->we_path, set);
+	map->no_texture = ft_substr(no, 0, ft_strlen(tmp->no_path));
+	map->so_texture = ft_substr(so, 0, ft_strlen(tmp->so_path));
+	map->ea_texture = ft_substr(ea, 0, ft_strlen(tmp->ea_path));
+	map->we_texture = ft_substr(we, 0, ft_strlen(tmp->we_path));
 	map->f_color = tmp->f_int;
 	map->c_color = tmp->c_int;
 	map->player = tmp->player;
@@ -30,6 +42,7 @@ void	ft_change_struct(t_tmp *tmp, t_map *map)
 	map->rows = tmp->map_y + 1;
 	map->player_x = tmp->player_x;
 	map->player_y = tmp->player_y;
+	ft_free_tmp(no, so, ea, we);
 }
 
 void	ft_premap(char *map, t_player *p)

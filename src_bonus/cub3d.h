@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/16 19:30:25 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/16 21:13:17 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,7 @@ void	file_config(t_map *map, t_player *player);
 void	ft_ray_position_direction(t_player *p);
 void	ray_map_coordinates(t_player *p);
 void	ft_calculate_delta_distance(t_player *p);
+void	ft_free_tmp(char *no, char *so, char *ea, char *we);
 void	ft_calculate_side_distance(t_player *p);
 void	dda_algorithm(t_player *p);
 void	ft_calculate_perp_distance(t_player *p);
@@ -220,6 +221,7 @@ void	ft_free_structs(t_player *p);
 //moves
 void	ft_move_up(t_player *player);
 void	ft_move_down(t_player *player);
+void	ft_free_tmp(char *no, char *so, char *ea, char *we);
 void	ft_move_right(t_player *player);
 void	ft_move_left(t_player *player);
 void	ft_turn_right(t_player *p);
@@ -258,5 +260,6 @@ void	ft_free_errors(t_player *p);
 void	ft_free_value(char **line, t_player *p, char **str);
 int		ft_check_l(char *l);
 void	ft_free_last(char **line, t_player *p);
+void	ft_free_tmp(char *no, char *so, char *ea, char *we);
 
 #endif
