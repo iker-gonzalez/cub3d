@@ -6,7 +6,7 @@
 /*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 17:09:50 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/13 18:41:38 by ikgonzal         ###   ########.fr       */
+/*   Updated: 2022/09/17 11:48:06 by ingonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,5 @@ void	ft_free_structs(t_player *p)
 		free(p->mlx);
 	if (p->draw)
 		free(p->draw);
+	exit (1);
 }
