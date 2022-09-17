@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_hook.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
+/*   By: ikgonzal <ikgonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:25:58 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/15 16:01:39 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/17 12:12:52 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	close_window(t_player *p)
 
 int	key_hook(int key, t_player *player)
 {
-	if (key == ESC_KEY_MAC || key == ESC_KEY_LINUX)
+	if (key == ESC_KEY_MAC)
 	{
 		ft_free_pixels(player->text, player->text->columns);
 		ft_free_all(player);
@@ -41,17 +41,17 @@ int	key_hook(int key, t_player *player)
 		ft_free_structs(player);
 		exit(0);
 	}
-	else if (key == W_KEY_MAC || key == W_KEY_LINUX)
+	else if (key == W_KEY_MAC)
 		ft_move_up(player);
-	else if (key == S_KEY_MAC || key == S_KEY_LINUX)
+	else if (key == S_KEY_MAC)
 		ft_move_down(player);
-	else if (key == D_KEY_MAC || key == D_KEY_LINUX)
+	else if (key == D_KEY_MAC)
 		ft_move_right(player);
-	else if (key == A_KEY_MAC || key == A_KEY_LINUX)
+	else if (key == A_KEY_MAC)
 		ft_move_left(player);
-	else if (key == RIGHT_ARR_MAC || key == RIGHT_ARR_LINUX)
+	else if (key == RIGHT_ARR_MAC)
 		ft_turn_right(player);
-	else if (key == LEFT_ARR_MAC || key == LEFT_ARR_LINUX)
+	else if (key == LEFT_ARR_MAC)
 		ft_turn_left(player);
 	return (0);
 }
