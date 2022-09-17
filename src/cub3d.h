@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikgonzal <ikgonzal@student.42urduliz.co    +#+  +:+       +#+        */
+/*   By: ikgonzal <ikgonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:07:00 by ikgonzal          #+#    #+#             */
-/*   Updated: 2022/09/17 10:48:15 by ingonzal         ###   ########.fr       */
+/*   Updated: 2022/09/17 12:18:22 by ikgonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -244,7 +244,7 @@ void	ft_extract_map(t_player *p);
 int		ft_fchar(char *line);
 int		ft_isspace(char *line);
 int		ft_check_extension(char *file);
-void		ft_print_error(int errno, t_player *p);
+void	ft_print_error(int errno, t_player *p);
 void	ft_free(char **premap);
 void	ft_check_mapchars(t_player *p);
 void	ft_check_walls(t_player *p);
