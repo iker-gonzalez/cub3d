@@ -33,7 +33,7 @@ void	ft_print_map(char **map)
 	}
 }
 
-int	ft_print_error(int errno, t_player *p)
+void	ft_print_error(int errno, t_player *p)
 {
 	if (errno == 1)
 	{

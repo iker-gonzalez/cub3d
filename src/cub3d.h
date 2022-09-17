@@ -244,7 +244,7 @@ void	ft_extract_map(t_player *p);
 int		ft_fchar(char *line);
 int		ft_isspace(char *line);
 int		ft_check_extension(char *file);
-int		ft_print_error(int errno, t_player *p);
+void		ft_print_error(int errno, t_player *p);
 void	ft_free(char **premap);
 void	ft_check_mapchars(t_player *p);
 void	ft_check_walls(t_player *p);
