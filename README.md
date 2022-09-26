@@ -29,7 +29,9 @@
 
 > Small simulated 3D game inspired by the famous [Wolfenstein 3D game](https://www.youtube.com/watch?v=561sPCk6ByE). We need to create a "realistic" 3D graphical representation of the inside of a maze from a first person perspective, using ray casting principles.
 
+<p align="center">
 ![Game](https://github.com/iker-gonzalez/cub3d/blob/main/game.gif)
+</p>
 
 For detailed information, refer to the [**subject of this project**](https://github.com/iker-gonzalez/42_cursus/blob/main/_PDFs/en.subject_cub3d.pdf)
 
